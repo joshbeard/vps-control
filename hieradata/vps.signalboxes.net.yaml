@@ -25,6 +25,12 @@ sudo::sudoers:
     - /usr/local/bin/r10k
     tags:
     - NOPASSWD
+ruby::ruby_dev_packages:
+  - 'ruby-devel'
+  - 'rubygem-bundler'
+ruby::dev::ruby_dev_packages:
+  - 'ruby-devel'
+  - 'rubygem-bundler'
 ##
 ## Nginx vhosts
 ##
