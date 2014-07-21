@@ -69,8 +69,8 @@ nginx::nginx_vhosts:
     server_name: ['signalboxes.net', 'www.signalboxes.net', 'www1.signalboxes.net', 'www2.signalboxes.net', 'www3.signalboxes.net', 'ipv6.signalboxes.net']
     www_root: '/var/www/signalboxes.net'
     index_files: ['index.html']
-    access_log: '/var/www/signalboxes.net/logs/signalboxes.net-access.log'
-    error_log: '/var/www/signalboxes.net/logs/signalboxes.net-error.log'
+    access_log: '/var/log/nginx/signalboxes.net-access.log'
+    error_log: '/var/log/nginx/signalboxes.net-error.log'
 #    include_files: ['global/restrictions.conf']
     vhost_cfg_prepend:
       'index': 'index.html'
