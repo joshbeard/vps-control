@@ -39,10 +39,6 @@ nginx::nginx_vhosts:
     include_files: ['global/php.conf', 'global/restrictions.conf']
     vhost_cfg_prepend:
       'index': 'index.php index.html'
-    ssl: true
-    ssl_cert: '/etc/nginx/ssl/unified.crt'
-    ssl_key: '/etc/nginx/ssl/server.key'
-    ssl_ciphers: 'RC4:HIGH:!aNULL:!MD5'
   'joshbeard.me':
     ensure: present
     server_name: ['joshbeard.me', 'www.joshbeard.me']
@@ -93,24 +89,6 @@ nginx::nginx_vhosts:
 #    ssl_cert: '/etc/nginx/ssl/unified.crt'
 #    ssl_key: '/etc/nginx/ssl/server.key'
 #    ssl_ciphers: 'RC4:HIGH:!aNULL:!MD5'
-  'signalboxes.net_ssl':
-    use_default_location: false
-    #listen_options: "default_server"
-    listen_port: 443
-    server_name: ['signalboxes.net', 'www.signalboxes.net', 'www1.signalboxes.net', 'www2.signalboxes.net', 'www3.signalboxes.net', 'ipv6.signalboxes.net']
-    www_root: '/var/www/signalboxes.net'
-    index_files: ['index.php']
-    access_log: '/var/www/signalboxes.net/logs/signalboxes.net-access.log'
-    error_log: '/var/www/signalboxes.net/logs/signalboxes.net-error.log'
-    include_files: ['global/restrictions.conf', 'global/wordpress-ms-subdir.conf', 'global/w3tc.conf']
-    ssl: true
-    ssl_cert: '/etc/nginx/ssl/unified.crt'
-    ssl_key: '/etc/nginx/ssl/server.key'
-    ssl_ciphers: 'RC4:HIGH:!aNULL:!MD5'
-    vhost_cfg_prepend:
-      'index': 'index.php'
-    vhost_cfg_append:
-      'index': 'index.php'
 nginx::nginx_locations:
   'wp_admin':
     location: '~* /wp-(admin|login\.php)'

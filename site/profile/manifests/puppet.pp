@@ -42,7 +42,7 @@ class profile::puppet {
 
   class { 'hiera':
     hierarchy => [
-      'nodes/%{clientcert}',
+      '%{clientcert}',
       '%{environment}',
       'global',
     ],
