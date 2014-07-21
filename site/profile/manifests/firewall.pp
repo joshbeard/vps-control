@@ -25,21 +25,4 @@ class profile::firewall {
     port   => ['80','443'],
   }
 
-  firewall { '005 accept irssi proxy':
-    proto  => 'tcp',
-    action => 'accept',
-    port   => ['2777', '2778'],
-  }
-
-  firewall { '006 accept mcmyadmin':
-    proto  => 'tcp',
-    action => 'accept',
-    port   => '8090',
-  }
-
-  firewall { '007 accept minecraft':
-    proto  => 'tcp',
-    action => 'accept',
-    port   => '25565',
-  }
 }
