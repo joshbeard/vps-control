@@ -59,6 +59,8 @@ nginx::nginx_vhosts:
 #    include_files: ['global/restrictions.conf']
     vhost_cfg_prepend:
       'index': 'index.html'
+    vhost_cfg_append:
+      'rewrite ^': "http://signalboxes.net/ permanent"
   'webmail.hewbert.com':
     use_default_location: false
     vhost_cfg_append:
@@ -84,6 +86,8 @@ nginx::nginx_vhosts:
 #    include_files: ['global/restrictions.conf']
     vhost_cfg_prepend:
       'index': 'index.php'
+    vhost_cfg_append:
+      'rewrite ^': "http://signalboxes.net/ permanent"
 ## Disabled for now until ssl hosts support cfg_prepend or indexes
 #    ssl: true
 #    ssl_cert: '/etc/nginx/ssl/unified.crt'
