@@ -39,6 +39,8 @@ nginx::nginx_vhosts:
 #    include_files: ['global/restrictions.conf']
     vhost_cfg_prepend:
       'index': 'index.php index.html'
+    vhost_cfg_append:
+      'rewrite ^': "http://signalboxes.net/minecraft-server/ permanent"
   'joshbeard.me':
     ensure: present
     server_name: ['joshbeard.me', 'www.joshbeard.me']
