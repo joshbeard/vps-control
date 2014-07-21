@@ -1,0 +1,12 @@
+<% time = Time.new -%>
+###############################################################################
+    Host:  <%= @fqdn %>
+
+  System:  <%= @lsbdistdescription %>
+  Kernel:  <%= @kernel %> <%= @kernelrelease %>
+  Memory:  <%= @memoryfree %> / <%= @memorysize %>
+  Uptime:  <%= @uptime %>
+    Load:  <%= @loadavg %>
+   Users:  <%= @numusers %>
+########################################.as of <%= time %>.#
+

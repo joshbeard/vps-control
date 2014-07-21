@@ -1,0 +1,119 @@
+---
+##
+## Hiera config for my VPS
+##
+classes:
+  - role::vps
+## Packages not installed by other modules
+packages:
+  - irssi
+  - tmux
+  - zsh
+  - git
+  - lynx
+  - rsync
+  - zip
+sudo::sudoers:
+  gitolite_r10k:
+    ensure: present
+    comment: "Let gitolite kick off r10k"
+    users:
+    - gitolite
+    runas:
+    - root
+    cmnds:
+    - /usr/local/bin/r10k
+    tags:
+    - NOPASSWD
+##
+## Nginx vhosts
+##
+nginx::nginx_vhosts:
+  'mc.signalboxes.net':
+    ensure: present
+    server_name: ['mc.signalboxes.net']
+    www_root: "/var/www/mc.signalboxes.net"
+    access_log: '/var/log/nginx/mc.signalboxes.net.access.log'
+    error_log: '/var/log/nginx/mc.signalboxes.net.error.log'
+    use_default_location: false
+    include_files: ['global/php.conf', 'global/restrictions.conf']
+    vhost_cfg_prepend:
+      'index': 'index.php index.html'
+    ssl: true
+    ssl_cert: '/etc/nginx/ssl/unified.crt'
+    ssl_key: '/etc/nginx/ssl/server.key'
+    ssl_ciphers: 'RC4:HIGH:!aNULL:!MD5'
+  'joshbeard.me':
+    ensure: present
+    server_name: ['joshbeard.me', 'www.joshbeard.me']
+    www_root: "/var/www/joshbeard.me"
+    access_log: "/var/log/nginx/joshbeard.me_access.log"
+    error_log: "/var/log/nginx/joshbeard.me_error.log"
+    use_default_location: false
+    include_files: ['global/php.conf', 'global/restrictions.conf']
+    vhost_cfg_append:
+      'rewrite ^': "https://plus.google.com/+JoshuaBeard0/about/ permanent"
+  'hewbert.com':
+    ensure: present
+    server_name: ['hewbert.com', 'www.hewbert.com']
+    www_root: "/var/www/hewbert.com"
+    access_log: '/var/log/nginx/hewbert.com.access.log'
+    error_log: '/var/log/nginx/hewbert.com.error.log'
+    use_default_location: false
+    include_files: ['global/php.conf', 'global/restrictions.conf']
+    vhost_cfg_prepend:
+      'index': 'index.php'
+  'webmail.hewbert.com':
+    use_default_location: false
+    vhost_cfg_append:
+      'rewrite ^': 'https://mail.google.com/a/hewbert.com permanent'
+  'signalboxes.net':
+    use_default_location: false
+    listen_options: "default_server"
+    server_name: ['signalboxes.net', 'www.signalboxes.net', 'www1.signalboxes.net', 'www2.signalboxes.net', 'www3.signalboxes.net', 'ipv6.signalboxes.net']
+    www_root: '/var/www/signalboxes.net'
+    index_files: ['index.php']
+    access_log: '/var/www/signalboxes.net/logs/signalboxes.net-access.log'
+    error_log: '/var/www/signalboxes.net/logs/signalboxes.net-error.log'
+    include_files: ['global/restrictions.conf', 'global/wordpress-ms-subdir.conf', 'global/w3tc.conf']
+    vhost_cfg_prepend:
+      'index': 'index.php'
+  'signaltotrust.net':
+    ensure: present
+    server_name: ['www.signaltotrust.net', 'signaltotrust.net']
+    www_root: "/var/www/signaltotrust.net"
+    access_log: '/var/log/nginx/signaltotrust.access.log'
+    error_log: '/var/log/nginx/signaltotrust.error.log'
+    use_default_location: false
+    include_files: ['global/php.conf', 'global/restrictions.conf']
+    vhost_cfg_prepend:
+      'index': 'index.php'
+## Disabled for now until ssl hosts support cfg_prepend or indexes
+#    ssl: true
+#    ssl_cert: '/etc/nginx/ssl/unified.crt'
+#    ssl_key: '/etc/nginx/ssl/server.key'
+#    ssl_ciphers: 'RC4:HIGH:!aNULL:!MD5'
+  'signalboxes.net_ssl':
+    use_default_location: false
+    #listen_options: "default_server"
+    listen_port: 443
+    server_name: ['signalboxes.net', 'www.signalboxes.net', 'www1.signalboxes.net', 'www2.signalboxes.net', 'www3.signalboxes.net', 'ipv6.signalboxes.net']
+    www_root: '/var/www/signalboxes.net'
+    index_files: ['index.php']
+    access_log: '/var/www/signalboxes.net/logs/signalboxes.net-access.log'
+    error_log: '/var/www/signalboxes.net/logs/signalboxes.net-error.log'
+    include_files: ['global/restrictions.conf', 'global/wordpress-ms-subdir.conf', 'global/w3tc.conf']
+    ssl: true
+    ssl_cert: '/etc/nginx/ssl/unified.crt'
+    ssl_key: '/etc/nginx/ssl/server.key'
+    ssl_ciphers: 'RC4:HIGH:!aNULL:!MD5'
+    vhost_cfg_prepend:
+      'index': 'index.php'
+    vhost_cfg_append:
+      'index': 'index.php'
+nginx::nginx_locations:
+  'wp_admin':
+    location: '~* /wp-(admin|login\.php)'
+    vhost: 'signalboxes.net'
+    location_custom_cfg:
+      'rewrite ^': 'https://signalboxes.net/wp-login.php'
