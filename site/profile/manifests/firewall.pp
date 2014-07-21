@@ -1,12 +1,11 @@
 class profile::firewall {
 
-  package { [ 'iptables', 'iptables-utils', 'iptables-services', ]:
+  package { [ 'iptables-utils', 'iptables-services', ]:
     ensure => 'present',
   }
   ## Include the puppetlabs-firewall class
   class { '::firewall':
     require => [
-      Package['iptables'],
       Package['iptables-utils'],
       Package['iptables-services']
     ],
