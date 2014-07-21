@@ -12,11 +12,16 @@ other means.
 
 This isn't usable by other people without some modification, obviously.
 
-Once the VPS droplet is created (see my (https://github.com/joshbeard/vps-packer)[Packer template]),
-clone this repository to the VPS somewhere (e.g. ~/root/control)
+Once the VPS droplet is created (see my [https://github.com/joshbeard/vps-packer](Packer template)),
+clone this repository to the VPS somewhere and run the `bootstrap` script.
+
+For example:
 
 ```shell
-bash bootstrap
+cd
+git clone https://github.com/joshbeard/vps-control.git control.git
+cd control
+bash bootstrap.sh
 ```
 
 This will install r10k, populate a temporary modules directory, and run a
