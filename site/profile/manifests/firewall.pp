@@ -1,6 +1,16 @@
 class profile::firewall {
+
+  package { [ 'iptables', 'iptables-utils', 'iptables-services', ]:
+    ensure => 'present',
+  }
   ## Include the puppetlabs-firewall class
-  class { '::firewall': }
+  class { '::firewall':
+    require => [
+      Package['iptables'],
+      Package['iptables-utils'],
+      Package['iptables-services']
+    ],
+  }
 
   ## Our pre/post rules
   class { '::profile::firewall::pre': }->
@@ -15,9 +25,9 @@ class profile::firewall {
   }
 
   firewall { '004 accept http':
-    proto  => 'tcp',
-    action => 'accept',
-    port   => ['80','443'],
+    proto   => 'tcp',
+    action  => 'accept',
+    port    => ['80','443'],
     require => Class['::profile::firewall::pre'],
   }
 
