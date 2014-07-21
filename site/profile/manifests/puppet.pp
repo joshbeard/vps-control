@@ -63,10 +63,6 @@ class profile::puppet {
     value   => "${::fqdn}",
   }
 
-  class { 'r10k::postrun_command':
-    command => 'r10k deploy environment -p',
-  }
-
   class { 'hiera':
     hierarchy => [
       '%{clientcert}',
