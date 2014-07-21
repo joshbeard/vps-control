@@ -9,6 +9,7 @@ class profile::signalboxes {
     provider => 'git',
     source   => 'https://github.com/joshbeard/signalboxes.net.git',
     group    => 'web',
+    revision => 'master',
     require  => File['/var/www'],
   }
 }
