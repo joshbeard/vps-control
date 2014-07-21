@@ -1,3 +1,7 @@
+#!/bin/bash
+
+MYSELF=$(facter ipaddress)
+
 echo "==> Installing r10k"
 gem install r10k
 
