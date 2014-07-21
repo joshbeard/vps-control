@@ -5,3 +5,5 @@ Package {
 Vcsrepo {
   provider => 'git',
 }
+
+hiera_include('classes')

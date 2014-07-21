@@ -6,6 +6,17 @@ class profile::base {
     backup => false,
   }
 
+  ## Install packages that aren't installed by other modules
+  $packages = [
+    'irssi',
+    'tmux',
+    'zsh',
+    'lynx',
+    'rsync',
+    'zip',
+    'net-tools',
+  ]
+
   include epel
 
   file { 'issue':
@@ -19,16 +30,6 @@ class profile::base {
     path    => '/etc/motd',
     content => template('profile/motd.erb'),
   }
-
-  ## Install packages that aren't installed by other modules
-  $packages = [
-    'irssi',
-    'tmux',
-    'zsh',
-    'lynx',
-    'rsync',
-    'zip',
-  ]
 
   package { $packages:
     ensure => 'installed',
