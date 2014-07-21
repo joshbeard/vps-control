@@ -1,5 +1,5 @@
 class profile::signalboxes {
-  file { '/var/www/signalboxes.net':
+  file { ['/var/www', '/var/www/signalboxes.net']:
     ensure => 'directory',
     owner  => 'root',
     group  => 'web',
