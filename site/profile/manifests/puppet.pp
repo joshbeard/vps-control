@@ -10,7 +10,7 @@ class profile::puppet {
     notify => Service['puppetmaster'],
   }
 
-  host { $::clientcert:
+  host { $::fqdn:
     ensure => 'present',
     ip     => '127.0.0.1',
   }
@@ -54,13 +54,13 @@ class profile::puppet {
   ini_setting { 'certname':
     section => 'main',
     setting => 'certname',
-    value   => "${::clientcert}",
+    value   => "${::fqdn}",
   }
 
   ini_setting { 'server':
     section => 'main',
     setting => 'server',
-    value   => "${::clientcert}",
+    value   => "${::fqdn}",
   }
 
   class { 'hiera':

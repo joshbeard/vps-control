@@ -3,5 +3,6 @@ class profile::signalboxes {
     ensure => 'directory',
     owner  => 'root',
     group  => 'web',
+    mode   => '0775',
   }
 }
