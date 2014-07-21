@@ -1,8 +1,14 @@
 class profile::signalboxes {
-  file { ['/var/www', '/var/www/signalboxes.net']:
+  file { '/var/www':
     ensure => 'directory',
     owner  => 'root',
-    group  => 'web',
-    mode   => '0775',
+  }
+
+  vcsrepo { '/var/www/signalboxes.net':
+    ensure   => 'present',
+    provider => 'git',
+    source   => 'https://github.com/joshbeard/signalboxes.net.git',
+    group    => 'web',
+    require  => File['/var/www'],
   }
 }
