@@ -1,5 +1,6 @@
 class role::vps {
   include profile::base
+  include profile::signalboxes
   include profile::nginx_server
   include profile::ssh
   include profile::sudoers

@@ -39,7 +39,7 @@ class profile::base {
     ensure  => 'present',
     comment => 'Josh Beard',
     gid     => '1000',
-    groups  => ['wheel'],
+    groups  => ['wheel','web'],
     home    => '/home/josh',
     shell   => '/usr/bin/zsh',
     uid     => '1000',
