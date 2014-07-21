@@ -1,5 +1,19 @@
+##
+## Profile for configuring the Puppet agent and master on the vps
+##
 class profile::puppet {
   include puppet_vim_env
+
+  Ini_setting {
+    ensure => 'present',
+    path   => "${::settings::confdir}/puppet.conf",
+    notify => Service['puppetmaster'],
+  }
+
+  host { $::clientcert:
+    ensure => 'present',
+    ip     => '127.0.0.1',
+  }
 
   file { 'environments':
     ensure => 'directory',
@@ -22,22 +36,31 @@ class profile::puppet {
     manage_modulepath => false,
     mcollective       => false,
     require           => File['environments'],
+    notify => Service['puppetmaster'],
   }
 
   ini_setting { 'basemodulepath':
-    ensure  => 'present',
-    path    => "${::settings::confdir}/puppet.conf",
     section => 'main',
     setting => 'basemodulepath',
     value   => "${::settings::confdir}/modules",
   }
 
   ini_setting { 'environmentpath':
-    ensure  => 'present',
-    path    => "${::settings::confdir}/puppet.conf",
     section => 'main',
     setting => 'environmentpath',
     value   => "${::settings::confdir}/environments",
+  }
+
+  ini_setting { 'certname':
+    section => 'main',
+    setting => 'certname',
+    value   => "${::clientcert}",
+  }
+
+  ini_setting { 'server':
+    section => 'main',
+    setting => 'server',
+    value   => "${::clientcert}",
   }
 
   class { 'hiera':
@@ -48,6 +71,17 @@ class profile::puppet {
     ],
     datadir      => '/etc/puppet/environments/%{environment}/hieradata',
     backends     => ['yaml'],
+    notify => Service['puppetmaster'],
+  }
+
+  service { 'puppetmaster':
+    ensure => 'running',
+    enable => true,
+  }
+
+  service { 'puppet':
+    ensure => 'running',
+    enable => true,
   }
 
 }
