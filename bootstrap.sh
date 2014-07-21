@@ -6,3 +6,6 @@ r10k puppetfile install Puppetfile -v
 cd ..
 echo "==> Running Puppet with role::vps"
 puppet apply -e 'include role::vps' --modulepath=./modules:./site
+
+echo "==> Enabling Puppet Master service"
+puppet resource service puppetmaster ensure=running enable=true

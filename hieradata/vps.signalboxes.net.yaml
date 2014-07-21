@@ -36,7 +36,7 @@ nginx::nginx_vhosts:
     access_log: '/var/log/nginx/mc.signalboxes.net.access.log'
     error_log: '/var/log/nginx/mc.signalboxes.net.error.log'
     use_default_location: false
-    include_files: ['global/php.conf', 'global/restrictions.conf']
+#    include_files: ['global/restrictions.conf']
     vhost_cfg_prepend:
       'index': 'index.php index.html'
   'joshbeard.me':
@@ -46,7 +46,7 @@ nginx::nginx_vhosts:
     access_log: "/var/log/nginx/joshbeard.me_access.log"
     error_log: "/var/log/nginx/joshbeard.me_error.log"
     use_default_location: false
-    include_files: ['global/php.conf', 'global/restrictions.conf']
+#    include_files: ['global/restrictions.conf']
     vhost_cfg_append:
       'rewrite ^': "https://plus.google.com/+JoshuaBeard0/about/ permanent"
   'hewbert.com':
@@ -56,7 +56,7 @@ nginx::nginx_vhosts:
     access_log: '/var/log/nginx/hewbert.com.access.log'
     error_log: '/var/log/nginx/hewbert.com.error.log'
     use_default_location: false
-    include_files: ['global/php.conf', 'global/restrictions.conf']
+#    include_files: ['global/restrictions.conf']
     vhost_cfg_prepend:
       'index': 'index.php'
   'webmail.hewbert.com':
@@ -71,7 +71,7 @@ nginx::nginx_vhosts:
     index_files: ['index.php']
     access_log: '/var/www/signalboxes.net/logs/signalboxes.net-access.log'
     error_log: '/var/www/signalboxes.net/logs/signalboxes.net-error.log'
-    include_files: ['global/restrictions.conf', 'global/wordpress-ms-subdir.conf', 'global/w3tc.conf']
+#    include_files: ['global/restrictions.conf']
     vhost_cfg_prepend:
       'index': 'index.php'
   'signaltotrust.net':
@@ -81,7 +81,7 @@ nginx::nginx_vhosts:
     access_log: '/var/log/nginx/signaltotrust.access.log'
     error_log: '/var/log/nginx/signaltotrust.error.log'
     use_default_location: false
-    include_files: ['global/php.conf', 'global/restrictions.conf']
+#    include_files: ['global/restrictions.conf']
     vhost_cfg_prepend:
       'index': 'index.php'
 ## Disabled for now until ssl hosts support cfg_prepend or indexes
@@ -89,9 +89,3 @@ nginx::nginx_vhosts:
 #    ssl_cert: '/etc/nginx/ssl/unified.crt'
 #    ssl_key: '/etc/nginx/ssl/server.key'
 #    ssl_ciphers: 'RC4:HIGH:!aNULL:!MD5'
-nginx::nginx_locations:
-  'wp_admin':
-    location: '~* /wp-(admin|login\.php)'
-    vhost: 'signalboxes.net'
-    location_custom_cfg:
-      'rewrite ^': 'https://signalboxes.net/wp-login.php'
