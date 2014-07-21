@@ -5,7 +5,7 @@ class profile::signalboxes {
   }
 
   vcsrepo { '/var/www/signalboxes.net':
-    ensure   => 'latest',
+    ensure   => 'present',
     provider => 'git',
     source   => 'https://github.com/joshbeard/signalboxes.net.git',
     group    => 'web',
