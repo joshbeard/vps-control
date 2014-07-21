@@ -19,10 +19,6 @@ class profile::base {
 
   include epel
 
-  class { 'ruby::dev':
-    ruby_dev_packages => ['ruby-devel', 'rubygem-bundler'],
-  }
-
   file { 'issue':
     ensure  => 'file',
     path    => '/etc/issue',
