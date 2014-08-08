@@ -7,7 +7,6 @@ class profile::firewall {
   class { '::firewall':
     require => [
       Package['iptables-utils'],
-      Package['iptables-services']
     ],
   }
 
