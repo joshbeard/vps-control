@@ -56,7 +56,7 @@ nginx::nginx_vhosts:
     use_default_location: false
 #    include_files: ['global/restrictions.conf']
     vhost_cfg_append:
-      'rewrite ^': "https://plus.google.com/+JoshuaBeard0/about/ permanent"
+      'rewrite ^': "http://about.me/joshbeard"
   'hewbert.com':
     ensure: present
     server_name: ['hewbert.com', 'www.hewbert.com']
