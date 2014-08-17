@@ -86,6 +86,7 @@ nginx::nginx_vhosts:
       'index': 'index.html'
       'gzip_vary': 'on'
       'error_page': '404 = /404.html'
+      'error_page': '403 = /403.html'
     gzip_types: 'text/plain application/x-javascript text/xml text/css'
   'signaltotrust.net':
     ensure: present
