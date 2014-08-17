@@ -13,6 +13,7 @@ packages:
   - lynx
   - rsync
   - zip
+  - 'vim-minimal'
 sudo::sudoers:
   gitolite_r10k:
     ensure: present
@@ -87,7 +88,7 @@ nginx::nginx_vhosts:
       'gzip_vary': 'on'
       'error_page': '404 = /404.html'
       'error_page': '403 = /403.html'
-    gzip_types: 'text/plain application/x-javascript text/xml text/css'
+    gzip_types: 'text/plain application/javascript application/x-javascript text/xml text/css'
   'signaltotrust.net':
     ensure: present
     server_name: ['www.signaltotrust.net', 'signaltotrust.net']
