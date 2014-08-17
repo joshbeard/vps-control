@@ -101,7 +101,7 @@ nginx::nginx_locations:
     location: '~* \.(js|css|png|jpg|jpeg|gif|ico)$'
     vhost: 'signalboxes.net'
     location_custom_cfg:
-      'expires 60d;'
+      'expires': '60d;'
 ## Disabled for now until ssl hosts support cfg_prepend or indexes
 #    ssl: true
 #    ssl_cert: '/etc/nginx/ssl/unified.crt'
