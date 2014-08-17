@@ -96,6 +96,12 @@ nginx::nginx_vhosts:
       'index': 'index.php'
     vhost_cfg_append:
       'rewrite ^': "http://signalboxes.net/ permanent"
+nginx::nginx_locations:
+  'image_cache':
+    location: '~* \.(js|css|png|jpg|jpeg|gif|ico)$'
+    vhost: 'signalboxes.net'
+    location_custom_cfg:
+      'expires 60d;'
 ## Disabled for now until ssl hosts support cfg_prepend or indexes
 #    ssl: true
 #    ssl_cert: '/etc/nginx/ssl/unified.crt'
