@@ -85,6 +85,7 @@ nginx::nginx_vhosts:
     vhost_cfg_prepend:
       'index': 'index.html'
       'gzip_vary': 'on'
+      'error_page': '404 = /404.html'
     gzip_types: 'text/plain application/x-javascript text/xml text/css'
   'signaltotrust.net':
     ensure: present
