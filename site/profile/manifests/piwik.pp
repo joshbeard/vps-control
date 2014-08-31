@@ -7,7 +7,7 @@ class profile::piwik {
 
   $piwik_mysql_password = hiera('profile::piwik::mysql_password')
 
-  mysql_db { 'piwik':
+  mysql::db { 'piwik':
     ensure   => 'present',
     user     => 'piwik',
     password => $piwik_mysql_password,
