@@ -26,12 +26,13 @@ class profile::piwik {
   }
 
   class { 'php::fpm':
-    package => 'php-fpm',
+    package      => 'php-fpm',
+    service_name => 'php-fpm',
   }
 
   class { '::piwik':
     path => '/var/www/piwik',
-    user => 'www-data',
+    user => 'apache',
   }
 
 }
