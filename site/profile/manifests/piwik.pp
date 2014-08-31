@@ -32,7 +32,7 @@ class profile::piwik {
     package => 'php-fpm',
   }
 
-  class { 'piwik':
+  class { '::piwik':
     path => '/var/www/piwik',
     user => 'www-data',
   }
