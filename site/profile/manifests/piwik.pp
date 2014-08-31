@@ -16,9 +16,6 @@ class profile::piwik {
     grant    => ['ALL'],
   }
 
-  class { 'php::extension::mysql':
-    package => 'php-mysql',
-  }
 
   class { 'php::extension::mcrypt':
     package => 'php-mcrypt',
