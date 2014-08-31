@@ -28,8 +28,7 @@ class profile::piwik {
     package => 'php-gd',
   }
 
-  class { 'php::fpm::daemon':
-    ensure  => 'running',
+  class { 'php::fpm':
     package => 'php-fpm',
   }
 
