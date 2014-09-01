@@ -39,7 +39,7 @@ class profile::awstats {
   }
 
   staging::deploy { 'awstats-7.3.tar.gz':
-    source  => 'http://prdownloads.sourceforge.net/awstats/awstats-7.3.tar.gz'
+    source  => 'http://prdownloads.sourceforge.net/awstats/awstats-7.3.tar.gz',
     target  => $awstats_path,
     user    => 'root',
     group   => 'root',
