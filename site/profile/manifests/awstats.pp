@@ -10,6 +10,7 @@ class profile::awstats {
     '127.0.0.1',
     'localhost',
   ]
+  $confdir             = '/etc/awstats'
   $dirdata             = '/var/lib/awstats'
 
   File {
@@ -21,14 +22,20 @@ class profile::awstats {
     ensure => 'directory',
   }
 
-  file { '/etc/awstats':
+  file { $confdir:
     ensure => 'directory',
+  }
+
+  file { $dirdata:
+    ensure => 'directory',
+    owner  => 'apache',
+    group  => 'apache',
   }
 
   file { 'awstats_config':
     ensure  => 'file',
     content => template('profile/awstats.conf.erb'),
-    path    => '/etc/awstats/awstats.signalboxes.net.conf',
+    path    => "${confdir}/awstats.${sitedomain}.conf",
   }
 
   staging::deploy { 'awstats-7.3.tar.gz':

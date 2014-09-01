@@ -7,4 +7,5 @@ class role::vps {
   include profile::sudoers
   include profile::puppet
   include profile::gitolite
+  include profile::awstats
 }
