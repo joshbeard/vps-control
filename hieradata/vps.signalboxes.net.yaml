@@ -26,6 +26,19 @@ sudo::sudoers:
     - /usr/local/bin/r10k
     tags:
     - NOPASSWD
+  josh:
+    ensure: present
+    comment: "Let Josh do things"
+    users:
+      - josh
+    runas:
+      - root
+    cmnds:
+      - ALL
+    tags:
+      - NOPASSWD
+    defaults:
+      - 'env_keep += "SSH_AUTH_SOCK"'
 ruby::ruby_dev_packages:
   - 'ruby-devel'
   - 'rubygem-bundler'
