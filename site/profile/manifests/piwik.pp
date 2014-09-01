@@ -16,18 +16,20 @@ class profile::piwik {
     grant    => ['ALL'],
   }
 
+  $php_packages = [
+    'php-mcrypt',
+    'php-gd',
+    'php-fpm',
+  ]
 
-  class { 'php::extension::mcrypt':
-    package => 'php-mcrypt',
+  package { $php_packages:
+    ensure => 'installed',
   }
 
-  class { 'php::extension::gd':
-    package => 'php-gd',
-  }
-
-  class { 'php::fpm':
-    package      => 'php-fpm',
-    service_name => 'php-fpm',
+  service { 'php-fpm':
+    ensure  => 'running',
+    enable  => true,
+    require => Package['php-fpm'],
   }
 
   class { '::piwik':
