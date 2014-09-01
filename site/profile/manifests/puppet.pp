@@ -39,7 +39,7 @@ class profile::puppet {
     version       => 'latest',
     sources       => {
       'control'   => {
-        'remote'  => '/home/git/repositories/control.git',
+        'remote'  => 'https://github.com/joshbeard/vps-control.git',
         'basedir' => "${::settings::confdir}/environments",
         'prefix'  => false,
       }

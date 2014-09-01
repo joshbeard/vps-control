@@ -27,8 +27,8 @@ bash bootstrap.sh
 This will install r10k, populate a temporary modules directory, and run a
 `puppet apply` with the `role::vps` class.
 
-Once that's ran, a Gitolite server will be setup.  The control repo will then
-need to be pused to the gitolite server for r10k to use it as a source.
+Once that's ran, r10k will need to be ran to populate the Puppet environments:
+`r10k deploy environment -pv`
 
 ## Disclaimer
 

@@ -15,17 +15,6 @@ packages:
   - zip
   - 'vim-minimal'
 sudo::sudoers:
-  gitolite_r10k:
-    ensure: present
-    comment: "Let gitolite kick off r10k"
-    users:
-    - gitolite
-    runas:
-    - root
-    cmnds:
-    - /usr/local/bin/r10k
-    tags:
-    - NOPASSWD
   josh:
     ensure: present
     comment: "Let Josh do things"

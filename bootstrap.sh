@@ -13,17 +13,10 @@ puppet apply -e 'include role::vps' --modulepath=./modules:./site
 
 
 echo "========================================================================"
-echo "#             The control repository needs to be pushed                #"
+echo "#          r10k needs to populate the Puppet environments              #"
 echo "========================================================================"
-echo " On your local machine:"
-echo "    git clone git@${MYSELF}:gitolite-admin.git"
-echo "      - Add the control repo to gitolite-admin/conf/gitolite.conf"
-echo "      - Commit and push gitolite-admin"
 echo
-echo "    Push the control repository to:"
-echo "      git@${MYSELF}:control.git"
-echo
-echo " After it's pushed, do:"
+echo "  Do the following:"
 echo "    r10k deploy environment -p -v"
 echo "    puppet agent -t"
 echo
