@@ -2,7 +2,7 @@ class profile::awstats {
 
   $awstats_path        = '/usr/local/awstats'
   $awstats_runinterval = '*/5'
-  $logfile             = '/var/log/nginx/signalboxes.access.log'
+  $logfile             = '/var/log/nginx/signalboxes.net-access.log'
   $sitedomain          = 'signalboxes.net'
   $sitealiases         = [
     'signalboxes.net',
