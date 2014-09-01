@@ -13,6 +13,7 @@ packages:
   - lynx
   - rsync
   - zip
+  - 'vim-minimal'
 sudo::sudoers:
   gitolite_r10k:
     ensure: present
@@ -25,6 +26,13 @@ sudo::sudoers:
     - /usr/local/bin/r10k
     tags:
     - NOPASSWD
+ruby::ruby_dev_packages:
+  - 'ruby-devel'
+  - 'rubygem-bundler'
+ruby::dev::ruby_dev_packages:
+  - 'ruby-devel'
+  - 'rubygem-bundler'
+
 ##
 ## Nginx vhosts
 ##
@@ -39,6 +47,8 @@ nginx::nginx_vhosts:
 #    include_files: ['global/restrictions.conf']
     vhost_cfg_prepend:
       'index': 'index.php index.html'
+    vhost_cfg_append:
+      'rewrite ^': "http://signalboxes.net/minecraft-server/ permanent"
   'joshbeard.me':
     ensure: present
     server_name: ['joshbeard.me', 'www.joshbeard.me']
@@ -48,7 +58,7 @@ nginx::nginx_vhosts:
     use_default_location: false
 #    include_files: ['global/restrictions.conf']
     vhost_cfg_append:
-      'rewrite ^': "https://plus.google.com/+JoshuaBeard0/about/ permanent"
+      'rewrite ^': "http://signalboxes.net/about/"
   'hewbert.com':
     ensure: present
     server_name: ['hewbert.com', 'www.hewbert.com']
@@ -76,6 +86,10 @@ nginx::nginx_vhosts:
 #    include_files: ['global/restrictions.conf']
     vhost_cfg_prepend:
       'index': 'index.html'
+      'gzip_vary': 'on'
+      'error_page': '404 = /404.html'
+      'error_page': '403 = /403.html'
+    gzip_types: 'text/plain application/javascript application/x-javascript text/xml text/css'
   'signaltotrust.net':
     ensure: present
     server_name: ['www.signaltotrust.net', 'signaltotrust.net']
@@ -88,6 +102,12 @@ nginx::nginx_vhosts:
       'index': 'index.php'
     vhost_cfg_append:
       'rewrite ^': "http://signalboxes.net/ permanent"
+nginx::nginx_locations:
+  'image_cache':
+    location: '~* \.(js|css|png|jpg|jpeg|gif|ico)$'
+    vhost: 'signalboxes.net'
+    location_custom_cfg:
+      'expires': '60d'
 ## Disabled for now until ssl hosts support cfg_prepend or indexes
 #    ssl: true
 #    ssl_cert: '/etc/nginx/ssl/unified.crt'

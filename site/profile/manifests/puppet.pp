@@ -5,11 +5,22 @@ class profile::puppet {
   include puppet_vim_env
 
   Ini_setting {
-    ensure => 'present',
-    path   => "${::settings::confdir}/puppet.conf",
-    notify => Service['puppetmaster'],
+    ensure  => 'present',
+    path    => "${::settings::confdir}/puppet.conf",
+    section => 'main',
+    notify  => Service['puppetmaster'],
   }
 
+  ## For hiera-eyaml
+  $hiera_eyaml_config = [
+    ':eyaml:',
+    "  :datadir: ${::settings::confdir}/environments/%{environment}/hieradata",
+    "  :pkcs7_private_key: ${::settings::confdir}/keys/private_key.pkcs7.pem",
+    "  :pkcs7_public_key: ${::settings::confdir}/keys/public_key.pkcs7.pem",
+    '  :extension: "yaml"',
+  ]
+
+  ## Static entry in /etc/hosts
   host { $::fqdn:
     ensure => 'present',
     ip     => '127.0.0.1',
@@ -23,6 +34,7 @@ class profile::puppet {
     path   => "${::settings::confdir}/environments",
   }
 
+  ## Configure r10k
   class { 'r10k':
     version       => 'latest',
     sources       => {
@@ -36,33 +48,46 @@ class profile::puppet {
     manage_modulepath => false,
     mcollective       => false,
     require           => File['environments'],
-    notify => Service['puppetmaster'],
+    notify            => Service['puppetmaster'],
   }
 
+  ## Various settings for the Puppet master
   ini_setting { 'basemodulepath':
-    section => 'main',
     setting => 'basemodulepath',
     value   => "${::settings::confdir}/modules",
   }
 
   ini_setting { 'environmentpath':
-    section => 'main',
     setting => 'environmentpath',
     value   => "${::settings::confdir}/environments",
   }
 
   ini_setting { 'certname':
-    section => 'main',
     setting => 'certname',
-    value   => "${::fqdn}",
+    value   => $::fqdn,
   }
 
   ini_setting { 'server':
-    section => 'main',
     setting => 'server',
-    value   => "${::fqdn}",
+    value   => $::fqdn,
   }
 
+  ## Manage hiera-eyaml's key directory
+  file { 'eyaml_keys':
+    ensure => 'directory',
+    path   => "${::settings::confdir}/keys",
+    owner  => 'puppet',
+    group  => 'puppet',
+    mode   => '0600',
+  }
+
+  ## Install hiera-eyaml via Rubygems
+  package { 'hiera-eyaml':
+    ensure   => 'installed',
+    provider => 'gem',
+  }
+
+  ## Configure Hiera
   class { 'hiera':
     hierarchy => [
       '%{clientcert}',
@@ -70,15 +95,18 @@ class profile::puppet {
       'global',
     ],
     datadir      => '/etc/puppet/environments/%{environment}/hieradata',
-    backends     => ['yaml'],
-    notify => Service['puppetmaster'],
+    backends     => ['eyaml', 'yaml'],
+    extra_config => join($hiera_eyaml_config, "\n"),
+    notify       => Service['puppetmaster'],
   }
 
+  ## Puppet master
   service { 'puppetmaster':
     ensure => 'running',
     enable => true,
   }
 
+  ## Puppet agent
   service { 'puppet':
     ensure => 'running',
     enable => true,
