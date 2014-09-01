@@ -21,11 +21,16 @@ class profile::piwik {
     'php-mcrypt',
     'php-mbstring',
     'php-gd',
-    'php-fpm',
+    'php-xml',
   ]
+
+  package { 'php-fpm':
+    ensure => 'installed',
+  }
 
   package { $php_packages:
     ensure => 'installed',
+    notify => Service['php-fpm'],
   }
 
   service { 'php-fpm':
