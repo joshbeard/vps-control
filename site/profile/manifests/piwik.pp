@@ -61,7 +61,7 @@ class profile::piwik {
     www_root       => $piwik_path,
     location       => '~ \.php$',
     proxy          => undef,
-    fastcgi        => '127.0.0.1:9090',
+    fastcgi        => '127.0.0.1:9000',
     fastcgi_script => undef,
   }
 
