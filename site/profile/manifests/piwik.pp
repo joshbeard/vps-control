@@ -6,6 +6,7 @@ class profile::piwik {
   include ::mysql::bindings::php
 
   $piwik_mysql_password = hiera('profile::piwik::mysql_password')
+  $piwik_path           = '/var/www/piwik'
 
   mysql::db { 'piwik':
     ensure   => 'present',
@@ -32,9 +33,19 @@ class profile::piwik {
     require => Package['php-fpm'],
   }
 
-  class { '::piwik':
-    path => '/var/www/piwik',
-    user => 'apache',
+  file { $piwik_path:
+    ensure => 'directory',
+    owner  => 'apache',
+    group  => 'apache',
+    mode   => '0755',
+  }
+
+  staging::deploy { 'piwik.zip':
+    source  => 'http://builds.piwik.org/piwik.zip',
+    target  => $piwik_path,
+    owner   => 'apache',
+    group   => 'apache',
+    require => File[$piwik_path],
   }
 
 }
