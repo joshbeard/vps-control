@@ -45,6 +45,7 @@ class profile::piwik {
     target  => '/var/www',
     user    => 'apache',
     group   => 'apache',
+    creates => "${piwik_path}/index.php",
     require => File[$piwik_path],
   }
 
