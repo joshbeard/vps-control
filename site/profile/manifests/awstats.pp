@@ -20,11 +20,6 @@ class profile::awstats {
     group => 'root',
   }
 
-  file { 'awstats_link':
-    ensure => 'link',
-    target => "/usr/local/awstats-${awstats_version}",
-    path   => $awstats_path,
-  }
 
   file { $confdir:
     ensure => 'directory',
@@ -48,7 +43,13 @@ class profile::awstats {
     creates => "/usr/local/awstats-${awstats_version}",
     user    => 'root',
     group   => 'root',
-    require => File[$awstats_path],
+  }
+
+  file { 'awstats_link':
+    ensure  => 'link',
+    target  => "/usr/local/awstats-${awstats_version}",
+    path    => $awstats_path,
+    require => Exec["extract awstats-${awstats_version}.tar.gz"],
   }
 
   nginx::resource::vhost { 'stats.signalboxes.net':
