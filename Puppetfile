@@ -22,15 +22,6 @@ mod 'firewall',
 mod 'fail2ban',
   :git => 'https://github.com/netmanagers/puppet-fail2ban.git'
 
-mod 'mysql',
-  :git => 'https://github.com/puppetlabs/puppetlabs-mysql.git'
-
-mod 'php',
-  :git => 'https://github.com/jippi/puppet-php.git'
-
-mod 'piwik',
-  :git => 'https://github.com/velaluqa/puppet-piwik.git'
-
 mod 'ssh',
   :git => 'https://github.com/saz/puppet-ssh.git'
 
