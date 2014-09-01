@@ -59,7 +59,7 @@ class profile::awstats {
 
   cron { 'awstats_update':
     ensure  => 'present',
-    command => "${awstats_path}/tools/awstats_buildstaticpages.pl -update -config=${sitedomain} -dir=${wwwdir}",
+    command => "/bin/perl ${awstats_path}/tools/awstats_buildstaticpages.pl -update -config=${sitedomain} -dir=${wwwdir}",
     user    => 'root',
     minute  => $awstats_runinterval,
   }
