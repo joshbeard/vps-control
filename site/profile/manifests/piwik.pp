@@ -19,6 +19,7 @@ class profile::piwik {
 
   $php_packages = [
     'php-mcrypt',
+    'php-mbstring',
     'php-gd',
     'php-fpm',
   ]
