@@ -43,7 +43,7 @@ class profile::piwik {
   staging::deploy { 'piwik.zip':
     source  => 'http://builds.piwik.org/piwik.zip',
     target  => $piwik_path,
-    owner   => 'apache',
+    user    => 'apache',
     group   => 'apache',
     require => File[$piwik_path],
   }
