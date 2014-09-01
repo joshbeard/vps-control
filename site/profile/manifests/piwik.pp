@@ -42,10 +42,26 @@ class profile::piwik {
 
   staging::deploy { 'piwik.zip':
     source  => 'http://builds.piwik.org/piwik.zip',
-    target  => $piwik_path,
+    target  => '/var/www',
     user    => 'apache',
     group   => 'apache',
     require => File[$piwik_path],
+  }
+
+  nginx::resource::vhost { 'piwik.signalboxes.net':
+    www_root    => $piwik_path,
+    index_files => [ 'index.php' ],
+    require     => File[$piwik_path],
+  }
+
+  nginx::resource::location { 'piwik_root':
+    ensure         => 'present',
+    vhost          => 'piwik.signalboxes.net',
+    www_root       => $piwik_path,
+    location       => '~ \.php$',
+    proxy          => undef,
+    fastcgi        => '127.0.0.1:9090',
+    fastcgi_script => undef,
   }
 
 }
