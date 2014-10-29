@@ -7,7 +7,7 @@ mod 'epel',
 
 mod 'stdlib',
   :git => 'https://github.com/puppetlabs/puppetlabs-stdlib.git',
-  :ref => 'v4.3.2'
+  :ref => '4.3.2'
 
 mod 'sudo',
   :git => 'https://github.com/arnoudj/puppet-sudo.git',
