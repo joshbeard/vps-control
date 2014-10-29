@@ -84,5 +84,5 @@ mod 'inifile',
   :ref => '1.1.4'
 
 mod 'module_data',
-  :git => 'https://github.com/ripienaar/puppet-module_data.git',
+  :git => 'https://github.com/ripienaar/puppet-module-data.git',
   :ref => '46f86f2384ce7914506924aab4baf2c5414cf022'
