@@ -2,31 +2,39 @@
 forge 'forge.puppetlabs.com'
 
 mod 'epel',
-  :git => 'https://github.com/stahnma/puppet-module-epel.git'
+  :git => 'https://github.com/stahnma/puppet-module-epel.git',
+  :ref => '1.0.0'
 
 mod 'stdlib',
-  :git => 'https://github.com/puppetlabs/puppetlabs-stdlib.git'
+  :git => 'https://github.com/puppetlabs/puppetlabs-stdlib.git',
+  :ref => 'v2.2.1'
 
 mod 'sudo',
-  :git => 'https://github.com/arnoudj/puppet-sudo.git'
+  :git => 'https://github.com/arnoudj/puppet-sudo.git',
+  :ref => 'v1.0'
 
 mod 'nginx',
- :git => 'https://github.com/jfryman/puppet-nginx.git'
+ :git => 'https://github.com/jfryman/puppet-nginx.git',
+ :ref => 'v0.0.10'
 
 mod 'staging',
-  :git => 'https://github.com/nanliu/puppet-staging.git'
+  :git => 'https://github.com/nanliu/puppet-staging.git',
+  :ref => '1.0.2'
 
 mod 'firewall',
   :git => 'https://github.com/puppetlabs/puppetlabs-firewall.git'
 
 mod 'fail2ban',
-  :git => 'https://github.com/netmanagers/puppet-fail2ban.git'
+  :git => 'https://github.com/netmanagers/puppet-fail2ban.git',
+  :ref => 'v1.3.1'
 
 mod 'ssh',
-  :git => 'https://github.com/saz/puppet-ssh.git'
+  :git => 'https://github.com/saz/puppet-ssh.git',
+  :ref => 'v2.4.0'
 
 mod 'hiera',
-  :git => 'https://github.com/hunner/puppet-hiera.git'
+  :git => 'https://github.com/hunner/puppet-hiera.git',
+  :ref => '1.1.0'
 
 mod 'ntp',
   :git => 'https://github.com/puppetlabs/puppetlabs-ntp.git',
@@ -72,4 +80,9 @@ mod 'gitolite',
   :ref => 'updates'
 
 mod 'inifile',
-  :git => 'https://github.com/puppetlabs/puppetlabs-inifile.git'
+  :git => 'https://github.com/puppetlabs/puppetlabs-inifile.git',
+  ;ref => '1.1.4'
+
+mod 'module_data',
+  :git => 'https://github.com/ripienaar/puppet-module_data.git',
+  :ref => '46f86f2384ce7914506924aab4baf2c5414cf022'
