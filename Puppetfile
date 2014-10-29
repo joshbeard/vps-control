@@ -81,7 +81,7 @@ mod 'gitolite',
 
 mod 'inifile',
   :git => 'https://github.com/puppetlabs/puppetlabs-inifile.git',
-  ;ref => '1.1.4'
+  :ref => '1.1.4'
 
 mod 'module_data',
   :git => 'https://github.com/ripienaar/puppet-module_data.git',
