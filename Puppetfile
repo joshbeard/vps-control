@@ -53,7 +53,7 @@ mod 'vcsrepo',
 
 mod 'r10k',
   :git => 'https://github.com/acidprime/r10k.git',
-  :ref => 'v2.2.4'
+  :ref => 'v2.3.0'
 
 mod 'git',
   :git => 'https://github.com/puppetlabs/puppetlabs-git.git',
