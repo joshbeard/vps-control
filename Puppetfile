@@ -11,7 +11,7 @@ mod 'stdlib',
 
 mod 'sudo',
   :git => 'https://github.com/arnoudj/puppet-sudo.git',
-  :ref => 'v1.0'
+  :ref => 'c4ce3b631777b65ea19da2119e6064c6d2daa214'
 
 mod 'nginx',
  :git => 'https://github.com/jfryman/puppet-nginx.git',
