@@ -2,7 +2,6 @@
 ## Profile for configuring the Puppet agent and master on the vps
 ##
 class profile::puppet {
-  include puppet_vim_env
 
   Ini_setting {
     ensure  => 'present',
