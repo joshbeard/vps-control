@@ -1,9 +1,9 @@
 case $::osfamily {
   'FreeBSD': {
-    $package_provider = 'pkgng',
+    $package_provider = 'pkgng'
   }
   default: {
-    $package_provider = undef,
+    $package_provider = undef
   }
 }
 
