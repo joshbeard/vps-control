@@ -6,14 +6,13 @@ classes:
   - role::vps
 ## Packages not installed by other modules
 packages:
-  - irssi
-  - tmux
-  - zsh
-  - git
-  - lynx
-  - rsync
-  - zip
-  - 'vim-minimal'
+  - 'tmux'
+  - 'zsh'
+  - 'git'
+  - 'lynx'
+  - 'rsync'
+  - 'zip'
+  - 'vim-lite'
 sudo::sudoers:
   josh:
     ensure: present
@@ -28,12 +27,12 @@ sudo::sudoers:
       - NOPASSWD
     defaults:
       - 'env_keep += "SSH_AUTH_SOCK"'
-ruby::ruby_dev_packages:
-  - 'ruby-devel'
-  - 'rubygem-bundler'
-ruby::dev::ruby_dev_packages:
-  - 'ruby-devel'
-  - 'rubygem-bundler'
+#ruby::ruby_dev_packages:
+#  - 'ruby-devel'
+#  - 'rubygem-bundler'
+#ruby::dev::ruby_dev_packages:
+#  - 'ruby-devel'
+#  - 'rubygem-bundler'
 
 ##
 ## Nginx vhosts

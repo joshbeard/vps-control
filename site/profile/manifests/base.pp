@@ -1,7 +1,7 @@
 class profile::base {
   File {
     owner  => 'root',
-    group  => 'root',
+    group  => 0,
     mode   => '0644',
     backup => false,
   }
@@ -14,10 +14,7 @@ class profile::base {
     'lynx',
     'rsync',
     'zip',
-    'net-tools',
   ]
-
-  include epel
 
   file { 'issue':
     ensure  => 'file',
@@ -40,8 +37,8 @@ class profile::base {
     comment => 'Josh Beard',
     gid     => '1000',
     groups  => ['wheel','web'],
-    home    => '/home/josh',
-    shell   => '/usr/bin/zsh',
+    home    => '/usr/home/josh',
+    shell   => '/usr/local/bin/zsh',
     uid     => '1000',
     require => Package['zsh'],
   }

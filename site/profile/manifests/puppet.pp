@@ -93,16 +93,9 @@ class profile::puppet {
       '%{environment}',
       'global',
     ],
-    datadir      => '/etc/puppet/environments/%{environment}/hieradata',
+    datadir      => "${::settings::confdir}/environments/%{environment}/hieradata",
     backends     => ['eyaml', 'yaml'],
     extra_config => join($hiera_eyaml_config, "\n"),
-    notify       => Service['puppetmaster'],
-  }
-
-  ## Puppet master
-  service { 'puppetmaster':
-    ensure => 'running',
-    enable => true,
   }
 
   ## Puppet agent

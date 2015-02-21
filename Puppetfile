@@ -10,8 +10,7 @@ mod 'stdlib',
   :ref => '4.3.2'
 
 mod 'sudo',
-  :git => 'https://github.com/arnoudj/puppet-sudo.git',
-  :ref => 'c2c5de0e21cd0e8cfc80a9a269c583cb0786cfad'
+  :git => 'https://github.com/saz/puppet-sudo.git'
 
 mod 'nginx',
  :git => 'https://github.com/jfryman/puppet-nginx.git',
@@ -86,3 +85,6 @@ mod 'inifile',
 mod 'module_data',
   :git => 'https://github.com/ripienaar/puppet-module-data.git',
   :ref => '46f86f2384ce7914506924aab4baf2c5414cf022'
+
+mod 'pkgng',
+  :git => 'https://github.com/xaque208/puppet-pkgng.git'

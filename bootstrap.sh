@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ $os == 'FreeBSD' ]; then
+  /usr/sbin/pkg update
+  /usr/sbin/pkg -y install puppet
+fi
+
 MYSELF=$(facter ipaddress)
 
 echo "==> Installing r10k"
