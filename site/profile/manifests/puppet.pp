@@ -7,7 +7,6 @@ class profile::puppet {
     ensure  => 'present',
     path    => "${::settings::confdir}/puppet.conf",
     section => 'main',
-    notify  => Service['puppetmaster'],
   }
 
   ## For hiera-eyaml
@@ -28,7 +27,7 @@ class profile::puppet {
   file { 'environments':
     ensure => 'directory',
     owner  => 'root',
-    group  => 'root',
+    group  => 0,
     mode   => '0755',
     path   => "${::settings::confdir}/environments",
   }
@@ -47,7 +46,6 @@ class profile::puppet {
     manage_modulepath => false,
     mcollective       => false,
     require           => File['environments'],
-    notify            => Service['puppetmaster'],
   }
 
   ## Various settings for the Puppet master
@@ -93,6 +91,8 @@ class profile::puppet {
       '%{environment}',
       'global',
     ],
+    hiera_yaml   => "${::settings::confdir}/hiera.yaml",
+    confdir      => $::settings::confdir,
     datadir      => "${::settings::confdir}/environments/%{environment}/hieradata",
     backends     => ['eyaml', 'yaml'],
     extra_config => join($hiera_eyaml_config, "\n"),

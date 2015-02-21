@@ -35,7 +35,7 @@ class profile::base {
   user { 'josh':
     ensure  => 'present',
     comment => 'Josh Beard',
-    gid     => '1000',
+    gid     => 'josh',
     groups  => ['wheel','web'],
     home    => '/usr/home/josh',
     shell   => '/usr/local/bin/zsh',
