@@ -102,7 +102,7 @@ class profile::puppet {
     ensure  => 'present',
     command => "/usr/bin/env r10k deploy environment -pv ; /usr/bin/env puppet apply -e 'include role::vps' --environment ${::environment}",
     user    => 'root',
-    hour    => '*/1',
+    minute  => '40',
   }
 
 
