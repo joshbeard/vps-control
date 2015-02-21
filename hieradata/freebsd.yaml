@@ -61,6 +61,8 @@ nginx::nginx_vhosts:
     vhost_cfg_append:
       'rewrite ^': 'https://mail.google.com/a/hewbert.com permanent'
   'signalboxes.net':
+    add_header:
+      'X-Powered-By': 'Open Source'
     use_default_location: false
     listen_options: "default_server"
     server_name: ['signalboxes.net', 'www.signalboxes.net', 'www1.signalboxes.net', 'www2.signalboxes.net', 'www3.signalboxes.net', 'ipv6.signalboxes.net']
