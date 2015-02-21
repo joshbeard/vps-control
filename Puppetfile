@@ -58,9 +58,10 @@ mod 'git',
   :git => 'https://github.com/puppetlabs/puppetlabs-git.git',
   :ref => '0.1.0'
 
+## FreeBSD 10 support
 mod 'ruby',
-  :git => 'https://github.com/puppetlabs/puppetlabs-ruby.git',
-  :ref => '0.2.0'
+  :git => 'https://github.com/danieldreier/puppetlabs-ruby.git',
+  :ref => '741683e082062d0d42e4c69f548feb818b418213'
 
 mod 'gcc',
   :git => 'https://github.com/puppetlabs/puppetlabs-gcc.git',
