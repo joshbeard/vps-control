@@ -32,15 +32,30 @@ class profile::base {
     ensure => 'installed',
   }
 
+  file { '/usr/home/josh':
+    ensure => 'directory',
+    owner  => 'josh',
+    group  => 'josh',
+    mode   => '0700',
+  }
+
+  file { '/usr/home/josh/.ssh':
+    ensure => 'directory',
+    owner  => 'josh',
+    group  => 'josh',
+    mode   => '0700',
+  }
+
   user { 'josh':
-    ensure  => 'present',
-    comment => 'Josh Beard',
-    gid     => 'josh',
-    groups  => ['wheel','web'],
-    home    => '/usr/home/josh',
-    shell   => '/usr/local/bin/zsh',
-    uid     => '1000',
-    require => Package['zsh'],
+    ensure      => 'present',
+    comment     => 'Josh Beard',
+    gid         => 'josh',
+    groups      => ['wheel','web'],
+    home        => '/usr/home/josh',
+    shell       => '/usr/local/bin/zsh',
+    uid         => '1000',
+    manage_home => true,
+    require     => Package['zsh'],
   }
 
   group { 'josh':
