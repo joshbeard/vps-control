@@ -43,6 +43,10 @@ class profile::base {
     require => Package['zsh'],
   }
 
+  group { 'josh':
+    ensure => 'present',
+  }
+
   group { 'web':
     ensure => 'present',
   }
