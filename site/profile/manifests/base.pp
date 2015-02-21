@@ -47,15 +47,14 @@ class profile::base {
   }
 
   user { 'josh':
-    ensure      => 'present',
-    comment     => 'Josh Beard',
-    gid         => 'josh',
-    groups      => ['wheel','web'],
-    home        => '/usr/home/josh',
-    shell       => '/usr/local/bin/zsh',
-    uid         => '1000',
-    manage_home => true,
-    require     => Package['zsh'],
+    ensure  => 'present',
+    comment => 'Josh Beard',
+    gid     => 'josh',
+    groups  => ['wheel','web'],
+    home    => '/usr/home/josh',
+    shell   => '/usr/local/bin/zsh',
+    uid     => '1000',
+    require => Package['zsh'],
   }
 
   group { 'josh':
