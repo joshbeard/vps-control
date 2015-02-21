@@ -1,4 +1,6 @@
 class profile::base {
+  include profile::params
+
   File {
     owner  => 'root',
     group  => 0,
@@ -32,14 +34,18 @@ class profile::base {
     ensure => 'installed',
   }
 
-  file { '/usr/home/josh':
+  package { $::profile::params::packages:
+    ensure => 'installed',
+  }
+
+  file { "${::profile::params::home_path}/josh":
     ensure => 'directory',
     owner  => 'josh',
     group  => 'josh',
     mode   => '0700',
   }
 
-  file { '/usr/home/josh/.ssh':
+  file { "${::profile::params::home_path}/josh/.ssh":
     ensure => 'directory',
     owner  => 'josh',
     group  => 'josh',
@@ -51,8 +57,8 @@ class profile::base {
     comment => 'Josh Beard',
     gid     => 'josh',
     groups  => ['wheel','web'],
-    home    => '/usr/home/josh',
-    shell   => '/usr/local/bin/zsh',
+    home    => $::profile::params::home_path,
+    shell   => $shell,
     uid     => '1000',
     require => Package['zsh'],
   }

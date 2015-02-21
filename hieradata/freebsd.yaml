@@ -4,15 +4,7 @@
 ##
 classes:
   - role::vps
-## Packages not installed by other modules
-packages:
-  - 'tmux'
-  - 'zsh'
-  - 'git'
-  - 'lynx'
-  - 'rsync'
-  - 'zip'
-  - 'vim-lite'
+
 sudo::sudoers:
   josh:
     ensure: present
@@ -27,6 +19,8 @@ sudo::sudoers:
       - NOPASSWD
     defaults:
       - 'env_keep += "SSH_AUTH_SOCK"'
+
+##TODO: FreeBSD support
 #ruby::ruby_dev_packages:
 #  - 'ruby-devel'
 #  - 'rubygem-bundler'
