@@ -1,0 +1,35 @@
+# This file is managed by Puppet
+interface="vtnet0"
+
+icmp_types="echoreq"
+table <fail2ban> persist
+table <bad_hosts> persist
+set block-policy drop
+set require-order yes
+
+set loginterface $interface
+
+scrub in all
+
+antispoof for lo0
+
+block in log all
+
+block in log quick from <fail2ban>
+block in log quick from <bad_hosts>
+block in log quick on $interface inet proto tcp from any to any flags FUP/FUP
+
+# Allow icmp/ping
+pass in on $interface proto icmp all
+
+# Allow SSH
+pass in quick on $interface proto tcp from any to any port 22431 keep state \
+    (max-src-conn-rate 5/120, overload <bad_hosts> flush global)
+
+# Allow HTTP
+pass in quick on $interface proto tcp to any port { http,https } keep state \
+    (max-src-conn-rate 100/15, overload <bad_hosts> flush global)
+
+pass in quick inet proto tcp from any to any port { http, https } flags S/SA keep state
+
+pass out on $interface proto { tcp, udp, icmp } all keep state
