@@ -2,6 +2,10 @@ class profile::base {
 
   include profile::params
 
+  if $::osfamily == 'FreeBSD' {
+    include profile::base::freebsd
+  }
+
   File {
     owner  => 'root',
     group  => 0,
