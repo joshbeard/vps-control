@@ -1,6 +1,6 @@
 class profile::awstats {
 
-  $awstats_version     = '7.3'
+  $awstats_version     = '7.4'
   $awstats_path        = '/usr/local/awstats'
   $awstats_runinterval = '*/5'
   $logfile             = '/var/log/nginx/signalboxes.net-access.log'
@@ -20,7 +20,6 @@ class profile::awstats {
     group => 'root',
   }
 
-
   file { $confdir:
     ensure => 'directory',
   }
@@ -37,7 +36,7 @@ class profile::awstats {
     path    => "${confdir}/awstats.${sitedomain}.conf",
   }
 
-  staging::deploy { 'awstats-7.3.tar.gz':
+  staging::deploy { "awstats-${awstats_version}.tar.gz":
     source  => "http://prdownloads.sourceforge.net/awstats/awstats-${awstats_version}.tar.gz",
     target  => '/usr/local',
     creates => "/usr/local/awstats-${awstats_version}",
@@ -59,7 +58,7 @@ class profile::awstats {
 
   cron { 'awstats_update':
     ensure  => 'present',
-    command => "/bin/perl ${awstats_path}/tools/awstats_buildstaticpages.pl -update -config=${sitedomain} -dir=${wwwdir}",
+    command => "/usr/bin/env perl ${awstats_path}/tools/awstats_buildstaticpages.pl -update -config=${sitedomain} -dir=${wwwdir}",
     user    => 'root',
     minute  => $awstats_runinterval,
   }
