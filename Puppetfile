@@ -23,6 +23,10 @@ mod 'staging',
 mod 'firewall',
   :git => 'https://github.com/puppetlabs/puppetlabs-firewall.git'
 
+mod 'puppi',
+  :git => 'https://github.com/example42/puppi.git',
+  :ref => 'v2.1.10'
+
 mod 'fail2ban',
   :git => 'https://github.com/netmanagers/puppet-fail2ban.git',
   :ref => 'v1.3.1'
