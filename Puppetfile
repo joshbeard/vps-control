@@ -89,3 +89,6 @@ mod 'module_data',
 
 mod 'pkgng',
   :git => 'https://github.com/xaque208/puppet-pkgng.git'
+
+mod 'pf',
+  :git => 'https://github.com/puppetlabs-operations/puppet-pf.git'
