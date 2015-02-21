@@ -9,7 +9,6 @@ class profile::fail2ban {
     config_file_group => $::profile::params::fail2ban_group,
     jails_file        => $::profile::params::fail2ban_jails,
     jails_file_group  => $::profile::params::fail2ban_group,
-    source_dir_group  => $::profile::params::fail2ban_group,
     jails_config      => 'concat',
     ignoreip          => ['127.0.0.1/8', $::ipaddress],
     mailto            => 'root@localhost',
