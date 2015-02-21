@@ -12,6 +12,7 @@ class profile::params {
       $fail2ban_config_dir = '/usr/local/etc/fail2ban/fail2ban'
       $fail2ban_jails      = '/usr/local/etc/fail2ban/jail.local'
       $fail2ban_group      = 0
+      $fail2ban_banaction  = 'pf'
     }
     default: {
       $home_path = '/home'
@@ -24,6 +25,7 @@ class profile::params {
       $fail2ban_config_dir = undef
       $fail2ban_jails      = undef
       $fail2ban_group      = undef
+      $fail2ban_banaction  = undef
     }
   }
 }
