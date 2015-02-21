@@ -5,20 +5,10 @@
 classes:
   - role::vps
 
-sudo::sudoers:
+sudo::configs:
   josh:
     ensure: present
-    comment: "Let Josh do things"
-    users:
-      - josh
-    runas:
-      - root
-    cmnds:
-      - ALL
-    tags:
-      - NOPASSWD
-    defaults:
-      - 'env_keep += "SSH_AUTH_SOCK"'
+    content: 'josh ALL=(ALL) NOPASSWD: ALL'
 
 ##TODO: FreeBSD support
 #ruby::ruby_dev_packages:
