@@ -1,4 +1,5 @@
 class profile::base {
+
   include profile::params
 
   File {
@@ -57,7 +58,7 @@ class profile::base {
     comment => 'Josh Beard',
     gid     => 'josh',
     groups  => ['wheel','web'],
-    home    => $::profile::params::home_path,
+    home    => "${::profile::params::home_path}/josh",
     shell   => $shell,
     uid     => '1000',
     require => Package['zsh'],
