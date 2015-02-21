@@ -98,10 +98,12 @@ class profile::puppet {
     extra_config => join($hiera_eyaml_config, "\n"),
   }
 
-  ## Puppet agent
-  service { 'puppet':
-    ensure => 'running',
-    enable => true,
+  cron { 'puppet':
+    ensure  => 'present',
+    command => "/usr/bin/env r10k deploy environment -pv ; /usr/bin/env puppet apply -e 'include role::vps' --environment ${::environment}",
+    user    => 'root',
+    hour    => '*/1',
   }
+
 
 }
