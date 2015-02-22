@@ -15,9 +15,15 @@ class profile::plex {
     path    => "/usr/local/share/plexmediaserver/Resources/Plug-ins",
   }
 
-  staging::deploy { 'Plex_IceFilms_LetMeWatchThis.zip':
-    source  => 'https://forums.plex.tv/index.php?app=core&module=attach&section=attach&attach_id=28513',
+  staging::deploy { 'Plex_Unsupported_App_store',
+    source  => 'http://bit.ly/ihqmEu',
     target  => $plugin_dir,
-    creates => "${plugin_dir}/LetMeWatchThis.bundle",
+    creates => "${plugin_dir}/UnSupportedAppstore.bundle",
+  }
+
+  vcsrepo { "${plugin_dir}/LetMeWatchThis.bundle":
+    ensure   => 'present',
+    provider => 'git',
+    source   => 'https://github.com/ReallyFuzzy/LetMeWatchThis.bundle.git',
   }
 }
