@@ -8,7 +8,7 @@ fi
 MYSELF=$(facter ipaddress)
 
 echo "==> Installing r10k"
-gem install r10k
+gem install r10k --no-ri --no-rdoc
 
 echo "==> Installing modules from Puppetfile with r10k"
 r10k puppetfile install Puppetfile -v

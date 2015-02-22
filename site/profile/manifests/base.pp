@@ -13,6 +13,15 @@ class profile::base {
     backup => false,
   }
 
+  $staging_path = $::osfamily ? {
+    'FreeBSD' => '/usr/local/staging',
+    default   => '/opt/staging',
+  }
+
+  class { 'staging':
+    path => $staging_path,
+  }
+
   ## Install packages that aren't installed by other modules
   $packages = [
     'irssi',
