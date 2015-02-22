@@ -15,7 +15,7 @@ class profile::plex {
     path    => "/usr/local/share/plexmediaserver/Resources/Plug-ins",
   }
 
-  staging::deploy { 'Plex_Unsupported_App_store':
+  staging::deploy { 'Plex_Unsupported_App_store.zip':
     source  => 'http://bit.ly/ihqmEu',
     target  => $plugin_dir,
     creates => "${plugin_dir}/UnSupportedAppstore.bundle",
