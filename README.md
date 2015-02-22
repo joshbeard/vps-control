@@ -2,11 +2,13 @@
 
 ## Overview
 
-This is the "control repository" for my personal VPS on DigitalOcean.
+This is the "control repository" for my personal VPS on DigitalOcean and some
+home servers.
 
-I use Puppet Open Source there to manage a single instance.  This should stand
-up the system almost completely - minus the variable data that's backed up via
-other means.
+This should stand up the system almost completely - minus the variable data
+that's backed up via other means.
+
+Currently supports CentOS and FreeBSD 10.
 
 ## Usage
 
