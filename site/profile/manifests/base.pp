@@ -38,12 +38,6 @@ class profile::base {
     content => template('profile/issue.erb'),
   }
 
-  file { 'motd':
-    ensure  => 'file',
-    path    => '/etc/motd',
-    content => template('profile/motd.erb'),
-  }
-
   package { $packages:
     ensure => 'installed',
   }
