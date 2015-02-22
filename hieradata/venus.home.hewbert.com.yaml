@@ -1,0 +1,11 @@
+---
+##
+## Hiera config for my old server
+##
+classes:
+  - role::venus
+
+sudo::configs:
+  josh:
+    ensure: present
+    content: 'josh ALL=(ALL) NOPASSWD: ALL'

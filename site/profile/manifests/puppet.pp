@@ -21,7 +21,7 @@ class profile::puppet {
   ## Static entry in /etc/hosts
   host { $::fqdn:
     ensure => 'present',
-    ip     => '127.0.0.1',
+    ip     => $::ipaddress,
   }
 
   file { 'environments':
