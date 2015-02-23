@@ -96,3 +96,7 @@ mod 'pkgng',
 
 mod 'pf',
   :git => 'https://github.com/puppetlabs-operations/puppet-pf.git'
+
+mod 'timezone',
+  :git => 'https://github.com/joshbeard/puppet-timezone.git',
+  :ref => 'freebsd-support'
