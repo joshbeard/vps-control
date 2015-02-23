@@ -46,6 +46,8 @@ class profile::base {
     ensure => 'installed',
   }
 
+  class { 'ntp': }
+
   file { "${::profile::params::home_path}/josh":
     ensure => 'directory',
     owner  => 'josh',
