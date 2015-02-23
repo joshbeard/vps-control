@@ -10,4 +10,8 @@ class profile::zfs {
     require => Zpool['store'],
   }
 
+  service { 'zfs':
+    enable => true,
+  }
+
 }
