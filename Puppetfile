@@ -41,7 +41,7 @@ mod 'hiera',
 
 mod 'ntp',
   :git => 'https://github.com/puppetlabs/puppetlabs-ntp.git',
-  :ref => '3.1.1'
+  :ref => '3.2.1'
 
 mod 'puppet_vim_env',
   :git => 'https://github.com/jpadams/puppet_vim_env.git'
