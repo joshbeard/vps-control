@@ -48,6 +48,10 @@ class profile::base {
 
   class { 'ntp': }
 
+  class { 'timezone':
+    timezone => 'MST',
+  }
+
   file { "${::profile::params::home_path}/josh":
     ensure => 'directory',
     owner  => 'josh',
