@@ -36,4 +36,10 @@ class profile::base::freebsd {
     minute  => '*/5',
   }
 
+  file_line { 'crontab_path':
+    ensure => 'present',
+    line   => 'PATH=/etc:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin',
+    match  => '^PATH=',
+  }
+
 }
