@@ -1,4 +1,4 @@
-class {
+class profile::transmission {
   $packages = [
     'transmission-daemon',
     'transmission-cli',
