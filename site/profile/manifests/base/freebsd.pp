@@ -38,6 +38,7 @@ class profile::base::freebsd {
 
   file_line { 'crontab_path':
     ensure => 'present',
+    path   => '/etc/crontab',
     line   => 'PATH=/etc:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin',
     match  => '^PATH=',
   }
