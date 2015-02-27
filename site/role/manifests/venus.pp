@@ -5,4 +5,5 @@ class role::venus {
   include profile::sudoers
   include profile::puppet
   include profile::plex
+  include profile::transmission
 }
