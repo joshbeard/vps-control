@@ -100,7 +100,7 @@ class profile::puppet {
 
   cron { 'puppet':
     ensure  => 'present',
-    command => "/usr/bin/env r10k deploy environment -pv ; /usr/bin/env puppet apply ${::settings::confdir}/environments/${::environment}/manifests/site.pp --environment ${::environment} --logdest /var/log/puppet.log",
+    command => "(/usr/bin/env r10k deploy environment -pv 2>&1 | tee -a /var/log/r10k.log) ; /usr/bin/env puppet apply ${::settings::confdir}/environments/${::environment}/manifests/site.pp --environment ${::environment} --logdest /var/log/puppet.log",
     user    => 'root',
     minute  => '40',
   }
