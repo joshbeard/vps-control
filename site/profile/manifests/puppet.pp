@@ -100,9 +100,9 @@ class profile::puppet inherits profile::params {
 
   cron { 'puppet':
     ensure  => 'present',
-    command => "${::profile::params::r10k_path} deploy environment -pv >> /var/log/r10k.log 2>&1 ; ${::profile::params::puppet_path} apply ${::settings::confdir}/environments/${::environment}/manifests/site.pp --environment ${::environment} >> /var/log/puppet.log 2>&1",
+    command => "${::profile::params::r10k_path} deploy environment -pv >> /var/log/r10k.log 2>&1 ; ${::profile::params::puppet_path} apply ${::settings::confdir}/environments/${::environment}/manifests/site.pp --environment ${::environment} --logdest /var/log/puppet.log",
     user    => 'root',
-    minute  => '40',
+    minute  => fqdn_rand(60),
   }
 
 
