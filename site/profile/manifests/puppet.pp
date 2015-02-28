@@ -1,7 +1,7 @@
 ##
 ## Profile for configuring the Puppet agent and master on the vps
 ##
-class profile::puppet {
+class profile::puppet inherits profile::params {
 
   Ini_setting {
     ensure  => 'present',
@@ -100,9 +100,9 @@ class profile::puppet {
 
   cron { 'puppet':
     ensure  => 'present',
-    command => "/usr/bin/env r10k deploy environment -pv ; /usr/bin/env puppet apply ${::settings::confdir}/environments/${::environment}/manifests/site.pp --environment ${::environment} 2>&1 | tee -a /var/log/puppet.log",
+    command => "${::profile::params::r10k_path} deploy environment -pv 2>&1 >> /var/log/r10k.log ; ${::profile::params::puppet_path} apply ${::settings::confdir}/environments/${::environment}/manifests/site.pp --environment ${::environment} 2>&1 >> /var/log/puppet.log",
     user    => 'root',
-    minute  => '40',
+    minute  => '15',
   }
 
 
