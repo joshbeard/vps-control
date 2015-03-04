@@ -1,5 +1,7 @@
 #!/bin/bash
 
+os=$(uname -s)
+
 if [ $os == 'FreeBSD' ]; then
   /usr/sbin/pkg update
   /usr/sbin/pkg -y install puppet
