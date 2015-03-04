@@ -7,5 +7,6 @@ class role::vps {
   include profile::ssh
   include profile::sudoers
   include profile::puppet
+  include profile::minecraft
   #include profile::awstats
 }
