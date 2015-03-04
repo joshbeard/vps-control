@@ -5,11 +5,6 @@
 classes:
   - role::vps
 
-sudo::configs:
-  josh:
-    ensure: present
-    content: 'josh ALL=(ALL) NOPASSWD: ALL'
-
 ##TODO: FreeBSD support
 #ruby::ruby_dev_packages:
 #  - 'ruby-devel'

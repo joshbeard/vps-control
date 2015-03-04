@@ -1,0 +1,5 @@
+---
+sudo::configs:
+  josh:
+    ensure: present
+    content: 'josh ALL=(ALL) NOPASSWD: ALL'

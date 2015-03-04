@@ -89,7 +89,7 @@ class profile::puppet inherits profile::params {
     hierarchy => [
       '%{clientcert}',
       '%{environment}',
-      'global',
+      'common',
     ],
     hiera_yaml   => "${::settings::confdir}/hiera.yaml",
     confdir      => $::settings::confdir,
