@@ -100,3 +100,10 @@ mod 'pf',
 mod 'timezone',
   :git => 'https://github.com/joshbeard/puppet-timezone.git',
   :ref => 'freebsd-support'
+
+mod 'mcmyadmin',
+  :git => 'https://github.com/joshbeard/puppet-mcmyadmin.git'
+
+mod 'java',
+  :git => 'https://github.com/puppetlabs/puppetlabs-java.git',
+  :ref => '1.3.0'
