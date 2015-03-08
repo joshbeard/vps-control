@@ -1,8 +1,8 @@
 class profile::params {
+  $home_path = '/home'
 
   case $::osfamily {
     'FreeBSD': {
-      $home_path = '/usr/home'
       $shell     = '/usr/local/bin/zsh'
       $packages = [
         'vim-lite',
@@ -18,7 +18,6 @@ class profile::params {
       $r10k_path           = '/usr/local/bin/r10k'
     }
     default: {
-      $home_path = '/home'
       $shell     = '/usr/bin/zsh'
       $packages = [
         'vim-minimal',
