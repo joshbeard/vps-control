@@ -6,4 +6,5 @@ class role::venus {
   include profile::puppet
   include profile::plex
   include profile::transmission
+  include profile::minecraft
 }
