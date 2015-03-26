@@ -1,5 +1,9 @@
 class profile::base::freebsd {
 
+  Cron {
+    environment => 'PATH=/bin:/usr/bin:/usr/sbin:/usr/local/bin',
+  }
+
   cron { 'freebsd_update':
     ensure  => 'present',
     command => 'freebsd-update cron',
