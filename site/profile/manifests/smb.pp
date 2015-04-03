@@ -7,7 +7,7 @@ class profile::smb {
   samba::server::share { 'media':
     share_name      => 'media',
     share_path      => '/store/media',
-    share_writeable => true,
-    share_public    => false,
+    share_writeable => 'yes',
+    share_public    => 'no',
   }
 }
