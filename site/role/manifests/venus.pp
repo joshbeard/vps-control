@@ -7,4 +7,5 @@ class role::venus {
   include profile::plex
   include profile::transmission
   include profile::minecraft
+  include profile::smb
 }

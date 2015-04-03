@@ -107,3 +107,7 @@ mod 'mcmyadmin',
 mod 'java',
   :git => 'https://github.com/puppetlabs/puppetlabs-java.git',
   :ref => '1.3.0'
+
+mod 'samba',
+  :git => 'https://github.com/joshbeard/puppet-samba.git',
+  :ref => 'freebsd'
