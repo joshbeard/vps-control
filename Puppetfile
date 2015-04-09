@@ -111,3 +111,7 @@ mod 'java',
 mod 'samba',
   :git => 'https://github.com/joshbeard/puppet-samba.git',
   :ref => 'freebsd'
+
+mod 'ssmtp',
+  :git => 'https://github.com/joshbeard/puppet-ssmtp.git',
+  :ref => 'freebsd'

@@ -9,4 +9,5 @@ class role::vps {
   include profile::puppet
   include profile::minecraft
   #include profile::awstats
+  include profile::ssmtp
 }
