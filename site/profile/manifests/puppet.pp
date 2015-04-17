@@ -9,6 +9,11 @@ class profile::puppet inherits profile::params {
     section => 'main',
   }
 
+  File {
+    owner => 'root',
+    group => '0',
+  }
+
   ## For hiera-eyaml
   $hiera_eyaml_config = [
     ':eyaml:',
@@ -26,8 +31,6 @@ class profile::puppet inherits profile::params {
 
   file { 'environments':
     ensure => 'directory',
-    owner  => 'root',
-    group  => 0,
     mode   => '0755',
     path   => "${::settings::confdir}/environments",
   }
@@ -104,6 +107,24 @@ class profile::puppet inherits profile::params {
     user        => 'root',
     minute      => fqdn_rand(60),
     environment => 'PATH=/bin:/usr/bin:/usr/sbin:/usr/local/bin',
+  }
+
+  if $::osfamily == 'FreeBSD' {
+    file { '/var/log/puppet':
+      ensure => 'directory',
+    }
+
+    file { '/etc/newsyslog.conf.d/puppet.conf':
+      ensure  => 'file',
+      content => '/var/log/puppet/puppet.log    644     30      *       $D0   JGCN',
+      mode    => '0640',
+    }
+
+    file { '/etc/newsyslog.conf.d/r10k.conf':
+      ensure  => 'file',
+      content => '/var/log/puppet/r10k.log    644     30      *       $D0   JGCN',
+      mode    => '0640',
+    }
   }
 
 
