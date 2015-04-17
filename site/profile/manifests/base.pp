@@ -72,7 +72,7 @@ class profile::base {
     gid     => 'josh',
     groups  => ['wheel','web'],
     home    => "${::profile::params::home_path}/josh",
-    shell   => $shell,
+    shell   => $::profile::params::shell,
     uid     => '1000',
     require => Package['zsh'],
   }
