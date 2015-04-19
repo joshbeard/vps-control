@@ -79,10 +79,6 @@ mod 'concat',
   :git => 'https://github.com/puppetlabs/puppetlabs-concat.git',
   :ref => '1.1.0'
 
-mod 'gitolite',
-  :git => 'https://github.com/joshbeard/puppet-gitolite.git',
-  :ref => 'updates'
-
 mod 'inifile',
   :git => 'https://github.com/puppetlabs/puppetlabs-inifile.git',
   :ref => '1.1.4'
