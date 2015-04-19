@@ -32,7 +32,7 @@ nginx::nginx_vhosts:
   'juliabeard.me':
     ensure: present
     server_name: ['juliabeard.me', 'www.juliabeard.me', 'www.juliabeard.net', 'juliabeard.net']
-    www_root: "/var/www/juliabeard.me"
+    www_root: "/var/www/signalboxes.net/julia"
     access_log: "/var/log/nginx/juliabeard.me_access.log"
     error_log: "/var/log/nginx/juliabeard.me_error.log"
     use_default_location: false
