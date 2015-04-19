@@ -116,7 +116,7 @@ class profile::puppet inherits profile::params {
 
     file { '/etc/newsyslog.conf.d/puppet.conf':
       ensure  => 'file',
-      content => '/var/log/puppet/puppet.log    644     30      *       $D0   JGCN',
+      content => '/var/log/puppet/puppet.log puppet:puppet   644     30      *       $D0   JGCN',
       mode    => '0640',
     }
 
