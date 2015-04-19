@@ -1,12 +1,17 @@
 ##
 ## Profile for configuring the Puppet agent and master on the vps
 ##
-class profile::puppet {
+class profile::puppet inherits profile::params {
 
   Ini_setting {
     ensure  => 'present',
     path    => "${::settings::confdir}/puppet.conf",
     section => 'main',
+  }
+
+  File {
+    owner => 'root',
+    group => '0',
   }
 
   ## For hiera-eyaml
@@ -26,8 +31,6 @@ class profile::puppet {
 
   file { 'environments':
     ensure => 'directory',
-    owner  => 'root',
-    group  => 0,
     mode   => '0755',
     path   => "${::settings::confdir}/environments",
   }
@@ -89,7 +92,7 @@ class profile::puppet {
     hierarchy => [
       '%{clientcert}',
       '%{environment}',
-      'global',
+      'common',
     ],
     hiera_yaml   => "${::settings::confdir}/hiera.yaml",
     confdir      => $::settings::confdir,
@@ -99,10 +102,29 @@ class profile::puppet {
   }
 
   cron { 'puppet':
-    ensure  => 'present',
-    command => "/usr/bin/env r10k deploy environment -pv ; /usr/bin/env puppet apply ${::settings::confdir}/environments/${::environment}/manifests/site.pp --environment ${::environment}",
-    user    => 'root',
-    minute  => '40',
+    ensure      => 'present',
+    command     => "${::profile::params::r10k_path} deploy environment -pv >> /var/log/puppet/r10k.log 2>&1 ; ${::profile::params::puppet_path} apply ${::settings::confdir}/environments/${::environment}/manifests/site.pp --environment ${::environment} --logdest /var/log/puppet/puppet.log",
+    user        => 'root',
+    minute      => fqdn_rand(60),
+    environment => 'PATH=/bin:/usr/bin:/usr/sbin:/usr/local/bin',
+  }
+
+  if $::osfamily == 'FreeBSD' {
+    file { '/var/log/puppet':
+      ensure => 'directory',
+    }
+
+    file { '/etc/newsyslog.conf.d/puppet.conf':
+      ensure  => 'file',
+      content => '/var/log/puppet/puppet.log puppet:puppet   644     30      *       $D0   JGCN',
+      mode    => '0640',
+    }
+
+    file { '/etc/newsyslog.conf.d/r10k.conf':
+      ensure  => 'file',
+      content => '/var/log/puppet/r10k.log    644     30      *       $D0   JGCN',
+      mode    => '0640',
+    }
   }
 
 

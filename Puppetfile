@@ -41,7 +41,7 @@ mod 'hiera',
 
 mod 'ntp',
   :git => 'https://github.com/puppetlabs/puppetlabs-ntp.git',
-  :ref => '3.1.1'
+  :ref => '3.2.1'
 
 mod 'puppet_vim_env',
   :git => 'https://github.com/jpadams/puppet_vim_env.git'
@@ -79,10 +79,6 @@ mod 'concat',
   :git => 'https://github.com/puppetlabs/puppetlabs-concat.git',
   :ref => '1.1.0'
 
-mod 'gitolite',
-  :git => 'https://github.com/joshbeard/puppet-gitolite.git',
-  :ref => 'updates'
-
 mod 'inifile',
   :git => 'https://github.com/puppetlabs/puppetlabs-inifile.git',
   :ref => '1.1.4'
@@ -96,3 +92,22 @@ mod 'pkgng',
 
 mod 'pf',
   :git => 'https://github.com/puppetlabs-operations/puppet-pf.git'
+
+mod 'timezone',
+  :git => 'https://github.com/joshbeard/puppet-timezone.git',
+  :ref => 'freebsd-support'
+
+mod 'mcmyadmin',
+  :git => 'https://github.com/joshbeard/puppet-mcmyadmin.git'
+
+mod 'java',
+  :git => 'https://github.com/puppetlabs/puppetlabs-java.git',
+  :ref => '1.3.0'
+
+mod 'samba',
+  :git => 'https://github.com/joshbeard/puppet-samba.git',
+  :ref => 'freebsd'
+
+mod 'ssmtp',
+  :git => 'https://github.com/joshbeard/puppet-ssmtp.git',
+  :ref => 'freebsd'

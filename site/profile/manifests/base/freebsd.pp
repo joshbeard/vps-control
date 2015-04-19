@@ -1,5 +1,9 @@
 class profile::base::freebsd {
 
+  Cron {
+    environment => 'PATH=/bin:/usr/bin:/usr/sbin:/usr/local/bin',
+  }
+
   cron { 'freebsd_update':
     ensure  => 'present',
     command => 'freebsd-update cron',
@@ -34,6 +38,13 @@ class profile::base::freebsd {
     ensure  => 'present',
     command => '/usr/local/bin/dynmotd.sh > /etc/motd',
     minute  => '*/5',
+  }
+
+  file_line { 'crontab_path':
+    ensure => 'present',
+    path   => '/etc/crontab',
+    line   => 'PATH=/etc:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin',
+    match  => '^PATH=',
   }
 
 }

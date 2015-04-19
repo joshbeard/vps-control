@@ -30,6 +30,14 @@ pass in quick on $interface proto tcp from any to any port 22431 keep state \
 pass in quick on $interface proto tcp to any port { http,https } keep state \
     (max-src-conn-rate 100/15, overload <bad_hosts> flush global)
 
+# Allow mcmyadmin
+pass in quick on $interface proto tcp from any to any port 8080 keep state \
+    (max-src-conn-rate 100/15, overload <bad_hosts> flush global)
+
+# Allow minecraft
+pass in quick on $interface proto tcp from any to any port 25565 keep state \
+    (max-src-conn-rate 100/15, overload <bad_hosts> flush global)
+
 pass in quick inet proto tcp from any to any port { http, https } flags S/SA keep state
 
 pass out on $interface proto { tcp, udp, icmp } all keep state

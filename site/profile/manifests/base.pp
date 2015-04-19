@@ -46,6 +46,12 @@ class profile::base {
     ensure => 'installed',
   }
 
+  class { 'ntp': }
+
+  class { 'timezone':
+    timezone => 'MST',
+  }
+
   file { "${::profile::params::home_path}/josh":
     ensure => 'directory',
     owner  => 'josh',
@@ -66,7 +72,7 @@ class profile::base {
     gid     => 'josh',
     groups  => ['wheel','web'],
     home    => "${::profile::params::home_path}/josh",
-    shell   => $shell,
+    shell   => $::profile::params::shell,
     uid     => '1000',
     require => Package['zsh'],
   }

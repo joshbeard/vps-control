@@ -5,9 +5,8 @@ class profile::zfs {
     mirror => 'ada1 ada2',
   }
 
-  file { '/store/media':
-    ensure  => 'directory',
-    require => Zpool['store'],
+  service { 'zfs':
+    enable => true,
   }
 
 }
