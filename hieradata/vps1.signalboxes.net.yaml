@@ -47,6 +47,16 @@ nginx::nginx_vhosts:
     vhost_cfg_append:
       'rewrite ^': "http://signalboxes.net/about/"
 
+  'jbeard.org':
+    ensure: present
+    server_name: ['jbeard.org', 'www.jbeard.org']
+    www_root: "/var/www/jbeard.org"
+    access_log: "/var/log/nginx/jbeard.org_access.log"
+    error_log: "/var/log/nginx/jbeard.org_error.log"
+    use_default_location: false
+    vhost_cfg_append:
+      'rewrite ^': "http://signalboxes.net/about/"
+
   'hewbert.com':
     ensure: present
     server_name: ['hewbert.com', 'www.hewbert.com']
