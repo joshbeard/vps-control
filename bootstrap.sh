@@ -4,7 +4,7 @@ os=$(uname -s)
 
 if [ $os == 'FreeBSD' ]; then
   /usr/sbin/pkg update
-  /usr/sbin/pkg -y install puppet
+  /usr/sbin/pkg install -y puppet
 fi
 
 MYSELF=$(facter ipaddress)
