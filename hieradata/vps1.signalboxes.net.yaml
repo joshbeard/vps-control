@@ -32,7 +32,7 @@ nginx::nginx_vhosts:
   'juliabeard.me':
     ensure: present
     server_name: ['juliabeard.me', 'www.juliabeard.me', 'www.juliabeard.net', 'juliabeard.net']
-    www_root: "/var/www/signalboxes.net/julia"
+    www_root: "/var/www/signalboxes.net/sites/julia"
     access_log: "/var/log/nginx/juliabeard.me_access.log"
     error_log: "/var/log/nginx/juliabeard.me_error.log"
     use_default_location: false
@@ -50,12 +50,10 @@ nginx::nginx_vhosts:
   'jbeard.org':
     ensure: present
     server_name: ['jbeard.org', 'www.jbeard.org']
-    www_root: "/var/www/jbeard.org"
+    www_root: "/var/www/signalboxes.net/sites/jbeard"
     access_log: "/var/log/nginx/jbeard.org_access.log"
     error_log: "/var/log/nginx/jbeard.org_error.log"
     use_default_location: false
-    vhost_cfg_append:
-      'rewrite ^': "http://signalboxes.net/about/"
 
   'hewbert.com':
     ensure: present
