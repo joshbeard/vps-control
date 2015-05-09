@@ -95,7 +95,7 @@ mod 'pkgng',
 
 mod 'pf',
   :git => 'https://github.com/joshbeard/puppet-pf.git',
-  :ref => 'ensure_file'
+  :ref => 'manage_service'
 
 mod 'timezone',
   :git => 'https://github.com/joshbeard/puppet-timezone.git',
