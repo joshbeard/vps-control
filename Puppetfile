@@ -90,8 +90,12 @@ mod 'module_data',
 mod 'pkgng',
   :git => 'https://github.com/xaque208/puppet-pkgng.git'
 
+#mod 'pf',
+#  :git => 'https://github.com/puppetlabs-operations/puppet-pf.git'
+
 mod 'pf',
-  :git => 'https://github.com/puppetlabs-operations/puppet-pf.git'
+  :git => 'https://github.com/joshbeard/puppet-pf.git',
+  :ref => 'ensure_file'
 
 mod 'timezone',
   :git => 'https://github.com/joshbeard/puppet-timezone.git',
