@@ -11,4 +11,20 @@ class profile::signalboxes {
     group    => 'web',
     require  => File['/var/www'],
   }
+
+  file { '/var/www/pub.signalboxes.net':
+    ensure => 'directory',
+    owner  => 'root',
+    group  => 'web',
+    mode   => '2775',
+  }
+
+  vcsrepo { '/var/www/pub.signalboxes.net/fancyindex':
+    ensure   => 'present',
+    provider => 'git',
+    source   => 'https://github.com/joshbeard/Nginx-Fancyindex-Theme.git',
+    path     => '/var/www/pub.signalboxes.net/fancyindex',
+    group    => 'web',
+  }
+
 }

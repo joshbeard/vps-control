@@ -15,6 +15,9 @@ gem install r10k --no-ri --no-rdoc
 echo "==> Installing modules from Puppetfile with r10k"
 r10k puppetfile install Puppetfile -v
 
+echo "==> Running Puppet with profile::puppet"
+puppet apply -e 'include profile::puppet' --modulepath=./modules:./site
+
 echo "==> Running Puppet with role::vps"
 puppet apply -e 'include role::vps' --modulepath=./modules:./site
 

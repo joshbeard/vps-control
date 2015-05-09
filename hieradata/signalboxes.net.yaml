@@ -17,17 +17,15 @@ classes:
 ## Nginx vhosts
 ##
 nginx::nginx_vhosts:
-  'mc.signalboxes.net':
+  'pub.signalboxes.net':
     ensure: present
-    server_name: ['mc.signalboxes.net']
-    www_root: "/var/www/mc.signalboxes.net"
-    access_log: '/var/log/nginx/mc.signalboxes.net.access.log'
-    error_log: '/var/log/nginx/mc.signalboxes.net.error.log'
+    server_name: ['pub.signalboxes.net']
+    www_root: "/var/www/pub.signalboxes.net"
+    access_log: '/var/log/nginx/pub.signalboxes.net.access.log'
+    error_log: '/var/log/nginx/pub.signalboxes.net.error.log'
     use_default_location: false
     vhost_cfg_prepend:
       'index': 'index.php index.html'
-    vhost_cfg_append:
-      'rewrite ^': "http://signalboxes.net/minecraft-server/ permanent"
 
   'juliabeard.me':
     ensure: present
