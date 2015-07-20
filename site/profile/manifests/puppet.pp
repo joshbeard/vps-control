@@ -45,7 +45,6 @@ class profile::puppet inherits profile::params {
         'prefix'  => false,
       }
     },
-    purgedirs         => [ "${::settings::confdir}/environments" ],
     manage_modulepath => false,
     mcollective       => false,
     require           => File['environments'],
