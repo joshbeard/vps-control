@@ -123,6 +123,7 @@ nginx::nginx_locations:
       - 'X-Forwarded-For $proxy_add_x_forwarded_for'
       - 'Host $http_host'
     proxy: 'http://puma_server'
+    vhost: 'puma.signalboxes.net'
 
 nginx::upstreams:
   '@puma':
