@@ -17,6 +17,13 @@ classes:
 ## Nginx vhosts
 ##
 nginx::nginx_vhosts:
+  'puma.signalboxes.net':
+    ensure: 'present'
+    server_name: ['puma.signalboxes.net']
+    www_root: "/var/www/puma.signalboxes.net/public"
+    access_log: '/var/log/nginx/puma.signalboxes.net.access.log'
+    error_log: '/var/log/nginx/puma.signalboxes.net.error.log'
+
   'pub.signalboxes.net':
     ensure: present
     server_name: ['pub.signalboxes.net']
@@ -111,6 +118,16 @@ nginx::nginx_locations:
     vhost: 'signalboxes.net'
     location_custom_cfg:
       'expires': '60d'
+  '@puma':
+    proxy_set_header:
+      - 'X-Forwarded-For $proxy_add_x_forwarded_for'
+      - 'Host $http_host'
+    proxy: 'http://puma_server'
+
+nginx::upstreams:
+  '@puma':
+    members:
+      - 'unix:/var/www/nginx-puma-sinatra/var/run/puma.sock'
 ## Disabled for now until ssl hosts support cfg_prepend or indexes
 #    ssl: true
 #    ssl_cert: '/etc/nginx/ssl/unified.crt'
