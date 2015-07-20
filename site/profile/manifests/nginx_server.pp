@@ -4,10 +4,6 @@ class profile::nginx_server {
     server_tokens => 'off',
   }
 
-  file { '/var/log/nginx':
-    ensure => 'directory',
-  }
-
   if $::osfamily == 'FreeBSD' {
     file { '/etc/newsyslog.conf.d/nginx.conf':
       ensure  => 'file',
