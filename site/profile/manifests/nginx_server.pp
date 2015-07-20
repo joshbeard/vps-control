@@ -1,8 +1,6 @@
 ## The nginx profile
 class profile::nginx_server {
-  class { '::nginx':
-    server_tokens => 'off',
-  }
+  include ::nginx
 
   if $::osfamily == 'FreeBSD' {
     file { '/etc/newsyslog.conf.d/nginx.conf':

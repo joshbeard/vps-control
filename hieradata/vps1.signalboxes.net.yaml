@@ -16,6 +16,7 @@ classes:
 ##
 ## Nginx vhosts
 ##
+nginx::config::server_tokens: 'off'
 nginx::nginx_vhosts:
   'puma.signalboxes.net':
     ensure: 'present'
@@ -33,12 +34,12 @@ nginx::nginx_vhosts:
     use_default_location: false
     vhost_cfg_prepend:
       'index': 'index.php index.html'
-      'fancyindex': 'on'
-      'fancyindex_exact_size': 'off'
-      'fancyindex_localtime': 'on'
-      'fancyindex_header': '/fancyindex/header.html'
-      'fancyindex_footer': '/fancyindex/footer.html'
-      'fancyindex_ignore': 'fancyindex'
+      #'fancyindex': 'on'
+      #'fancyindex_exact_size': 'off'
+      #'fancyindex_localtime': 'on'
+      #'fancyindex_header': '/fancyindex/header.html'
+      #'fancyindex_footer': '/fancyindex/footer.html'
+      #'fancyindex_ignore': 'fancyindex'
 
   'juliabeard.me':
     ensure: present
