@@ -8,10 +8,12 @@ class profile::sensu {
   $api_user          = 'localhost'
   $api_password      = 'sensu'
 
-  include '::erlang'
+  package { 'erlang':
+    ensure => 'installed',
+  }
 
   class { 'rabbitmq':
-    require => Class['::erlang'],
+    require => Package['erlang'],
   }
 
   rabbitmq_vhost { $rabbitmq_vhost: }

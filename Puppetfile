@@ -32,7 +32,6 @@ mod 'uchiwa',
   :ref => 'd1bf90bef37973371f5d619e3ca7e77b0481b9d3'
 
 mod 'puppetlabs/rabbitmq',             '5.2.3'
-mod 'garethr/erlang',                  '0.3.0'
 
 #mod 'arioch/redis',                    '1.1.0'
 #mod 'dwerder/redis',                   '1.6.0'
