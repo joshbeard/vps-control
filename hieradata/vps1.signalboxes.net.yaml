@@ -133,7 +133,7 @@ nginx::nginx_locations:
 nginx::nginx_upstreams:
   'puma_server':
     members:
-      - 'unix:/var/www/nginx-puma-sinatra/var/run/puma.sock'
+      - 'unix:/var/run/puma.sock'
 ## Disabled for now until ssl hosts support cfg_prepend or indexes
 #    ssl: true
 #    ssl_cert: '/etc/nginx/ssl/unified.crt'
