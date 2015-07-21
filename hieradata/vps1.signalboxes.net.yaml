@@ -18,6 +18,13 @@ classes:
 ##
 nginx::config::server_tokens: 'off'
 nginx::nginx_vhosts:
+  'munin.signalboxes.net':
+    ensure: 'present'
+    server_name: ['munin.signalboxes.net']
+    www_root: '/usr/local/www/munin'
+    access_log: '/var/log/nginx/munin.signalboxes.net.access.log'
+    error_log: '/var/log/nginx/munin.signalboxes.net.error.log'
+
   'puma.signalboxes.net':
     ensure: 'present'
     server_name: ['puma.signalboxes.net']
