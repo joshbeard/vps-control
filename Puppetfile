@@ -23,8 +23,8 @@ mod 'zleslie/pkgng',          '0.2.5'
 
 ## FreeBSD support
 mod 'munin',
-  :git => 'https://github.com/ssm/ssm-munin.git',
-  :ref => '2f7ca75256090817c3c6260c7a2b2b8a2cef0ee9'
+  :git => 'https://github.com/joshbeard/ssm-munin.git',
+  :ref => 'freebsd-fixes'
 
 ## FreeBSD 10 support
 mod 'ruby',
