@@ -21,23 +21,10 @@ mod 'puppetlabs/inifile',     '1.4.0'
 mod 'ripienaar/module_data',  '0.0.3'
 mod 'zleslie/pkgng',          '0.2.5'
 
-#mod 'sensu/sensu',                     '1.5.5'
-mod 'sensu',
-  :git => 'https://github.com/sensu/sensu-puppet.git',
-  :ref => '9ba0abf38f1a0971bcd044b1bd51b58ec95783d9'
-
-# From Yelp
-mod 'uchiwa',
-  :git => 'https://github.com/Yelp/puppet-uchiwa.git',
-  :ref => 'd1bf90bef37973371f5d619e3ca7e77b0481b9d3'
-
-mod 'puppetlabs/rabbitmq',             '5.2.3'
-
-#mod 'arioch/redis',                    '1.1.0'
-#mod 'dwerder/redis',                   '1.6.0'
-mod 'redis',
-  :git => 'https://github.com/joshbeard/puppet-redis.git',
-  :ref => 'sl_fix'
+## FreeBSD support
+mod 'munin',
+  :git => 'https://github.com/ssm/ssm-munin.git',
+  :ref => '2f7ca75256090817c3c6260c7a2b2b8a2cef0ee9'
 
 ## FreeBSD 10 support
 mod 'ruby',
