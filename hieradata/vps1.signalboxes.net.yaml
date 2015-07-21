@@ -127,7 +127,7 @@ nginx::nginx_locations:
     vhost: 'puma.signalboxes.net'
 
 nginx::upstreams:
-  '@puma':
+  'puma_server':
     members:
       - 'unix:/var/www/nginx-puma-sinatra/var/run/puma.sock'
 ## Disabled for now until ssl hosts support cfg_prepend or indexes
