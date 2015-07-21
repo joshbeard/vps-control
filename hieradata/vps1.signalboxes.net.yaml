@@ -126,7 +126,7 @@ nginx::nginx_locations:
     proxy: 'http://puma_server'
     vhost: 'puma.signalboxes.net'
 
-nginx::upstreams:
+nginx::nginx_upstreams:
   'puma_server':
     members:
       - 'unix:/var/www/nginx-puma-sinatra/var/run/puma.sock'
