@@ -24,6 +24,10 @@ nginx::nginx_vhosts:
     www_root: "/var/www/puma.signalboxes.net/public"
     access_log: '/var/log/nginx/puma.signalboxes.net.access.log'
     error_log: '/var/log/nginx/puma.signalboxes.net.error.log'
+    try_files:
+      - 'index.html'
+      - '$uri/index.html'
+      - '@puma'
 
   'pub.signalboxes.net':
     ensure: present
