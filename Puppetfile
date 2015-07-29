@@ -23,7 +23,7 @@ mod 'zleslie/pkgng',          '0.2.5'
 
 ## FreeBSD support
 mod 'munin',
-  :git => 'https://github.com/joshbeard/ssm-munin.git',
+  :git => 'https://gitlab.com/joshbeard/ssm-munin.git',
   :ref => 'freebsd_fixes'
 
 ## FreeBSD 10 support
@@ -32,20 +32,20 @@ mod 'ruby',
   :ref => '741683e082062d0d42e4c69f548feb818b418213'
 
 mod 'pf',
-  :git => 'https://github.com/joshbeard/puppet-pf.git',
+  :git => 'https://gitlab.com/joshbeard/puppet-pf.git',
   :ref => 'manage_service'
 
 mod 'timezone',
-  :git => 'https://github.com/joshbeard/puppet-timezone.git',
+  :git => 'https://gitlab.com/joshbeard/puppet-timezone.git',
   :ref => 'freebsd-support'
 
 mod 'mcmyadmin',
-  :git => 'https://github.com/joshbeard/puppet-mcmyadmin.git'
+  :git => 'https://gitlab.com/joshbeard/puppet-mcmyadmin.git'
 
 mod 'samba',
-  :git => 'https://github.com/joshbeard/puppet-samba.git',
+  :git => 'https://gitlab.com/joshbeard/puppet-samba.git',
   :ref => 'freebsd'
 
 mod 'ssmtp',
-  :git => 'https://github.com/joshbeard/puppet-ssmtp.git',
+  :git => 'https://gitlab.com/joshbeard/puppet-ssmtp.git',
   :ref => 'freebsd'
