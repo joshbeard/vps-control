@@ -1,4 +1,8 @@
 class profile::sudoers {
   include sudo
-  include sudo::configs
+
+  sudo::conf { 'josh':
+    ensure  => 'present',
+    content => 'josh ALL=(ALL) NOPASSWD: ALL',
+  }
 }

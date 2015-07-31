@@ -1,6 +1,2 @@
 ---
 ruby::rubygems_package: 'ruby21-gems'
-sudo::configs:
-  josh:
-    ensure: present
-    content: 'josh ALL=(ALL) NOPASSWD: ALL'

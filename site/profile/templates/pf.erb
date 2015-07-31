@@ -7,6 +7,8 @@ table <bad_hosts> persist
 set block-policy drop
 set require-order yes
 
+set skip on lo0
+
 set loginterface $interface
 
 scrub in all
