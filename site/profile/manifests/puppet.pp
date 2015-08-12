@@ -23,7 +23,8 @@ class profile::puppet inherits profile::params {
         'prefix'  => false,
       }
     },
-    mcollective       => false,
+    mcollective => false,
+    configfile  => $::profile::params::r10k_config_file,
   }
 
   ## Configure Hiera
