@@ -1,7 +1,8 @@
 class profile::firewall {
   if $::osfamily == 'FreeBSD' {
     include profile::firewall::freebsd
-  } else {
+  }
+  else {
     include profile::firewall::linux
   }
 }

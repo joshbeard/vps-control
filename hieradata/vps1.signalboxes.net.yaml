@@ -5,14 +5,6 @@
 classes:
   - role::vps
 
-##TODO: FreeBSD support
-#ruby::ruby_dev_packages:
-#  - 'ruby-devel'
-#  - 'rubygem-bundler'
-#ruby::dev::ruby_dev_packages:
-#  - 'ruby-devel'
-#  - 'rubygem-bundler'
-
 ##
 ## Nginx vhosts
 ##
@@ -141,8 +133,3 @@ nginx::nginx_upstreams:
   'puma_server':
     members:
       - 'unix:/var/run/puma.sock'
-## Disabled for now until ssl hosts support cfg_prepend or indexes
-#    ssl: true
-#    ssl_cert: '/etc/nginx/ssl/unified.crt'
-#    ssl_key: '/etc/nginx/ssl/server.key'
-#    ssl_ciphers: 'RC4:HIGH:!aNULL:!MD5'

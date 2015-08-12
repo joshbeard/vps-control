@@ -16,6 +16,7 @@ class profile::params {
 
       $puppet_path         = '/usr/local/bin/puppet'
       $r10k_path           = '/usr/local/bin/r10k'
+      $staging_path        = '/usr/local/staging'
     }
     default: {
       $shell     = '/usr/bin/zsh'
@@ -31,6 +32,7 @@ class profile::params {
 
       $puppet_path         = '/usr/bin/puppet'
       $r10k_path           = '/usr/bin/r10k'
+      $staging_path        = '/opt/staging'
     }
   }
 }

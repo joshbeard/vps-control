@@ -2,7 +2,6 @@
 ## Profile for configuring the Puppet agent and master on the vps
 ##
 class profile::puppet inherits profile::params {
-
   Ini_setting {
     ensure  => 'present',
     path    => "${::settings::confdir}/puppet.conf",
@@ -125,6 +124,4 @@ class profile::puppet inherits profile::params {
       mode    => '0640',
     }
   }
-
-
 }
