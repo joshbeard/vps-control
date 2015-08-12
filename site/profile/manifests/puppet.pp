@@ -33,7 +33,6 @@ class profile::puppet inherits profile::params {
       '%{environment}',
       'common',
     ],
-    eyaml        => true,
     datadir      => "${::settings::environmentpath}/%{environment}/hieradata",
     owner        => 'root',
     group        => 'root',
