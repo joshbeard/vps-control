@@ -16,9 +16,17 @@ mod 'croddy/make',            '0.0.5'
 mod 'puppetlabs/concat',      '1.2.4'
 mod 'puppetlabs/inifile',     '1.4.1'
 mod 'saz/timezone',           '3.3.0'
+mod 'zleslie/pkgng',          '0.2.5'
 
 ## Pinned for FreeBSD support
 #mod 'puppetlabs/ruby',        '0.4.0'
 mod 'ruby',
   :git => 'https://github.com/puppetlabs/puppetlabs-ruby.git',
   :ref => 'bdfb62c4b17dd6048b918c991f32df6ef283c580'
+
+mod 'mcmyadmin',
+  :git => 'https://gitlab.com/joshbeard/puppet-mcmyadmin.git'
+
+mod 'samba',
+  :git => 'https://gitlab.com/joshbeard/puppet-samba.git',
+  :ref => 'freebsd'
