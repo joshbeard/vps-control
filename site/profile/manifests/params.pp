@@ -21,7 +21,7 @@ class profile::params {
     default: {
       $shell     = '/bin/zsh'
       $packages = [
-        'vim-minimal',
+        'vim-enhanced',
       ]
       $fail2ban_package    = undef
       $fail2ban_config     = undef
