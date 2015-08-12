@@ -73,8 +73,8 @@ class profile::puppet inherits profile::params {
   file { 'eyaml_keys':
     ensure => 'directory',
     path   => "${::settings::confdir}/keys",
-    owner  => 'puppet',
-    group  => 'puppet',
+    owner  => 'root',
+    group  => '0',
     mode   => '0600',
   }
 
@@ -96,6 +96,8 @@ class profile::puppet inherits profile::params {
     datadir      => "${::settings::confdir}/environments/%{environment}/hieradata",
     backends     => ['eyaml', 'yaml'],
     extra_config => join($hiera_eyaml_config, "\n"),
+    owner        => 'root',
+    group        => 'root',
   }
 
   cron { 'puppet':
