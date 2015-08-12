@@ -15,5 +15,10 @@ mod 'puppetlabs/gcc',         '0.3.0'
 mod 'croddy/make',            '0.0.5'
 mod 'puppetlabs/concat',      '1.2.4'
 mod 'puppetlabs/inifile',     '1.4.1'
-mod 'puppetlabs/ruby',        '0.4.0'
 mod 'saz/timezone',           '3.3.0'
+
+## Pinned for FreeBSD support
+#mod 'puppetlabs/ruby',        '0.4.0'
+mod 'ruby',
+  :git => 'https://github.com/puppetlabs/puppetlabs-ruby.git',
+  :ref => 'bdfb62c4b17dd6048b918c991f32df6ef283c580'
