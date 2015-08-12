@@ -1,5 +1,6 @@
 class role::vps {
   include profile::base
+  include profile::base::linux
   include profile::firewall
   include profile::signalboxes
   include profile::nginx_server
