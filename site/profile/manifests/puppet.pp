@@ -39,7 +39,6 @@ class profile::puppet inherits profile::params {
       }
     },
     mcollective       => false,
-    require           => File['environments'],
   }
 
   ini_setting { 'certname':
