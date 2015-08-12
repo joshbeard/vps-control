@@ -44,7 +44,6 @@ class profile::puppet inherits profile::params {
         'prefix'  => false,
       }
     },
-    manage_modulepath => false,
     mcollective       => false,
     require           => File['environments'],
   }
