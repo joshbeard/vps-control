@@ -16,7 +16,7 @@ class profile::puppet inherits profile::params {
   ## For hiera-eyaml
   $hiera_eyaml_config = [
     ':eyaml:',
-    "  :datadir: ${::settings::confdir}/environments/%{environment}/hieradata",
+    "  :datadir: ${::settings::environmentpath}/%{environment}/hieradata",
     "  :pkcs7_private_key: ${::settings::confdir}/keys/private_key.pkcs7.pem",
     "  :pkcs7_public_key: ${::settings::confdir}/keys/public_key.pkcs7.pem",
     '  :extension: "yaml"',
@@ -28,35 +28,18 @@ class profile::puppet inherits profile::params {
     ip     => $::ipaddress,
   }
 
-  file { 'environments':
-    ensure => 'directory',
-    mode   => '0755',
-    path   => "${::settings::confdir}/environments",
-  }
-
   ## Configure r10k
   class { 'r10k':
     version       => 'latest',
     sources       => {
       'control'   => {
         'remote'  => 'https://gitlab.com/joshbeard/vps-control.git',
-        'basedir' => "${::settings::confdir}/environments",
+        'basedir' => $::settings::environmentpath,
         'prefix'  => false,
       }
     },
     mcollective       => false,
     require           => File['environments'],
-  }
-
-  ## Various settings for the Puppet master
-  ini_setting { 'basemodulepath':
-    setting => 'basemodulepath',
-    value   => "${::settings::confdir}/modules",
-  }
-
-  ini_setting { 'environmentpath':
-    setting => 'environmentpath',
-    value   => "${::settings::confdir}/environments",
   }
 
   ini_setting { 'certname':
@@ -91,9 +74,7 @@ class profile::puppet inherits profile::params {
       '%{environment}',
       'common',
     ],
-    hiera_yaml   => "${::settings::confdir}/hiera.yaml",
-    confdir      => $::settings::confdir,
-    datadir      => "${::settings::confdir}/environments/%{environment}/hieradata",
+    datadir      => "${::settings::environmentpath}/%{environment}/hieradata",
     backends     => ['eyaml', 'yaml'],
     extra_config => join($hiera_eyaml_config, "\n"),
     owner        => 'root',
@@ -102,7 +83,7 @@ class profile::puppet inherits profile::params {
 
   cron { 'puppet':
     ensure      => 'present',
-    command     => "${::profile::params::r10k_path} deploy environment -pv >> /var/log/puppet/r10k.log 2>&1 ; ${::profile::params::puppet_path} apply ${::settings::confdir}/environments/${::environment}/manifests/site.pp --environment ${::environment} --logdest /var/log/puppet/puppet.log",
+    command     => "${::profile::params::r10k_path} deploy environment -pv >> /var/log/puppet/r10k.log 2>&1 ; ${::profile::params::puppet_path} apply ${::settings::environmentpath}/${::environment}/manifests/site.pp --environment ${::environment} --logdest /var/log/puppet/puppet.log",
     user        => 'root',
     minute      => fqdn_rand(60),
     environment => 'PATH=/bin:/usr/bin:/usr/sbin:/usr/local/bin',

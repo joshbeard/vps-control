@@ -30,8 +30,8 @@ class profile::params {
       $fail2ban_group      = undef
       $fail2ban_banaction  = undef
 
-      $puppet_path         = '/usr/bin/puppet'
-      $r10k_path           = '/usr/bin/r10k'
+      $puppet_path         = '/usr/local/bin/puppet'
+      $r10k_path           = '/usr/local/bin/r10k'
       $staging_path        = '/opt/staging'
     }
   }
