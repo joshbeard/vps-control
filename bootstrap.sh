@@ -8,10 +8,12 @@ if [ $os == 'FreeBSD' ]; then
 else
   rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-6.noarch.rpm
   yum install -y puppet-agent
+  echo "Symlinking Puppet binaries to /usr/local/bin..."
   ln -s /opt/puppetlabs/bin/facter /usr/local/bin/facter
   ln -s /opt/puppetlabs/bin/puppet /usr/local/bin/puppet
   ln -s /opt/puppetlabs/bin/hiera /usr/local/bin/hiera
   ln -s /opt/puppetlabs/puppet/bin/gem /usr/local/bin/gem
+  ln -s /opt/puppetlabs/puppet/bin/r10k /usr/local/bin/r10k
 fi
 
 MYSELF=$(facter ipaddress)
