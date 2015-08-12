@@ -1,8 +1,13 @@
 class profile::base {
   include profile::params
 
-  if $::osfamily == 'FreeBSD' {
-    include profile::base::freebsd
+  case $::osfamily {
+    'FreeBSD': {
+      include profile::base::freebsd
+    }
+    'RedHat': {
+      include profile::base::linux
+    }
   }
 
   class { 'staging':

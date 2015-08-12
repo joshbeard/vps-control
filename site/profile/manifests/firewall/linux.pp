@@ -1,14 +1,7 @@
 class profile::firewall::linux {
 
-  package { [ 'iptables-utils' ]:
-    ensure => 'present',
-  }
   ## Include the puppetlabs-firewall class
-  class { '::firewall':
-    require => [
-      Package['iptables-utils'],
-    ],
-  }
+  class { '::firewall': }
 
   ## Our pre/post rules
   class { '::profile::firewall::pre': }->
