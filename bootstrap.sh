@@ -5,6 +5,8 @@ os=$(uname -s)
 if [ $os == 'FreeBSD' ]; then
   /usr/sbin/pkg update
   /usr/sbin/pkg install -y puppet
+else
+  rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-6.noarch.rpm
 fi
 
 MYSELF=$(facter ipaddress)
