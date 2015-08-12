@@ -1,5 +1,4 @@
 class profile::smb {
-
   class { '::samba::server':
     manage_firewall => false,
   }
