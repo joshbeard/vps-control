@@ -9,7 +9,7 @@ class profile::puppet inherits profile::params {
     ip     => $::ipaddress,
   }
 
-  file { '/etc/puppetlabs/r10k':
+  file { [ '/etc/puppetlabs', '/etc/puppetlabs/r10k' ]:
     ensure => 'directory',
   }
 
