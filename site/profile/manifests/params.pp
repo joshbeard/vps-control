@@ -19,7 +19,7 @@ class profile::params {
       $staging_path        = '/usr/local/staging'
     }
     default: {
-      $shell     = '/usr/bin/zsh'
+      $shell     = '/bin/zsh'
       $packages = [
         'vim-minimal',
       ]
