@@ -33,9 +33,10 @@ class profile::puppet inherits profile::params {
       '%{environment}',
       'common',
     ],
-    datadir      => "${::settings::environmentpath}/%{environment}/hieradata",
-    owner        => 'root',
-    group        => '0',
+    datadir    => "${::settings::environmentpath}/%{environment}/hieradata",
+    owner      => 'root',
+    group      => '0',
+    hiera_yaml => $::profile::params::hiera_yaml,
   }
 
   cron { 'puppet':

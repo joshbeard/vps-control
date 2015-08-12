@@ -17,6 +17,7 @@ class profile::params {
       $puppet_path         = '/usr/local/bin/puppet'
       $r10k_path           = '/usr/local/bin/r10k'
       $staging_path        = '/usr/local/staging'
+      $hiera_yaml          = '/usr/local/etc/puppet/hiera.yaml'
     }
     default: {
       $shell     = '/bin/zsh'
@@ -33,6 +34,7 @@ class profile::params {
       $puppet_path         = '/usr/local/bin/puppet'
       $r10k_path           = '/usr/local/bin/r10k'
       $staging_path        = '/opt/staging'
+      $hiera_yaml          = undef
     }
   }
 }
