@@ -44,14 +44,15 @@ class profile::base {
   }
 
   user { 'josh':
-    ensure  => 'present',
-    comment => 'Josh Beard',
-    gid     => 'josh',
-    groups  => ['wheel','web'],
-    home    => '/home/josh',
-    shell   => $::profile::params::shell,
-    uid     => '1000',
-    require => Package['zsh'],
+    ensure     => 'present',
+    comment    => 'Josh Beard',
+    gid        => 'josh',
+    groups     => ['wheel','web'],
+    home       => '/home/josh',
+    managehome => true,
+    shell      => $::profile::params::shell,
+    uid        => '1000',
+    require    => Package['zsh'],
   }
 
   group { 'josh':
