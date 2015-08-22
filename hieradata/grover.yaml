@@ -10,6 +10,12 @@ classes:
 ##
 nginx::config::server_tokens: 'off'
 nginx::nginx_vhosts:
+  'ghost.signalboxes.net':
+    ensure: 'present'
+    server_name: ['ghost.signalboxes.net']
+    proxy: 'http://localhost:2368'
+    client_max_body_size: '256M'
+
   'munin.signalboxes.net':
     ensure: 'present'
     server_name: ['munin.signalboxes.net']
