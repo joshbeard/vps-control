@@ -7,7 +7,7 @@ class profile::signalboxes {
   vcsrepo { '/var/www/signalboxes.net':
     ensure   => 'present',
     provider => 'git',
-    source   => 'https://gitlab.com/joshbeard/signalboxes-net.git',
+    source   => 'https://github.com/joshbeard/signalboxes-net.git',
     group    => 'web',
     require  => File['/var/www'],
   }
@@ -22,7 +22,7 @@ class profile::signalboxes {
   vcsrepo { '/var/www/pub.signalboxes.net/fancyindex':
     ensure   => 'present',
     provider => 'git',
-    source   => 'https://gitlab.com/joshbeard/Nginx-Fancyindex-Theme.git',
+    source   => 'https://github.com/joshbeard/Nginx-Fancyindex-Theme.git',
     path     => '/var/www/pub.signalboxes.net/fancyindex',
     group    => 'web',
   }

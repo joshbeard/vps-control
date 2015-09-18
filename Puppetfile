@@ -25,8 +25,8 @@ mod 'ruby',
   :ref => 'bdfb62c4b17dd6048b918c991f32df6ef283c580'
 
 mod 'mcmyadmin',
-  :git => 'https://gitlab.com/joshbeard/puppet-mcmyadmin.git'
+  :git => 'https://github.com/joshbeard/puppet-mcmyadmin.git'
 
 mod 'samba',
-  :git => 'https://gitlab.com/joshbeard/puppet-samba.git',
+  :git => 'https://github.com/joshbeard/puppet-samba.git',
   :ref => 'freebsd'

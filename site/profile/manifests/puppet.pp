@@ -18,7 +18,7 @@ class profile::puppet inherits profile::params {
     version       => 'latest',
     sources       => {
       'control'   => {
-        'remote'  => 'https://gitlab.com/joshbeard/vps-control.git',
+        'remote'  => 'https://github.com/joshbeard/vps-control.git',
         'basedir' => $::settings::environmentpath,
         'prefix'  => false,
       }
