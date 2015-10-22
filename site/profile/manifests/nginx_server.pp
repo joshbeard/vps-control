@@ -4,10 +4,10 @@ class profile::nginx_server {
 
   file { 'nginx_ssl':
     ensure => 'directory',
-    owner  => 'nginx',
-    group  => 'nginx',
+    owner  => $::nginx::params::daemon_user,
+    group  => '0',
     mode   => '0700',
-    path   => "${profile::params::nginx_path}/ssl",
+    path   => "${::nginx::params::conf_dir}/ssl",
     before => Service['nginx'],
   }
 
