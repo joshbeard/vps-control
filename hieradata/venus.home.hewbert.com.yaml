@@ -12,6 +12,8 @@ nginx::nginx_vhosts:
     www_root: '/var/www/home.jbeard.org'
 
 nginx::nginx_locations:
-  't':
+  '/t':
     proxy: 'http://localhost:9091'
     vhost: 'home.jbeard.org'
+    auth_basic: 'Transmission'
+    auth_basic_user_file: '/usr/local/etc/transmission/transmission.access'
