@@ -17,6 +17,7 @@ mod 'puppetlabs/concat',      '1.2.4'
 mod 'puppetlabs/inifile',     '1.4.1'
 mod 'saz/timezone',           '3.3.0'
 mod 'zleslie/pkgng',          '0.2.5'
+mod 'camptocamp/openssl',     '1.5.0'
 
 ## Pinned for FreeBSD support
 #mod 'puppetlabs/ruby',        '0.4.0'

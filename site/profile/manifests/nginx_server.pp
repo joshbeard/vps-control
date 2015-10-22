@@ -2,6 +2,15 @@
 class profile::nginx_server {
   include ::nginx
 
+  file { 'nginx_ssl':
+    ensure => 'directory',
+    owner  => 'nginx',
+    group  => 'nginx',
+    mode   => '0700',
+    path   => "${profile::params::nginx_path}/ssl",
+    before => Service['nginx'],
+  }
+
   if $::osfamily == 'FreeBSD' {
     file { '/etc/newsyslog.conf.d/nginx.conf':
       ensure  => 'file',
