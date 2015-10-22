@@ -5,3 +5,13 @@
 ruby::rubygems_package: 'ruby21-gems'
 classes:
   - role::venus
+
+nginx::config::server_tokens: 'off'
+nginx::nginx_vhosts:
+  'home.jbeard.org':
+    www_root: '/var/www/home.jbeard.org'
+
+nginx::nginx_locations:
+  't':
+    proxy: 'http://localhost:9091'
+    vhost: 'home.jbeard.org'

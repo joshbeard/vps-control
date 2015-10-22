@@ -7,4 +7,6 @@ class role::venus {
   include profile::plex
   include profile::minecraft
   include profile::smb
+  include profile::nginx_server
+  include profile::www::home_jbeard
 }
