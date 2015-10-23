@@ -23,3 +23,5 @@ nginx::nginx_locations:
     vhost: 'home.jbeard.org'
     auth_basic: 'Transmission'
     auth_basic_user_file: '/usr/local/etc/transmission/transmission.access'
+    ssl: true
+    ssl_only: true
