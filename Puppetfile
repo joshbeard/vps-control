@@ -31,3 +31,7 @@ mod 'mcmyadmin',
 mod 'samba',
   :git => 'https://github.com/joshbeard/puppet-samba.git',
   :ref => 'freebsd'
+
+mod 'transmission',
+  :git => 'https://github.com/joshbeard/puppet-transmission.git',
+  :ref => 'master'

@@ -9,4 +9,5 @@ class role::venus {
   include profile::smb
   include profile::nginx_server
   include profile::www::home_jbeard
+  include profile::transmission
 }
