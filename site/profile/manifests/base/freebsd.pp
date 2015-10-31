@@ -23,6 +23,7 @@ class profile::base::freebsd {
       '  noauto = "query -e \'%a == 0\' \'%n-%v\'",',
       '  options: query -i "%n - %Ok: %Ov",',
       '  origin: info -qo,',
+      '  outdated: version -vRL=,',
       '  provided-depends: info -qb,',
       '  raw: info -R,',
       '  required-depends: info -qr,',
@@ -30,7 +31,7 @@ class profile::base::freebsd {
       '  shared-depends: info -qB,',
       '  show: info -f -k,',
       '  size: info -sq,',
-      '  }',
+      '}',
     ],
   }
   pkgng::repo { 'FreeBSD':
