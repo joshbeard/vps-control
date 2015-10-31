@@ -4,6 +4,39 @@ class profile::base::freebsd {
     environment => 'PATH=/bin:/usr/bin:/usr/sbin:/usr/local/bin',
   }
 
+  class { '::pkgng':
+    options => [
+      'ALIAS              : {',
+      '  all-depends: query %dn-%dv,',
+      '  annotations: info -A,',
+      '  build-depends: info -qd,',
+      '  cinfo: info -Cx,',
+      '  comment: query -i "%c",',
+      '  csearch: search -Cx,',
+      '  desc: query -i "%e",',
+      '  download: fetch,',
+      '  iinfo: info -ix,',
+      '  isearch: search -ix,',
+      '  prime-list: "query -e \'%a = 0\' \'%n\'",',
+      '  leaf: "query -e \'%#r == 0\' \'%n-%v\'",',
+      '  list: info -ql,',
+      '  noauto = "query -e \'%a == 0\' \'%n-%v\'",',
+      '  options: query -i "%n - %Ok: %Ov",',
+      '  origin: info -qo,',
+      '  provided-depends: info -qb,',
+      '  raw: info -R,',
+      '  required-depends: info -qr,',
+      '  roptions: rquery -i "%n - %Ok: %Ov",',
+      '  shared-depends: info -qB,',
+      '  show: info -f -k,',
+      '  size: info -sq,',
+      '  }',
+    ],
+  }
+  pkgng::repo { 'FreeBSD':
+    packagehost => 'pkg.freebsd.org',
+  }
+
   cron { 'freebsd_update':
     ensure  => 'present',
     command => 'freebsd-update cron',
