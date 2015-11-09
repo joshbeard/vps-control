@@ -25,3 +25,12 @@ nginx::nginx_locations:
     auth_basic_user_file: '/usr/local/etc/transmission/transmission.access'
     ssl: true
     ssl_only: true
+
+nginx::nginx_locations:
+  '/p':
+    proxy: 'http://localhost:32400'
+    vhost: 'home.jbeard.org'
+    auth_basic: 'Plex'
+    auth_basic_user_file: '/usr/local/etc/transmission/transmission.access'
+    ssl: true
+    ssl_only: true
