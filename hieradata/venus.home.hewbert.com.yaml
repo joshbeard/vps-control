@@ -16,21 +16,18 @@ nginx::nginx_vhosts:
     ssl_key: '/usr/local/etc/nginx/ssl/home.jbeard.org.key'
     ssl_ciphers: 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH'
     www_root: '/var/www/home.jbeard.org'
-
-nginx::nginx_locations:
-  '/t':
-    proxy: 'http://localhost:9091'
-    vhost: 'home.jbeard.org'
-    auth_basic: 'Transmission'
-    auth_basic_user_file: '/usr/local/etc/transmission/transmission.access'
-    ssl: true
-    ssl_only: true
-
 nginx::nginx_locations:
   '/p':
     proxy: 'http://localhost:32400'
     vhost: 'home.jbeard.org'
     auth_basic: 'Plex'
+    auth_basic_user_file: '/usr/local/etc/transmission/transmission.access'
+    ssl: true
+    ssl_only: true
+  '/t':
+    proxy: 'http://localhost:9091'
+    vhost: 'home.jbeard.org'
+    auth_basic: 'Transmission'
     auth_basic_user_file: '/usr/local/etc/transmission/transmission.access'
     ssl: true
     ssl_only: true
