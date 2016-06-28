@@ -8,18 +8,46 @@ classes:
 
 nginx::config::server_tokens: 'off'
 nginx::nginx_vhosts:
+  'home.jbeard.org_http':
+    www_root: '/var/www/home.jbeard.org'
+    location_cfg_append:
+      'rewrite': '^ https://$server_name$request_uri? permanent'
+
   'home.jbeard.org':
     ssl: true
     ssl_port: '443'
-    ssl_cert: '/etc/letsencrypt/live/home.jbeard.org/cert.pem'
-    ssl_key: '/etc/letsencrypt/live/home.jbeard.org/privkey.pem'
+    ssl_cert: '/usr/local/etc/letsencrypt/live/home.jbeard.org/cert.pem'
+    ssl_key: '/usr/local/etc/letsencrypt/live/home.jbeard.org/privkey.pem'
     ssl_ciphers: 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH'
     www_root: '/var/www/home.jbeard.org'
+
+  'plex.jbeard.org_http':
+    www_root: '/var/www/home.jbeard.org'
+    location_cfg_append:
+      'rewrite': '^ https://$server_name$request_uri? permanent'
+
   'plex.jbeard.org':
-    listen_port: '80'
+    listen_port: '443'
     proxy: 'http://localhost:32400'
+    ssl: true
+    ssl_cert: '/usr/local/etc/letsencrypt/live/plex.jbeard.org/cert.pem'
+    ssl_key: '/usr/local/etc/letsencrypt/live/plex.jbeard.org/privkey.pem'
+    ssl_ciphers: 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH'
+    www_root: '/var/www/home.jbeard.org'
 
 nginx::nginx_locations:
+  'jbeard_root':
+    vhost: 'home.jbeard.org'
+    location: '/'
+    www_root: '/var/www/home.jbeard.org'
+    index_files:
+      - 'index.html'
+      - 'index.htm'
+
+  '/.well-known':
+    vhost: 'home.jbeard.org_http'
+    www_root: '/var/www/home.jbeard.org'
+
   '/transmission':
     proxy: 'http://localhost:9091'
     vhost: 'home.jbeard.org'
