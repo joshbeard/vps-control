@@ -33,7 +33,6 @@ nginx::nginx_vhosts:
     ssl_cert: '/usr/local/etc/letsencrypt/live/plex.jbeard.org/cert.pem'
     ssl_key: '/usr/local/etc/letsencrypt/live/plex.jbeard.org/privkey.pem'
     ssl_ciphers: 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH'
-    www_root: '/var/www/home.jbeard.org'
 
 nginx::nginx_locations:
   '/.well-known':
