@@ -11,7 +11,7 @@ nginx::nginx_vhosts:
   'home.jbeard.org_http':
     www_root: '/var/www/home.jbeard.org'
     location_cfg_append:
-      'rewrite': '^ https://$server_name$request_uri? permanent'
+      'return': '301 http://$server_name$request_uri'
 
   'home.jbeard.org':
     ssl: true
@@ -22,22 +22,30 @@ nginx::nginx_vhosts:
     www_root: '/var/www/home.jbeard.org'
 
   'plex.jbeard.org_http':
-    www_root: '/var/www/home.jbeard.org'
+    www_root: '/var/www/plex.jbeard.org'
     location_cfg_append:
       'rewrite': '^ https://$server_name$request_uri? permanent'
 
   'plex.jbeard.org':
     listen_port: '443'
     proxy: 'http://localhost:32400'
+    auth_basic: 'Plex'
+    auth_basic_user_file: '/usr/local/etc/transmission/transmission.access'
     ssl: true
     ssl_cert: '/usr/local/etc/letsencrypt/live/plex.jbeard.org/cert.pem'
     ssl_key: '/usr/local/etc/letsencrypt/live/plex.jbeard.org/privkey.pem'
     ssl_ciphers: 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH'
 
 nginx::nginx_locations:
-  '/.well-known':
+  'home-well-known':
+    location: '/.well-known'
     vhost: 'home.jbeard.org_http'
     www_root: '/var/www/home.jbeard.org'
+
+  'plex-well-known':
+    location: '/.well-known'
+    vhost: 'plex.jbeard.org_http'
+    www_root: '/var/www/plex.jbeard.org'
 
   '/transmission':
     proxy: 'http://localhost:9091'
