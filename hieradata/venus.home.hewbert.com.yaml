@@ -20,7 +20,7 @@ nginx::nginx_vhosts:
     proxy: 'http://localhost:32400'
 
 nginx::nginx_locations:
-  '/t':
+  '/transmission':
     proxy: 'http://localhost:9091'
     vhost: 'home.jbeard.org'
     auth_basic: 'Transmission'
