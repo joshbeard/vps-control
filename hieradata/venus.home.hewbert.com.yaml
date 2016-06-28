@@ -36,14 +36,6 @@ nginx::nginx_vhosts:
     www_root: '/var/www/home.jbeard.org'
 
 nginx::nginx_locations:
-  'jbeard_root':
-    vhost: 'home.jbeard.org'
-    location: '/'
-    www_root: '/var/www/home.jbeard.org'
-    index_files:
-      - 'index.html'
-      - 'index.htm'
-
   '/.well-known':
     vhost: 'home.jbeard.org_http'
     www_root: '/var/www/home.jbeard.org'
