@@ -2,7 +2,7 @@
 ##
 ## Hiera config for my old server
 ##
-ruby::rubygems_package: 'ruby21-gems'
+ruby::rubygems_package: 'ruby22-gems'
 classes:
   - role::venus
 
