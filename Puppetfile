@@ -38,4 +38,4 @@ mod 'transmission',
 
 mod 'letsencrypt',
   :git => 'https://github.com/danzilio/puppet-letsencrypt.git',
-  :ref => 'f89e7cc'
+  :ref => '6d21342fac6112446728a300e764d60116de842d'
