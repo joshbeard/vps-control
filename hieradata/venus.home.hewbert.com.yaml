@@ -10,12 +10,14 @@ nginx::config::server_tokens: 'off'
 nginx::nginx_vhosts:
   'home.jbeard.org_http':
     www_root: '/var/www/home.jbeard.org'
+    server_name:
+      'home.jbeard.org'
     location_cfg_append:
       'return': '301 http://$server_name$request_uri'
 
   'home.jbeard.org':
+    listen_port: '443'
     ssl: true
-    ssl_port: '443'
     ssl_cert: '/usr/local/etc/letsencrypt/live/home.jbeard.org/cert.pem'
     ssl_key: '/usr/local/etc/letsencrypt/live/home.jbeard.org/privkey.pem'
     ssl_ciphers: 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH'
@@ -23,6 +25,8 @@ nginx::nginx_vhosts:
 
   'plex.jbeard.org_http':
     www_root: '/var/www/plex.jbeard.org'
+    server_name:
+      - 'plex.jbeard.org'
     location_cfg_append:
       'rewrite': '^ https://$server_name$request_uri? permanent'
 
