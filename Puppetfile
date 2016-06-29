@@ -36,6 +36,6 @@ mod 'transmission',
   :git => 'https://github.com/joshbeard/puppet-transmission.git',
   :ref => 'master'
 
-mod 'certbot',
+mod 'letsencrypt',
   :git => 'https://github.com/danzilio/puppet-letsencrypt.git',
-  :ref => '6d21342fac6112446728a300e764d60116de842d'
+  :ref => 'f89e7ccf1dd698c5473e8a8e8ef79cfbd1ff332d'
