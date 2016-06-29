@@ -11,7 +11,7 @@ nginx::nginx_vhosts:
   'home.jbeard.org_http':
     www_root: '/var/www/home.jbeard.org'
     server_name:
-      'home.jbeard.org'
+      - 'home.jbeard.org'
     location_cfg_append:
       'return': '301 http://$server_name$request_uri'
 
