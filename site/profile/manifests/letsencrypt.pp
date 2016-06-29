@@ -8,6 +8,8 @@
 #     nginx until we have the cert.  but we need nginx running (80) to get the
 #     cert. standalone might be the way to go.  is this working on freebsd?
 #   - move the certonly stuff to vhost-specific profiles
+#   - manage cronjob that'll restart nginx only if a new cert was obtained.
+#     the default cronjob restarted nginx even if a new cert was not obtained.
 #
 class profile::letsencrypt {
   class { '::letsencrypt':
@@ -23,15 +25,14 @@ class profile::letsencrypt {
     domains              => ['plex.jbeard.org'],
     plugin               => 'webroot',
     webroot_paths        => ['/var/www/plex.jbeard.org'],
-    manage_cron          => true,
-    cron_success_command => '/usr/sbin/service nginx restart',
+    manage_cron          => false,
   }
 
   letsencrypt::certonly { 'home.jbeard.org':
     domains              => ['home.jbeard.org'],
     plugin               => 'webroot',
     webroot_paths        => ['/var/www/home.jbeard.org'],
-    manage_cron          => true,
-    cron_success_command => '/usr/sbin/service nginx restart',
+    manage_cron          => false,
   }
+
 }
