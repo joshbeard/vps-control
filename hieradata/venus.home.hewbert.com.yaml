@@ -63,10 +63,6 @@ nginx::nginx_locations:
 # Letsencrypt
 # -------------------------------------------------------------------
 letsencrypt::package_command: '/usr/local/bin/letsencrypt'
-letsencrypt::email: 'ssl@signalboxes.net'
-letsencrypt::configure_epel: false
-letsencrypt::manage_install: true
-letsencrypt::manage_config: true
 letsencrypt::install_method: 'vcs'
 
 profile::letsencrypt::certonly_defaults:
