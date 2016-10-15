@@ -178,7 +178,7 @@ nginx::nginx_locations:
 
   'pub.signalboxes.net-well-known':
     location: '/.well-known'
-    vhost: 'pub.signalboxes.net'
+    vhost: 'pub.signalboxes.net_http'
     www_root: '/var/www/le_webroot/pub.signalboxes.net'
 
   'juliabeard.me-well-known':
