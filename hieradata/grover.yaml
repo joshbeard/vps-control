@@ -18,7 +18,7 @@ nginx::nginx_vhosts:
 
   'pub.signalboxes.net':
     server_name: ['pub.signalboxes.net']
-    listen_port: '443'
+    listen_port: '80'
     ssl: true
     ssl_cert: '/etc/letsencrypt/live/pub.signalboxes.net/fullchain.pem'
     ssl_key: '/etc/letsencrypt/live/pub.signalboxes.net/privkey.pem'
