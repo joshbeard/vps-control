@@ -10,37 +10,22 @@ classes:
 ##
 nginx::config::server_tokens: 'off'
 nginx::nginx_vhosts:
-  'ghost.signalboxes.net':
-    ensure: 'present'
-    server_name: ['ghost.signalboxes.net']
-    proxy: 'http://localhost:2368'
-    client_max_body_size: '256M'
-
-  'munin.signalboxes.net':
-    ensure: 'present'
-    server_name: ['munin.signalboxes.net']
-    www_root: '/usr/local/www/munin'
-    access_log: '/var/log/nginx/munin.signalboxes.net.access.log'
-    error_log: '/var/log/nginx/munin.signalboxes.net.error.log'
-
-  'puma.signalboxes.net':
-    ensure: 'present'
-    server_name: ['puma.signalboxes.net']
-    www_root: "/var/www/puma.signalboxes.net/public"
-    access_log: '/var/log/nginx/puma.signalboxes.net.access.log'
-    error_log: '/var/log/nginx/puma.signalboxes.net.error.log'
-    try_files:
-      - 'index.html'
-      - '$uri/index.html'
-      - '@puma'
+  'pub.signalboxes.net_http':
+    www_root: '/var/www/pub.signalboxes.net'
+    server_name: ['pub.signalboxes.net']
+    location_cfg_append:
+      'return': '301 http://$server_name$request_uri'
 
   'pub.signalboxes.net':
-    ensure: present
     server_name: ['pub.signalboxes.net']
+    listen_port: '443'
+    ssl: true
+    ssl_cert: '/usr/local/etc/letsencrypt/live/pub.signalboxes.net/fullchain.pem'
+    ssl_key: '/usr/local/etc/letsencrypt/live/pub.signalboxes.net/privkey.pem'
+    ssl_ciphers: 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH'
     www_root: "/var/www/pub.signalboxes.net"
     access_log: '/var/log/nginx/pub.signalboxes.net.access.log'
     error_log: '/var/log/nginx/pub.signalboxes.net.error.log'
-    use_default_location: false
     vhost_cfg_prepend:
       'index': 'index.php index.html'
       #'fancyindex': 'on'
@@ -50,39 +35,71 @@ nginx::nginx_vhosts:
       #'fancyindex_footer': '/fancyindex/footer.html'
       #'fancyindex_ignore': 'fancyindex'
 
-  'juliabeard.me':
-    ensure: present
+  'juliabeard.me_http':
     server_name: ['juliabeard.me', 'www.juliabeard.me', 'www.juliabeard.net', 'juliabeard.net']
+    www_root: "/var/www/signalboxes.net/sites/julia"
+    location_cfg_append:
+      'return': '301 http://$server_name$request_uri'
+
+  'juliabeard.me':
+    server_name: ['juliabeard.me', 'www.juliabeard.me', 'www.juliabeard.net', 'juliabeard.net']
+    listen_port: '443'
+    ssl: true
+    ssl_cert: '/usr/local/etc/letsencrypt/live/juliabeard.me/fullchain.pem'
+    ssl_key: '/usr/local/etc/letsencrypt/live/juliabeard.me/privkey.pem'
+    ssl_ciphers: 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH'
     www_root: "/var/www/signalboxes.net/sites/julia"
     access_log: "/var/log/nginx/juliabeard.me_access.log"
     error_log: "/var/log/nginx/juliabeard.me_error.log"
-    use_default_location: false
+
+  'joshbeard.me_http':
+    server_name: ['joshbeard.me', 'www.joshbeard.me']
+    www_root: "/var/www/joshbeard.me"
+    location_cfg_append:
+      'return': '301 http://$server_name$request_uri'
 
   'joshbeard.me':
-    ensure: present
     server_name: ['joshbeard.me', 'www.joshbeard.me']
+    listen_port: '443'
+    ssl: true
+    ssl_cert: '/usr/local/etc/letsencrypt/live/joshbeard.me/fullchain.pem'
+    ssl_key: '/usr/local/etc/letsencrypt/live/joshbeard.me/privkey.pem'
+    ssl_ciphers: 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH'
     www_root: "/var/www/joshbeard.me"
     access_log: "/var/log/nginx/joshbeard.me_access.log"
     error_log: "/var/log/nginx/joshbeard.me_error.log"
-    use_default_location: false
     vhost_cfg_append:
       'rewrite ^': "http://signalboxes.net/"
 
-  'jbeard.org':
-    ensure: present
+  'jbeard.org_http':
     server_name: ['jbeard.org', 'www.jbeard.org']
+    www_root: "/var/www/signalboxes.net/sites/jbeard"
+    location_cfg_append:
+      'return': '301 http://$server_name$request_uri'
+
+  'jbeard.org':
+    server_name: ['jbeard.org', 'www.jbeard.org']
+    ssl: true
+    ssl_cert: '/usr/local/etc/letsencrypt/live/jbeard.org/fullchain.pem'
+    ssl_key: '/usr/local/etc/letsencrypt/live/jbeard.org/privkey.pem'
     www_root: "/var/www/signalboxes.net/sites/jbeard"
     access_log: "/var/log/nginx/jbeard.org_access.log"
     error_log: "/var/log/nginx/jbeard.org_error.log"
-    use_default_location: false
+
+  'hewbert.com_http':
+    server_name: ['hewbert.com', 'www.hewbert.com']
+    www_root: "/var/www/hewbert.com"
+    location_cfg_append:
+      'return': '301 http://$server_name$request_uri'
 
   'hewbert.com':
-    ensure: present
     server_name: ['hewbert.com', 'www.hewbert.com']
+    ssl: true
+    ssl_cert: '/usr/local/etc/letsencrypt/live/hewbert.com/fullchain.pem'
+    ssl_key: '/usr/local/etc/letsencrypt/live/hewbert.com/privkey.pem'
     www_root: "/var/www/hewbert.com"
     access_log: '/var/log/nginx/hewbert.com.access.log'
     error_log: '/var/log/nginx/hewbert.com.error.log'
-    use_default_location: false
     vhost_cfg_prepend:
       'index': 'index.html'
     vhost_cfg_append:
@@ -93,13 +110,21 @@ nginx::nginx_vhosts:
     vhost_cfg_append:
       'rewrite ^': 'https://mail.google.com/a/hewbert.com permanent'
 
+  'signalboxes.net_http':
+    server_name: ['signalboxes.net', 'www.hewbert.com']
+    www_root: "/var/www/signalboxes.net"
+    location_cfg_append:
+      'return': '301 http://$server_name$request_uri'
+
   'signalboxes.net':
     add_header:
       'X-Powered-By': '"Open Source"'
-    use_default_location: false
     listen_options: "default_server"
     server_name: ['signalboxes.net', 'www.signalboxes.net', 'www1.signalboxes.net', 'www2.signalboxes.net', 'www3.signalboxes.net', 'ipv6.signalboxes.net']
     www_root: '/var/www/signalboxes.net'
+    ssl: true
+    ssl_cert: '/usr/local/etc/letsencrypt/live/signalboxes.net/fullchain.pem'
+    ssl_key: '/usr/local/etc/letsencrypt/live/signalboxes.net/privkey.pem'
     index_files: ['index.html']
     access_log: '/var/log/nginx/signalboxes.net-access.log'
     error_log: '/var/log/nginx/signalboxes.net-error.log'
@@ -110,9 +135,17 @@ nginx::nginx_vhosts:
       'error_page': '403 = /403.html'
     gzip_types: 'text/plain application/javascript application/x-javascript text/xml text/css'
 
+  'signaltotrust.net_http':
+    server_name: ['signaltotrust.net', 'www.signaltotrust.net']
+    www_root: "/var/www/signaltotrust.net"
+    location_cfg_append:
+      'return': '301 http://$server_name$request_uri'
+
   'signaltotrust.net':
-    ensure: present
     server_name: ['www.signaltotrust.net', 'signaltotrust.net']
+    ssl: true
+    ssl_cert: '/usr/local/etc/letsencrypt/live/signaltotrust.net/fullchain.pem'
+    ssl_key: '/usr/local/etc/letsencrypt/live/signaltotrust.net/privkey.pem'
     www_root: "/var/www/signaltotrust.net"
     access_log: '/var/log/nginx/signaltotrust.access.log'
     error_log: '/var/log/nginx/signaltotrust.error.log'
@@ -128,22 +161,69 @@ nginx::nginx_locations:
     vhost: 'signalboxes.net'
     location_custom_cfg:
       'expires': '60d'
-  '@puma':
-    proxy_set_header:
-      - 'X-Forwarded-For $proxy_add_x_forwarded_for'
-      - 'Host $http_host'
-    proxy: 'http://puma_server'
-    vhost: 'puma.signalboxes.net'
 
-nginx::nginx_upstreams:
-  'puma_server':
-    members:
-      - 'unix:/var/run/puma.sock'
+  'pub.signalboxes.net-well-known':
+    location: '/.well-known'
+    vhost: 'pub.signalboxes.net_http'
+    www_root: '/var/www/le_webroot/pub.signalboxes.net'
+
+  'juliabeard.me-well-known':
+    location: '/.well-known'
+    vhost: 'juliabeard.me_http'
+    www_root: '/var/www/le_webroot/juliabeard.me'
+
+  'joshbeard.me-well-known':
+    location: '/.well-known'
+    vhost: 'joshbeard.me_http'
+    www_root: '/var/www/le_webroot/joshbeard.me'
+
+  'jbeard.org-well-known':
+    location: '/.well-known'
+    vhost: 'jbeard.org_http'
+    www_root: "/var/www/le_webroot/signalboxes.net"
+
+  'signalboxes.net-well-known':
+    location: '/.well-known'
+    vhost: 'signalboxes.net_http'
+    www_root: '/var/www/le_webroot/signalboxes.net'
+
+  'signaltotrust.net-well-known':
+    location: '/.well-known'
+    vhost: 'signaltotrust.net_http'
+    www_root: '/var/www/le_webroot/signaltotrust.net'
+
+  'hewbert.com-well-known':
+    location: '/.well-known'
+    vhost: 'hewbert.com_http'
+    www_root: '/var/www/le_webroot/hewbert.com'
 
 # -------------------------------------------------------------------
 # Letsencrypt
 # -------------------------------------------------------------------
-certonly_defaults:
+profile::letsencrypt::certonly_defaults:
   plugin: 'webroot'
   manage_cron: true
-  cron_success_command: '/usr/sbin/service nginx restart'
+  cron_success_command: '/sbin/service nginx restart'
+
+profile::letsencrypt::domains:
+  'signalboxes.net'
+    webroot_paths:
+      - '/var/www/le_webroot/signalboxes.net'
+  'jbeard.org':
+    webroot_paths:
+      - '/var/www/le_webroot/jbeard.org'
+  'pub.signalboxes.net':
+    webroot_paths:
+      - '/var/www/le_webroot/pub.signalboxes.net'
+  'juliabeard.me':
+    webroot_paths:
+      - '/var/www/le_webroot/juliabeard.me'
+  'joshbeard.me':
+    webroot_paths:
+      - '/var/www/le_webroot/joshbeard.me'
+  'signaltotrust.net':
+    webroot_paths:
+      - '/var/www/le_webroot/signaltotrust.net'
+  'hewbert.com':
+    webroot_paths:
+      - '/var/www/le_webroot/hewbert.com'
