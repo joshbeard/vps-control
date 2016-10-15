@@ -10,11 +10,11 @@ classes:
 ##
 nginx::config::server_tokens: 'off'
 nginx::nginx_vhosts:
-  'pub.signalboxes.net_http':
-    www_root: '/var/www/pub.signalboxes.net'
-    server_name: ['pub.signalboxes.net']
-    location_cfg_append:
-      'return': '301 https://$server_name$request_uri'
+  #  'pub.signalboxes.net_http':
+  #    www_root: '/var/www/pub.signalboxes.net'
+  #    server_name: ['pub.signalboxes.net']
+  #    location_cfg_append:
+  #      'return': '301 https://$server_name$request_uri'
 
   'pub.signalboxes.net':
     server_name: ['pub.signalboxes.net']
@@ -174,7 +174,7 @@ nginx::nginx_locations:
 
   'pub.signalboxes.net-well-known':
     location: '/.well-known'
-    vhost: 'pub.signalboxes.net_http'
+    vhost: 'pub.signalboxes.net'
     www_root: '/var/www/le_webroot/pub.signalboxes.net'
 
   'juliabeard.me-well-known':
