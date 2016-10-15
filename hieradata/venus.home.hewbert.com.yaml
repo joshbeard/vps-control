@@ -18,7 +18,7 @@ nginx::nginx_vhosts:
   'home.jbeard.org':
     listen_port: '443'
     ssl: true
-    ssl_cert: '/usr/local/etc/letsencrypt/live/home.jbeard.org/cert.pem'
+    ssl_cert: '/usr/local/etc/letsencrypt/live/home.jbeard.org/fullchain.pem'
     ssl_key: '/usr/local/etc/letsencrypt/live/home.jbeard.org/privkey.pem'
     ssl_ciphers: 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH'
     www_root: '/var/www/home.jbeard.org'
@@ -36,8 +36,25 @@ nginx::nginx_vhosts:
     auth_basic: 'Plex'
     auth_basic_user_file: '/usr/local/etc/transmission/transmission.access'
     ssl: true
-    ssl_cert: '/usr/local/etc/letsencrypt/live/plex.jbeard.org/cert.pem'
+    ssl_cert: '/usr/local/etc/letsencrypt/live/plex.jbeard.org/fullchain.pem'
     ssl_key: '/usr/local/etc/letsencrypt/live/plex.jbeard.org/privkey.pem'
+    ssl_ciphers: 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH'
+
+  't.jbeard.org_http':
+    www_root: '/var/www/t.jbeard.org'
+    server_name:
+      - 't.jbeard.org'
+    location_cfg_append:
+      'rewrite': '^ https://$server_name$request_uri? permanent'
+
+  't.jbeard.org':
+    listen_port: '443'
+    proxy: 'http://localhost:9091'
+    auth_basic: 'Transmission'
+    auth_basic_user_file: '/usr/local/etc/transmission/transmission.access'
+    ssl: true
+    ssl_cert: '/usr/local/etc/letsencrypt/live/t.jbeard.org/fullchain.pem'
+    ssl_key: '/usr/local/etc/letsencrypt/live/t.jbeard.org/privkey.pem'
     ssl_ciphers: 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH'
 
 nginx::nginx_locations:
@@ -51,6 +68,11 @@ nginx::nginx_locations:
     vhost: 'plex.jbeard.org_http'
     www_root: '/var/www/plex.jbeard.org'
 
+  't-well-known':
+    location: '/.well-known'
+    vhost: 't.jbeard.org_http'
+    www_root: '/var/www/t.jbeard.org'
+
   '/transmission':
     proxy: 'http://localhost:9091'
     vhost: 'home.jbeard.org'
@@ -62,8 +84,9 @@ nginx::nginx_locations:
 # -------------------------------------------------------------------
 # Letsencrypt
 # -------------------------------------------------------------------
-letsencrypt::package_command: '/usr/local/bin/letsencrypt'
-letsencrypt::install_method: 'vcs'
+letsencrypt::package_command: 'certbot'
+letsencrypt::install_method: 'package'
+letsencrypt::package_name: 'py27-certbot'
 
 profile::letsencrypt::certonly_defaults:
   plugin: 'webroot'
@@ -77,3 +100,6 @@ profile::letsencrypt::domains:
   'home.jbeard.org':
     webroot_paths:
       - '/var/www/home.jbeard.org'
+  't.jbeard.org':
+    webroot_paths:
+      - '/var/www/t.jbeard.org'

@@ -38,5 +38,5 @@ mod 'transmission',
   :ref => 'master'
 
 mod 'letsencrypt',
-  :git => 'https://github.com/danzilio/puppet-letsencrypt.git',
-  :ref => 'f89e7ccf1dd698c5473e8a8e8ef79cfbd1ff332d'
+  :git => 'https://github.com/joshbeard/puppet-letsencrypt.git',
+  :ref => 'freebsd_paths'

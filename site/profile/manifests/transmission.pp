@@ -1,5 +1,9 @@
 class profile::transmission {
 
+  file { '/var/www/t.jbeard.org':
+    ensure => 'directory',
+  }
+
   class { '::transmission':
     settings => {
       'download-dir'           => '/store/media/Videos/movies',
