@@ -142,7 +142,6 @@ nginx::nginx_vhosts:
   'signaltotrust.net_http':
     server_name: ['signaltotrust.net', 'www.signaltotrust.net']
     www_root: "/var/www/signaltotrust.net"
-    use_default_location: false
     location_cfg_append:
       'return': '301 https://$server_name$request_uri'
 
