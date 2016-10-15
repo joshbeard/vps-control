@@ -67,7 +67,7 @@ letsencrypt::email: 'ssl@signalboxes.net'
 letsencrypt::configure_epel: false
 letsencrypt::manage_install: true
 letsencrypt::manage_config: true
-letsencrypt::install_method: 'package'
+letsencrypt::install_method: 'vcs'
 
 profile::letsencrypt::certonly_defaults:
   plugin: 'webroot'
