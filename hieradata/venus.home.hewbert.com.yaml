@@ -58,3 +58,26 @@ nginx::nginx_locations:
     auth_basic_user_file: '/usr/local/etc/transmission/transmission.access'
     ssl: true
     ssl_only: true
+
+# -------------------------------------------------------------------
+# Letsencrypt
+# -------------------------------------------------------------------
+letsencrypt::package_command: '/usr/local/bin/letsencrypt'
+letsencrypt::email: 'ssl@signalboxes.net'
+letsencrypt::configure_epel: false
+letsencrypt::manage_install: true
+letsencrypt::manage_config: true
+letsencrypt::install_method: 'package'
+
+profile::letsencrypt::certonly_defaults:
+  plugin: 'webroot'
+  manage_cron: true
+  cron_success_command: '/usr/sbin/service nginx restart'
+
+profile::letsencrypt::domains:
+  'plex.jbeard.org':
+    webroot_paths:
+      - '/var/www/plex.jbeard.org'
+  'home.jbeard.org':
+    webroot_paths:
+      - '/var/www/home.jbeard.org'

@@ -11,28 +11,13 @@
 #   - manage cronjob that'll restart nginx only if a new cert was obtained.
 #     the default cronjob restarted nginx even if a new cert was not obtained.
 #
-class profile::letsencrypt {
-  class { '::letsencrypt':
-    configure_epel  => false,
-    manage_install  => false,
-    manage_config   => false,
-    email           => 'josh@signalboxes.net',
-    package_command => '/usr/local/bin/letsencrypt',
-    install_method  => 'package',
-  }
+class profile::letsencrypt (
+  $domains           = {},
+  $certonly_defaults = {},
+) {
 
-  letsencrypt::certonly { 'plex.jbeard.org':
-    domains              => ['plex.jbeard.org'],
-    plugin               => 'webroot',
-    webroot_paths        => ['/var/www/plex.jbeard.org'],
-    manage_cron          => false,
-  }
+  include ::letsencrypt
 
-  letsencrypt::certonly { 'home.jbeard.org':
-    domains              => ['home.jbeard.org'],
-    plugin               => 'webroot',
-    webroot_paths        => ['/var/www/home.jbeard.org'],
-    manage_cron          => false,
-  }
+  create_resources('letsencrypt::certonly', $domains, $certonly_defaults)
 
 }

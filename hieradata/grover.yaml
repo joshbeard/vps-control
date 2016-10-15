@@ -139,3 +139,11 @@ nginx::nginx_upstreams:
   'puma_server':
     members:
       - 'unix:/var/run/puma.sock'
+
+# -------------------------------------------------------------------
+# Letsencrypt
+# -------------------------------------------------------------------
+certonly_defaults:
+  plugin: 'webroot'
+  manage_cron: true
+  cron_success_command: '/usr/sbin/service nginx restart'
