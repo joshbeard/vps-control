@@ -26,7 +26,8 @@ nginx::nginx_vhosts:
     www_root: "/var/www/pub.signalboxes.net"
     access_log: '/var/log/nginx/pub.signalboxes.net_ssl_access.log'
     error_log: '/var/log/nginx/pub.signalboxes.net_ssl_error.log'
-    rewrite_to_https: true
+    location_cfg_append:
+      'return': '301 https://$server_name$request_uri'
     vhost_cfg_prepend:
       'index': 'index.php index.html'
       #'fancyindex': 'on'
