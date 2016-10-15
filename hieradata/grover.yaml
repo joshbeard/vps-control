@@ -72,7 +72,7 @@ nginx::nginx_vhosts:
     access_log: "/var/log/nginx/joshbeard.me_ssl_access.log"
     error_log: "/var/log/nginx/joshbeard.me_ssl_error.log"
     vhost_cfg_append:
-      'rewrite ^': "http://signalboxes.net/"
+      'return': '301 https://signalboxes.net/resume'
 
   'jbeard.org_http':
     server_name: ['jbeard.org', 'www.jbeard.org']
@@ -110,12 +110,7 @@ nginx::nginx_vhosts:
     vhost_cfg_prepend:
       'index': 'index.html'
     vhost_cfg_append:
-      'rewrite ^': "http://signalboxes.net/ permanent"
-
-  'webmail.hewbert.com':
-    use_default_location: false
-    vhost_cfg_append:
-      'rewrite ^': 'https://mail.google.com/a/hewbert.com permanent'
+      'return': "301 http://signalboxes.net"
 
   'signalboxes.net_http':
     server_name: ['signalboxes.net', 'www.hewbert.com']
@@ -165,7 +160,7 @@ nginx::nginx_vhosts:
     vhost_cfg_prepend:
       'index': 'index.php'
     vhost_cfg_append:
-      'rewrite ^': "https://signalboxes.net/ permanent"
+      'return': '301 https://signalboxes.net'
 
 nginx::nginx_locations:
   'image_cache':
