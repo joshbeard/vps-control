@@ -19,7 +19,7 @@ class profile::letsencrypt (
 
   $domains.each |$domain, $params| {
     $params['webroot_paths'].each |$dir| {
-      file { "/var/www/le_webroot/${dir}":
+      file { $dir:
         ensure => 'directory',
       }
     }
