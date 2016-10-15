@@ -3,7 +3,7 @@
 ## Hiera config for my VPS
 ##
 classes:
-  - role::vps
+  - 'role::vps'
 
 ##
 ## Nginx vhosts
@@ -206,24 +206,24 @@ profile::letsencrypt::certonly_defaults:
   cron_success_command: '/sbin/service nginx restart'
 
 profile::letsencrypt::domains:
-  'signalboxes.net'
-    webroot_paths:
+  'signalboxes.net':
+    'webroot_paths':
       - '/var/www/le_webroot/signalboxes.net'
   'jbeard.org':
-    webroot_paths:
+    'webroot_paths':
       - '/var/www/le_webroot/jbeard.org'
   'pub.signalboxes.net':
-    webroot_paths:
+    'webroot_paths':
       - '/var/www/le_webroot/pub.signalboxes.net'
   'juliabeard.me':
-    webroot_paths:
+    'webroot_paths':
       - '/var/www/le_webroot/juliabeard.me'
   'joshbeard.me':
-    webroot_paths:
+    'webroot_paths':
       - '/var/www/le_webroot/joshbeard.me'
   'signaltotrust.net':
-    webroot_paths:
+    'webroot_paths':
       - '/var/www/le_webroot/signaltotrust.net'
   'hewbert.com':
-    webroot_paths:
+    'webroot_paths':
       - '/var/www/le_webroot/hewbert.com'
