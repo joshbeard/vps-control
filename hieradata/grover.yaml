@@ -167,6 +167,7 @@ nginx::nginx_locations:
   'image_cache':
     location: '~* \.(js|css|png|jpg|jpeg|gif|ico)$'
     vhost: 'signalboxes.net'
+    ssl_only: true
     location_custom_cfg:
       'expires': '60d'
 
