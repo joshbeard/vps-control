@@ -1,5 +1,5 @@
 mod 'stahnma/epel',             '1.0.2'
-mod 'jfryman/nginx',            '0.2.7'
+mod 'puppet/nginx',             '0.4.0'
 mod 'puppetlabs/stdlib',        '4.7.0'
 mod 'saz/sudo',                 '3.1.0'
 mod 'nanliu/staging',           '1.0.3'
