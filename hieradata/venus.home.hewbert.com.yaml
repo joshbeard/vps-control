@@ -24,8 +24,8 @@ minecraft::instances:
   'creative':
     ops:
       - 'hewbert007'
-		jar: 'spigot.jar'
-		server_properties:
+    jar: 'spigot.jar'
+    server_properties:
       'spawn-protection': '16'
       'max-tick-time': '60000'
       'generator-settings': ''
