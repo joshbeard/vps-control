@@ -29,30 +29,38 @@ minecraft::instance_defaults:
       # https://dev.bukkit.org/projects/worldedit/files
       source: 'https://addons-origin.cursecdn.com/files/956/525/worldedit-bukkit-6.1.5.jar'
       checksum: '2d57c7887975b583633e3508c3d01ea8'
+      plugin_name: 'WorldEdit'
     'Vault':
       # https://dev.bukkit.org/projects/vault
       source: 'https://addons-origin.cursecdn.com/files/894/359/Vault.jar'
       checksum: 'ff7a7b7233146b002727dfa238c8420e'
+      plugin_name: 'Vault'
     'EssentialsX':
       # https://www.spigotmc.org/resources/essentialsx.9089/
       # https://ci.drtshock.net/job/EssentialsX/
       source: 'https://ci.drtshock.net/job/EssentialsX/lastStableBuild/artifact/Essentials/target/EssentialsX-2.0.1.jar'
       checksum: '3588a221b5d7d7424b57d6cfbf7b996b'
+      plugin_name: 'EssentialsX'
     'EssentialsXAntiBuild':
       source: 'https://ci.drtshock.net/job/EssentialsX/lastStableBuild/artifact/EssentialsAntiBuild/target/EssentialsXAntiBuild-2.0.1.jar'
       checksum: 'a7912369215e53d88ca291278dbff938'
+      plugin_name: 'EssentialsXAntiBuild'
     'EssentialsXChat':
       source: 'https://ci.drtshock.net/job/EssentialsX/lastStableBuild/artifact/EssentialsChat/target/EssentialsXChat-2.0.1.jar'
       checksum: '0108193b0fbfb033d8ccdd59c2df5d4e'
+      plugin_name: 'EssentialsXChat'
     'EssentialsXGeoIP':
       source: 'https://ci.drtshock.net/job/EssentialsX/lastStableBuild/artifact/EssentialsGeoIP/target/EssentialsXGeoIP-2.0.1.jar'
       checksum: '18398b9c4f1abc49870f812c79bb3f83'
+      plugin_name: 'EssentialsXGeoIP'
     'EssentialsXProtect':
       source: 'https://ci.drtshock.net/job/EssentialsX/lastStableBuild/artifact/EssentialsProtect/target/EssentialsXProtect-2.0.1.jar'
       checksum: 'dfe37cc0764ee94f9633a6b3c48ad0a3'
-    'EssentialsSpawn':
+      plugin_name: 'EssentialsXProtect'
+    'EssentialsXSpawn':
       source: 'https://ci.drtshock.net/job/EssentialsX/lastStableBuild/artifact/EssentialsSpawn/target/EssentialsXSpawn-2.0.1.jar'
       checksum: '7c2ee690a0ec39c92181f242e624c82e'
+      plugin_name: 'EssentialsXSpan'
 minecraft::instances:
   'survival':
     jar: 'spigot.jar'
