@@ -16,7 +16,6 @@ classes:
   - 'profile::www::home_jbeard'
   - 'profile::www::plex_jbeard'
   - 'profile::transmission'
-  #- 'profile::letsencrypt'
 
 minecraft::user: 'minecraft'
 minecraft::group: 'minecraft'
