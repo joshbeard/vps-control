@@ -4,7 +4,25 @@
 ##
 ruby::rubygems_package: 'ruby22-gems'
 classes:
-  - role::venus
+  - 'profile::base'
+  - 'profile::zfs'
+  - 'profile::ssh'
+  - 'profile::sudoers'
+  - 'profile::puppet'
+  - 'profile::plex'
+  - 'minecraft'
+  - 'profile::smb'
+  - 'profile::nginx_server'
+  - 'profile::www::home_jbeard'
+  - 'profile::www::plex_jbeard'
+  - 'profile::transmission'
+  #- 'profile::letsencrypt'
+
+minecraft::user: 'minecraft'
+minecraft::group: 'minecraft'
+minecraft::install_base: '/usr/local/minecraft'
+minecraft::instances:
+  'survival': {}
 
 nginx::config::server_tokens: 'off'
 nginx::nginx_vhosts:

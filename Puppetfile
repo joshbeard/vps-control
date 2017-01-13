@@ -1,6 +1,6 @@
 mod 'stahnma/epel',             '1.0.2'
 mod 'puppet/nginx',             '0.4.0'
-mod 'puppetlabs/stdlib',        '4.7.0'
+mod 'puppetlabs/stdlib',        '4.14.0'
 mod 'saz/sudo',                 '3.1.0'
 mod 'nanliu/staging',           '1.0.3'
 mod 'puppetlabs/firewall',      '1.7.0'
@@ -28,6 +28,10 @@ mod 'ruby',
 
 mod 'mcmyadmin',
   :git => 'https://github.com/joshbeard/puppet-mcmyadmin.git'
+
+mod 'minecraft',
+  :git => 'https://github.com/joshbeard/puppet-minecraft.git',
+  :ref => 'instances'
 
 mod 'samba',
   :git => 'https://github.com/joshbeard/puppet-samba.git',
