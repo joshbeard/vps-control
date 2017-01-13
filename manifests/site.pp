@@ -1,15 +1,15 @@
 case $::osfamily {
   'FreeBSD': {
-    $package_provider = 'pkgng'
+    $pkg_provider = 'pkgng'
   }
   default: {
-    $package_provider = undef
+    $pkg_provider = undef
   }
 }
 
 Package {
   allow_virtual => true,
-  provider      => $package_provider,
+  provider      => $pkg_provider,
 }
 
 Vcsrepo {
