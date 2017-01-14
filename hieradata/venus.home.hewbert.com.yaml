@@ -191,6 +191,7 @@ nginx::nginx_vhosts:
         ssl_only: true
         auth_basic: 'Creative Dynmap'
         auth_basic_user_file: '/usr/local/etc/transmission/transmission.access'
+        www_root: false
       'survival-dynmap':
         location: '/dynmap/survival'
         proxy: 'http://127.0.0.1:8124'
@@ -198,6 +199,7 @@ nginx::nginx_vhosts:
         ssl_only: true
         auth_basic: 'Survival Dynmap'
         auth_basic_user_file: '/usr/local/etc/transmission/transmission.access'
+        www_root: false
 
   'plex.jbeard.org_http':
     www_root: '/var/www/plex.jbeard.org'
