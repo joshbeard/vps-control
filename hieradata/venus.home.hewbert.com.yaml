@@ -78,7 +78,8 @@ minecraft::instance_defaults:
       plugin_name: 'DynmapStructures'
 minecraft::instances:
   'survival':
-    jar: 'spigot.jar'
+    jar: 'paperclip.jar'
+    source: 'https://ci.destroystokyo.com/job/PaperSpigot/lastStableBuild/artifact/paperclip-1029.jar'
     server_properties:
       'spawn-protection': '16'
       'generator-settings': ''
@@ -119,7 +120,8 @@ minecraft::instances:
       'enable-rcon': 'false'
       'motd': 'Beards Survival Server'
   'creative':
-    jar: 'spigot.jar'
+    jar: 'paperclip.jar'
+    source: 'https://ci.destroystokyo.com/job/PaperSpigot/lastStableBuild/artifact/paperclip-1029.jar'
     server_properties:
       'spawn-protection': '16'
       'max-tick-time': '60000'
