@@ -161,6 +161,12 @@ minecraft::instances:
       'enable-rcon': 'false'
       'motd': 'Beards Creative Server'
 
+profile::minecraft::servers:
+  'survival':
+    dynmap_port: 8124 #webserver-port: 8124
+  'creative':
+    dynmap_port: 8123
+
 nginx::config::server_tokens: 'off'
 nginx::nginx_vhosts:
   'home.jbeard.org_http':
@@ -177,6 +183,21 @@ nginx::nginx_vhosts:
     ssl_key: '/usr/local/etc/letsencrypt/live/home.jbeard.org/privkey.pem'
     ssl_ciphers: 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH'
     www_root: '/var/www/home.jbeard.org'
+    locations:
+      'creative-dynmap':
+        location: '/dynmap/creative'
+        proxy: 'http://127.0.0.1:8123'
+        ssl: true
+        ssl_only: true
+        auth_basic: 'Creative Dynmap'
+        auth_basic_user_file: '/usr/local/etc/transmission/transmission.access'
+      'survival-dynmap':
+        location: '/dynmap/survival'
+        proxy: 'http://127.0.0.1:8124'
+        ssl: true
+        ssl_only: true
+        auth_basic: 'Survival Dynmap'
+        auth_basic_user_file: '/usr/local/etc/transmission/transmission.access'
 
   'plex.jbeard.org_http':
     www_root: '/var/www/plex.jbeard.org'
