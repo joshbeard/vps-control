@@ -163,9 +163,9 @@ minecraft::instances:
 
 profile::minecraft::servers:
   'survival':
-    dynmap_port: 8124 #webserver-port: 8124
-  'creative':
     dynmap_port: 8123
+  'creative':
+    dynmap_port: 8124
 
 nginx::config::server_tokens: 'off'
 nginx::nginx_vhosts:
@@ -242,20 +242,20 @@ nginx::nginx_locations:
     ssl: true
     ssl_only: true
 
-  'creative-dynmap':
+  'creative-dynmap/':
     location: '/dynmap/creative'
     vhost: 'home.jbeard.org'
-    proxy: 'http://127.0.0.1:8123'
+    proxy: 'http://127.0.0.1:8124/'
     proxy_redirect: 'default'
     ssl: true
     ssl_only: true
     auth_basic: 'Creative Dynmap'
     auth_basic_user_file: '/usr/local/etc/transmission/transmission.access'
 
-  'survival-dynmap':
+  'survival-dynmap/':
     location: '/dynmap/survival'
     vhost: 'home.jbeard.org'
-    proxy: 'http://127.0.0.1:8124'
+    proxy: 'http://127.0.0.1:8123/'
     proxy_redirect: 'default'
     ssl: true
     ssl_only: true
