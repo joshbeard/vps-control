@@ -246,6 +246,7 @@ nginx::nginx_locations:
     location: '/dynmap/creative'
     vhost: 'home.jbeard.org'
     proxy: 'http://127.0.0.1:8123'
+    proxy_redirect: 'default'
     ssl: true
     ssl_only: true
     auth_basic: 'Creative Dynmap'
@@ -255,6 +256,7 @@ nginx::nginx_locations:
     location: '/dynmap/survival'
     vhost: 'home.jbeard.org'
     proxy: 'http://127.0.0.1:8124'
+    proxy_redirect: 'default'
     ssl: true
     ssl_only: true
     auth_basic: 'Survival Dynmap'
