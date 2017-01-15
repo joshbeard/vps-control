@@ -251,8 +251,6 @@ nginx::nginx_locations:
     proxy_redirect: 'default'
     ssl: true
     ssl_only: true
-    auth_basic: 'Creative Dynmap'
-    auth_basic_user_file: '/usr/local/etc/transmission/transmission.access'
 
   'survival-dynmap':
     location: '/dynmap/survival/'
@@ -261,8 +259,6 @@ nginx::nginx_locations:
     proxy_redirect: 'default'
     ssl: true
     ssl_only: true
-    auth_basic: 'Survival Dynmap'
-    auth_basic_user_file: '/usr/local/etc/transmission/transmission.access'
 
 # -------------------------------------------------------------------
 # Letsencrypt
