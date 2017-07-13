@@ -17,6 +17,7 @@ classes:
   - 'profile::www::plex_jbeard'
   - 'profile::transmission'
 
+# Check in to https://yivesmirror.com/downloads/paperspigot
 minecraft::user: 'minecraft'
 minecraft::group: 'minecraft'
 minecraft::install_base: '/usr/local/minecraft'
