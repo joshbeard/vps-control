@@ -188,7 +188,7 @@ nginx::nginx_locations:
   'jbeard.org-well-known':
     location: '/.well-known'
     vhost: 'jbeard.org_http'
-    www_root: "/var/www/le_webroot/signalboxes.net"
+    www_root: "/var/www/le_webroot/jbeard.org"
 
   'signalboxes.net-well-known':
     location: '/.well-known'
