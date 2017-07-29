@@ -28,8 +28,8 @@ minecraft::instance_defaults:
   plugins:
     'WorldEdit':
       # https://dev.bukkit.org/projects/worldedit/files
-      source: 'https://addons-origin.cursecdn.com/files/956/525/worldedit-bukkit-6.1.5.jar'
-      checksum: '2d57c7887975b583633e3508c3d01ea8'
+      source: 'https://addons-origin.cursecdn.com/files/2431/372/worldedit-bukkit-6.1.7.2.jar'
+      checksum: '1b64e31c38fc140016ef5a35e390f17c'
       plugin_name: 'WorldEdit'
     'Vault':
       # https://dev.bukkit.org/projects/vault
@@ -39,33 +39,33 @@ minecraft::instance_defaults:
     'EssentialsX':
       # https://www.spigotmc.org/resources/essentialsx.9089/
       # https://ci.drtshock.net/job/EssentialsX/
-      source: 'https://ci.drtshock.net/job/EssentialsX/lastStableBuild/artifact/Essentials/target/EssentialsX-2.0.1.jar'
-      checksum: '3588a221b5d7d7424b57d6cfbf7b996b'
+      source: 'https://ci.drtshock.net/job/EssentialsX/501/artifact/Essentials/target/EssentialsX-2.0.1.jar'
+      checksum: '36efbbe981ab9a2686055ebba1858fea'
       plugin_name: 'EssentialsX'
     'EssentialsXAntiBuild':
-      source: 'https://ci.drtshock.net/job/EssentialsX/lastStableBuild/artifact/EssentialsAntiBuild/target/EssentialsXAntiBuild-2.0.1.jar'
-      checksum: 'a7912369215e53d88ca291278dbff938'
+      source: 'https://ci.drtshock.net/job/EssentialsX/501/artifact/EssentialsAntiBuild/target/EssentialsXAntiBuild-2.0.1.jar'
+      checksum: '29a3d410b5b5bda0771958e422ee63f1'
       plugin_name: 'EssentialsXAntiBuild'
     'EssentialsXChat':
-      source: 'https://ci.drtshock.net/job/EssentialsX/lastStableBuild/artifact/EssentialsChat/target/EssentialsXChat-2.0.1.jar'
-      checksum: '0108193b0fbfb033d8ccdd59c2df5d4e'
+      source: 'https://ci.drtshock.net/job/EssentialsX/501/artifact/EssentialsChat/target/EssentialsXChat-2.0.1.jar'
+      checksum: '6a6418957b5ced3449f833ccbd9b5bbb'
       plugin_name: 'EssentialsXChat'
     'EssentialsXGeoIP':
-      source: 'https://ci.drtshock.net/job/EssentialsX/lastStableBuild/artifact/EssentialsGeoIP/target/EssentialsXGeoIP-2.0.1.jar'
-      checksum: '18398b9c4f1abc49870f812c79bb3f83'
+      source: 'https://ci.drtshock.net/job/EssentialsX/501/artifact/EssentialsGeoIP/target/EssentialsXGeoIP-2.0.1.jar'
+      checksum: '8281593d7196d024cd9283f4d0914208'
       plugin_name: 'EssentialsXGeoIP'
     'EssentialsXProtect':
-      source: 'https://ci.drtshock.net/job/EssentialsX/lastStableBuild/artifact/EssentialsProtect/target/EssentialsXProtect-2.0.1.jar'
-      checksum: 'dfe37cc0764ee94f9633a6b3c48ad0a3'
+      source: 'https://ci.drtshock.net/job/EssentialsX/501/artifact/EssentialsProtect/target/EssentialsXProtect-2.0.1.jar'
+      checksum: '72d381637459c4fc79d0b97631456a17'
       plugin_name: 'EssentialsXProtect'
     'EssentialsXSpawn':
-      source: 'https://ci.drtshock.net/job/EssentialsX/lastStableBuild/artifact/EssentialsSpawn/target/EssentialsXSpawn-2.0.1.jar'
-      checksum: '7c2ee690a0ec39c92181f242e624c82e'
+      source: 'https://ci.drtshock.net/job/EssentialsX/501/artifact/EssentialsSpawn/target/EssentialsXSpawn-2.0.1.jar'
+      checksum: '546ce12e451405987514b93c1a516e7e'
       plugin_name: 'EssentialsXSpan'
     'Dynmap':
       # https://dev.bukkit.org/projects/dynmap
-      source: 'https://addons-origin.cursecdn.com/files/920/878/dynmap-2.3.jar'
-      checksum: 'd6341f5703cf262b9f24a10f58ccde03'
+      source: 'https://addons-origin.cursecdn.com/files/2431/572/dynmap-2.5.jar'
+      checksum: '328fa81e6c5ccb22ce2d44f2c1c7f114'
       plugin_name: 'Dynmap'
     'DynmapEssentials':
       # https://dev.bukkit.org/projects/dynmap-essentials
@@ -74,13 +74,13 @@ minecraft::instance_defaults:
       plugin_name: 'DynmapEssentials'
     'DynmapStructures':
       # https://dev.bukkit.org/projects/dynmap-structures
-      source: 'https://addons-origin.cursecdn.com/files/956/143/dynmap-structures-1.3.0-all.jar'
-      checksum: '065b585a8c2f0df0d2c28bfa8c2e9bc1'
+      source: 'https://addons-origin.cursecdn.com/files/2407/445/dynmap-structures-1.4.0-all.jar'
+      checksum: 'e2203ebb894ff4fa37e990a5914642ca'
       plugin_name: 'DynmapStructures'
 minecraft::instances:
   'survival':
     jar: 'paperclip.jar'
-    source: 'https://ci.destroystokyo.com/job/PaperSpigot/lastStableBuild/artifact/paperclip-1029.jar'
+    source: 'https://ci.destroystokyo.com/job/PaperSpigot/lastStableBuild/artifact/paperclip-1167.jar'
     server_properties:
       'spawn-protection': '16'
       'generator-settings': ''
@@ -122,7 +122,7 @@ minecraft::instances:
       'motd': 'Beards Survival Server'
   'creative':
     jar: 'paperclip.jar'
-    source: 'https://ci.destroystokyo.com/job/PaperSpigot/lastStableBuild/artifact/paperclip-1029.jar'
+    source: 'https://ci.destroystokyo.com/job/PaperSpigot/lastStableBuild/artifact/paperclip-1167.jar'
     server_properties:
       'spawn-protection': '16'
       'max-tick-time': '60000'
