@@ -20,7 +20,7 @@ classes:
 # Check in to https://yivesmirror.com/downloads/paperspigot
 minecraft::user: 'minecraft'
 minecraft::group: 'minecraft'
-minecraft::install_base: '/usr/local/minecraft'
+minecraft::install_base: '/store/minecraft'
 minecraft::instance_defaults:
   java_args: '-XX:+UseConcMarkSweepGC -XX:+CMSIncrementalPacing -XX:ParallelGCThreads=4 -XX:+AggressiveOpts'
   plugins_defaults:
