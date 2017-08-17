@@ -30,6 +30,7 @@ class profile::puppet inherits profile::params {
   ## Configure Hiera
   class { 'hiera':
     hierarchy => [
+      '%{hostname}',
       '%{clientcert}',
       '%{environment}',
       'common',
