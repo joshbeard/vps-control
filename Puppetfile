@@ -20,6 +20,7 @@ mod 'zleslie/pkgng',            '0.3.0'
 mod 'camptocamp/openssl',       '1.5.0'
 mod 'computology/packagecloud', '0.3.1'
 mod 'puppet/archive',           '1.2.0'
+mod 'puppet/php',               '4.0.0'
 
 ## Pinned for FreeBSD support
 #mod 'puppetlabs/ruby',        '0.4.0'

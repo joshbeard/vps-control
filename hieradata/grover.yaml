@@ -3,11 +3,53 @@
 ## Hiera config for my VPS
 ##
 classes:
-  - 'role::vps'
+  - 'profile::base'
+  - 'profile::base::linux'
+  - 'profile::firewall'
+  - 'profile::signalboxes'
+  - 'profile::nginx_server'
+  - 'profile::ssh'
+  - 'profile::sudoers'
+  - 'profile::puppet'
+  - 'profile::letsencrypt'
 
-##
-## Nginx vhosts
-##
+#
+# == PHP
+#
+php::ensure: installed
+php::manage_repos: true
+php::fpm: true
+php::pear: true
+php::phpunit: false
+php::settings:
+  'PHP/max_execution_time': '90'
+  'PHP/max_input_time': '300'
+  'PHP/memory_limit': '64M'
+  'PHP/post_max_size': '32M'
+  'PHP/upload_max_filesize': '32M'
+  'Date/date.timezone': 'America/Denver'
+php::extensions:
+  bcmath: {}
+  xmlrpc: {}
+  imagick:
+    provider: pecl
+  memcached:
+    provider: pecl
+    header_packages:
+      - libmemcached-dev
+  apc:
+    provider: pecl
+    settings:
+      'apc/stat': 1
+      'apc/stat_ctime': 1
+    sapi: 'fpm'
+php::fpm::pools:
+  rainloop:
+    listen: '127.0.1.1:9000'
+
+#
+# == Nginx vhosts
+#
 nginx::config::server_tokens: 'off'
 nginx::nginx_vhosts:
   'pub.signalboxes.net_http':
@@ -35,6 +77,10 @@ nginx::nginx_vhosts:
       #'fancyindex_header': '/fancyindex/header.html'
       #'fancyindex_footer': '/fancyindex/footer.html'
       #'fancyindex_ignore': 'fancyindex'
+
+  'mail.jbeard.org':
+    www_root: '/var/www/mail.jbeard.org'
+    server_name: ['mail.jbeard.org']
 
   'juliabeard.me_http':
     server_name: ['juliabeard.me', 'www.juliabeard.me', 'www.juliabeard.net', 'juliabeard.net']
@@ -205,9 +251,9 @@ nginx::nginx_locations:
     vhost: 'hewbert.com_http'
     www_root: '/var/www/le_webroot/hewbert.com'
 
-# -------------------------------------------------------------------
-# Letsencrypt
-# -------------------------------------------------------------------
+#
+# == Letsencrypt
+#
 profile::letsencrypt::certonly_defaults:
   plugin: 'webroot'
   manage_cron: true
