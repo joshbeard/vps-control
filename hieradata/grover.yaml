@@ -12,6 +12,7 @@ classes:
   - 'profile::sudoers'
   - 'profile::puppet'
   - 'profile::letsencrypt'
+  - 'php'
 
 #
 # == PHP
