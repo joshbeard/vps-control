@@ -17,11 +17,12 @@ classes:
 #
 # == PHP
 #
-php::ensure: installed
+php::ensure: present
 php::manage_repos: true
 php::fpm: true
-php::pear: true
+php::pear: false
 php::phpunit: false
+php::package_prefix: 'php71-php-'
 php::settings:
   'PHP/max_execution_time': '90'
   'PHP/max_input_time': '300'
@@ -32,14 +33,10 @@ php::settings:
 php::extensions:
   bcmath: {}
   xmlrpc: {}
-  imagick:
-    provider: pecl
-  memcached:
-    provider: pecl
-    header_packages:
-      - libmemcached-dev
-  apc:
-    provider: pecl
+  pecl-imagick:
+    provider: yum
+  pecl-apcu:
+    provider: yum
     settings:
       'apc/stat': 1
       'apc/stat_ctime': 1
