@@ -249,6 +249,13 @@ nginx::nginx_locations:
     vhost: 'hewbert.com_http'
     www_root: '/var/www/le_webroot/hewbert.com'
 
+  'mail-php':
+    location: '~ \.php$'
+    vhost: 'mail.jbeard.org'
+    try_files: ['$uri', '=404']
+    index_files: ['index.php', 'index.html', 'index.htm']
+    fastcgi: '127.0.0.1:9000'
+
 #
 # == Letsencrypt
 #
