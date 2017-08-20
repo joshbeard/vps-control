@@ -18,7 +18,7 @@ classes:
 #
 profile::www::sites:
   'signalboxes.net':
-    repos:
+    repo:
       source: 'https://github.com/joshbeard/signalboxes.net.git'
   'pub.signalboxes.net':
     repo:
