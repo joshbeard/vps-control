@@ -6,44 +6,27 @@ classes:
   - 'profile::base'
   - 'profile::base::linux'
   - 'profile::firewall'
-  - 'profile::signalboxes'
   - 'profile::nginx_server'
   - 'profile::ssh'
   - 'profile::sudoers'
   - 'profile::puppet'
   - 'profile::letsencrypt'
-  - 'php'
+  - 'profile::www'
 
 #
-# == PHP
+# == Sites - docroots, repos
 #
-php::ensure: present
-php::manage_repos: true
-php::fpm: true
-php::pear: false
-php::phpunit: false
-php::package_prefix: 'php71-php-'
-php::settings:
-  'PHP/max_execution_time': '90'
-  'PHP/max_input_time': '300'
-  'PHP/memory_limit': '64M'
-  'PHP/post_max_size': '32M'
-  'PHP/upload_max_filesize': '32M'
-  'Date/date.timezone': 'America/Denver'
-php::extensions:
-  bcmath: {}
-  xmlrpc: {}
-  pecl-imagick:
-    provider: yum
-  pecl-apcu:
-    provider: yum
-    settings:
-      'apc/stat': 1
-      'apc/stat_ctime': 1
-    sapi: 'fpm'
-php::fpm::pools:
-  rainloop:
-    listen: '127.0.1.1:9000'
+profile::www::sites:
+  'signalboxes.net':
+    repos:
+      source: 'https://github.com/joshbeard/signalboxes.net.git'
+  'pub.signalboxes.net':
+    repo:
+      source: 'https://github.com/joshbeard/Nginx-Fancyindex-Theme.git'
+      path: '/var/www/pub.signalboxes.net/fancyindex'
+  'jbeard.org':
+    repo:
+      source: 'https://github.com/joshbeard/www-jbeard.org.git'
 
 #
 # == Nginx vhosts
@@ -75,10 +58,6 @@ nginx::nginx_vhosts:
       #'fancyindex_header': '/fancyindex/header.html'
       #'fancyindex_footer': '/fancyindex/footer.html'
       #'fancyindex_ignore': 'fancyindex'
-
-  'mail.jbeard.org':
-    www_root: '/var/www/mail.jbeard.org'
-    server_name: ['mail.jbeard.org']
 
   'juliabeard.me_http':
     server_name: ['juliabeard.me', 'www.juliabeard.me', 'www.juliabeard.net', 'juliabeard.net']
@@ -248,13 +227,6 @@ nginx::nginx_locations:
     location: '/.well-known'
     vhost: 'hewbert.com_http'
     www_root: '/var/www/le_webroot/hewbert.com'
-
-  'mail-php':
-    location: '~ \.php$'
-    vhost: 'mail.jbeard.org'
-    try_files: ['$uri', '=404']
-    index_files: ['index.php', 'index.html', 'index.htm']
-    fastcgi: '127.0.0.1:9000'
 
 #
 # == Letsencrypt

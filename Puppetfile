@@ -21,11 +21,6 @@ mod 'camptocamp/openssl',       '1.5.0'
 mod 'computology/packagecloud', '0.3.1'
 mod 'puppet/archive',           '1.2.0'
 
-#mod 'puppet/php',               '4.0.0'
-mod 'php',
-  :git => 'https://github.com/voxpupuli/puppet-php.git',
-  :ref => '91a42b95fb9e9b093043853904441df3347a1db7'
-
 ## Pinned for FreeBSD support
 #mod 'puppetlabs/ruby',        '0.4.0'
 mod 'ruby',
