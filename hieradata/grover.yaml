@@ -27,6 +27,18 @@ profile::www::sites:
   'jbeard.org':
     repo:
       source: 'https://github.com/joshbeard/www-jbeard.org.git'
+  'juliabeard':
+    repo:
+      source: 'https://github.com/joshbeard/www-juliabeard.git'
+  'signaltotrust.net':
+    repo:
+      source: 'https://github.com/joshbeard/www-signaltotrust.net.git'
+  'joshbeard.me':
+    repo:
+      source: 'https://github.com/joshbeard/www-joshbeard.me.git'
+  'hewbert.com':
+    repo:
+      source: 'https://github.com/joshbeard/www-hewbert.com.git'
 
 #
 # == Nginx vhosts
@@ -61,7 +73,7 @@ nginx::nginx_vhosts:
 
   'juliabeard.me_http':
     server_name: ['juliabeard.me', 'www.juliabeard.me', 'www.juliabeard.net', 'juliabeard.net']
-    www_root: "/var/www/signalboxes.net/sites/julia"
+    www_root: "/var/www/juliabeard"
     location_cfg_append:
       'return': '301 https://$server_name$request_uri'
 
@@ -73,7 +85,7 @@ nginx::nginx_vhosts:
     ssl_cert: '/etc/letsencrypt/live/juliabeard.me/fullchain.pem'
     ssl_key: '/etc/letsencrypt/live/juliabeard.me/privkey.pem'
     ssl_ciphers: 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH'
-    www_root: "/var/www/signalboxes.net/sites/julia"
+    www_root: "/var/www/juliabeard"
     access_log: "/var/log/nginx/juliabeard.me_ssl_access.log"
     error_log: "/var/log/nginx/juliabeard.me_ssl_error.log"
 
@@ -94,12 +106,10 @@ nginx::nginx_vhosts:
     www_root: "/var/www/joshbeard.me"
     access_log: "/var/log/nginx/joshbeard.me_ssl_access.log"
     error_log: "/var/log/nginx/joshbeard.me_ssl_error.log"
-    vhost_cfg_append:
-      'return': '301 https://signalboxes.net/resume'
 
   'jbeard.org_http':
     server_name: ['jbeard.org', 'www.jbeard.org']
-    www_root: "/var/www/signalboxes.net/sites/jbeard"
+    www_root: "/var/www/jbeard.org"
     location_cfg_append:
       'return': '301 https://$server_name$request_uri'
 
@@ -110,7 +120,7 @@ nginx::nginx_vhosts:
     ssl: true
     ssl_cert: '/etc/letsencrypt/live/jbeard.org/fullchain.pem'
     ssl_key: '/etc/letsencrypt/live/jbeard.org/privkey.pem'
-    www_root: "/var/www/signalboxes.net/sites/jbeard"
+    www_root: "/var/www/jbeard.org"
     access_log: "/var/log/nginx/jbeard.org_ssl_access.log"
     error_log: "/var/log/nginx/jbeard.org_ssl_error.log"
 
@@ -132,8 +142,6 @@ nginx::nginx_vhosts:
     error_log: '/var/log/nginx/hewbert.com_ssl_error.log'
     vhost_cfg_prepend:
       'index': 'index.html'
-    vhost_cfg_append:
-      'return': "301 http://signalboxes.net"
 
   'signalboxes.net_http':
     server_name: ['signalboxes.net', 'www.hewbert.com']
@@ -181,8 +189,6 @@ nginx::nginx_vhosts:
     use_default_location: false
     vhost_cfg_prepend:
       'index': 'index.php'
-    vhost_cfg_append:
-      'return': '301 https://signalboxes.net'
 
 nginx::nginx_locations:
   'image_cache':
