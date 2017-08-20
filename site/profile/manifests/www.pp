@@ -6,5 +6,5 @@ class profile::www (
     owner  => 'root',
   }
 
-  create_resources('profile::www::site', $instances)
+  create_resources('profile::www::site', $sites)
 }
