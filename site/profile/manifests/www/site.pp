@@ -7,7 +7,7 @@ define profile::www::site (
   $_repos_resource = { $title => $repo }
 
   $_repos_defaults = {
-    ensure   => 'present',
+    ensure   => 'latest',
     provider => 'git',
     group    => $group,
     user     => $user,
