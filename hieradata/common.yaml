@@ -14,9 +14,10 @@ letsencrypt::manage_dependencies: false
 #
 nginx::confd_purge: true
 nginx::server_purge: true
+
 nginx::gzip_buffers: '16 8k'
-nginx::gzip_types: 'text/plain application/javascript application/x-javascript text/xml text/css'
-nginx::gzip_vary: 'on'
+nginx::gzip_comp_level: 4
+nginx::config::server_tokens: 'off'
 nginx::gzip_types:
   - text/plain
   - text/css
@@ -26,4 +27,4 @@ nginx::gzip_types:
   - application/xml
   - application/xml+rss
   - text/javascript
-nginx::config::server_tokens: 'off'
+nginx::gzip_vary: 'on'
