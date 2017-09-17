@@ -150,7 +150,7 @@ nginx::nginx_servers:
 
   'signalboxes.net':
     add_header:
-      'X-Powered-By': '"Open Source"'
+      'X-Powered-By': 'Open Source'
     listen_options: "default_server"
     server_name: ['signalboxes.net', 'www.signalboxes.net', 'www1.signalboxes.net', 'www2.signalboxes.net', 'www3.signalboxes.net', 'ipv6.signalboxes.net']
     www_root: '/var/www/signalboxes.net'
