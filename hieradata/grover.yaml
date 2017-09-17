@@ -43,19 +43,6 @@ profile::www::sites:
 #
 # == Nginx
 #
-nginx::gzip_buffers: '16 8k'
-nginx::gzip_types: 'text/plain application/javascript application/x-javascript text/xml text/css'
-nginx::gzip_vary: 'on'
-nginx::gzip_types:
-  - text/plain
-  - text/css
-  - application/json
-  - application/x-javascript
-  - text/xml
-  - application/xml
-  - application/xml+rss
-  - text/javascript
-nginx::config::server_tokens: 'off'
 nginx::nginx_servers:
   'pub.signalboxes.net_http':
     www_root: '/var/www/pub.signalboxes.net'
