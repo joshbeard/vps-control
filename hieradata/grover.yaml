@@ -56,7 +56,7 @@ nginx::gzip_types:
   - application/xml+rss
   - text/javascript
 nginx::config::server_tokens: 'off'
-nginx::nginx_vhosts:
+nginx::nginx_servers:
   'pub.signalboxes.net_http':
     www_root: '/var/www/pub.signalboxes.net'
     server_name: ['pub.signalboxes.net']
@@ -74,7 +74,7 @@ nginx::nginx_vhosts:
     access_log: '/var/log/nginx/pub.signalboxes.net_ssl_access.log'
     error_log: '/var/log/nginx/pub.signalboxes.net_ssl_error.log'
     use_default_location: false
-    vhost_cfg_prepend:
+    server_cfg_prepend:
       'index': 'index.php index.html'
       #'fancyindex': 'on'
       #'fancyindex_exact_size': 'off'
@@ -152,7 +152,7 @@ nginx::nginx_vhosts:
     www_root: "/var/www/hewbert.com"
     access_log: '/var/log/nginx/hewbert.com_ssl_access.log'
     error_log: '/var/log/nginx/hewbert.com_ssl_error.log'
-    vhost_cfg_prepend:
+    server_cfg_prepend:
       'index': 'index.html'
 
   'signalboxes.net_http':
@@ -175,7 +175,7 @@ nginx::nginx_vhosts:
     index_files: ['index.html']
     access_log: '/var/log/nginx/signalboxes.net_ssl_access.log'
     error_log: '/var/log/nginx/signalboxes.net_ssl_error.log'
-    vhost_cfg_prepend:
+    server_cfg_prepend:
       'index': 'index.html'
       'error_page': '404 = /404.html'
       'error_page': '403 = /403.html'
@@ -197,13 +197,13 @@ nginx::nginx_vhosts:
     access_log: '/var/log/nginx/signaltotrust_ssl_access.log'
     error_log: '/var/log/nginx/signaltotrust_ssl_error.log'
     use_default_location: false
-    vhost_cfg_prepend:
+    server_cfg_prepend:
       'index': 'index.php'
 
 nginx::nginx_locations:
   'image_cache':
     location: '~* ^.+\.(?:css|cur|js|jpe?g|gif|htc|ico|png|html|xml|otf|ttf|eot|woff|svg)$'
-    vhost: 'joshbeard.me'
+    server: 'joshbeard.me'
     ssl: true
     ssl_only: true
     location_custom_cfg:
@@ -215,37 +215,37 @@ nginx::nginx_locations:
 
   'pub.signalboxes.net-well-known':
     location: '/.well-known'
-    vhost: 'pub.signalboxes.net_http'
+    server: 'pub.signalboxes.net_http'
     www_root: '/var/www/le_webroot/pub.signalboxes.net'
 
   'juliabeard.me-well-known':
     location: '/.well-known'
-    vhost: 'juliabeard.me_http'
+    server: 'juliabeard.me_http'
     www_root: '/var/www/le_webroot/juliabeard.me'
 
   'joshbeard.me-well-known':
     location: '/.well-known'
-    vhost: 'joshbeard.me_http'
+    server: 'joshbeard.me_http'
     www_root: '/var/www/le_webroot/joshbeard.me'
 
   'jbeard.org-well-known':
     location: '/.well-known'
-    vhost: 'jbeard.org_http'
+    server: 'jbeard.org_http'
     www_root: "/var/www/le_webroot/jbeard.org"
 
   'signalboxes.net-well-known':
     location: '/.well-known'
-    vhost: 'signalboxes.net_http'
+    server: 'signalboxes.net_http'
     www_root: '/var/www/le_webroot/signalboxes.net'
 
   'signaltotrust.net-well-known':
     location: '/.well-known'
-    vhost: 'signaltotrust.net_http'
+    server: 'signaltotrust.net_http'
     www_root: '/var/www/le_webroot/signaltotrust.net'
 
   'hewbert.com-well-known':
     location: '/.well-known'
-    vhost: 'hewbert.com_http'
+    server: 'hewbert.com_http'
     www_root: '/var/www/le_webroot/hewbert.com'
 
 #

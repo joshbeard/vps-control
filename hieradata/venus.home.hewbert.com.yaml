@@ -171,7 +171,7 @@ profile::minecraft::servers:
     dynmap_port: 8124
 
 nginx::config::server_tokens: 'off'
-nginx::nginx_vhosts:
+nginx::nginx_servers:
   'home.jbeard.org_http':
     www_root: '/var/www/home.jbeard.org'
     server_name:
@@ -224,22 +224,22 @@ nginx::nginx_vhosts:
 nginx::nginx_locations:
   'home-well-known':
     location: '/.well-known'
-    vhost: 'home.jbeard.org_http'
+    server: 'home.jbeard.org_http'
     www_root: '/var/www/home.jbeard.org'
 
   'plex-well-known':
     location: '/.well-known'
-    vhost: 'plex.jbeard.org_http'
+    server: 'plex.jbeard.org_http'
     www_root: '/var/www/plex.jbeard.org'
 
   't-well-known':
     location: '/.well-known'
-    vhost: 't.jbeard.org_http'
+    server: 't.jbeard.org_http'
     www_root: '/var/www/t.jbeard.org'
 
   '/transmission':
     proxy: 'http://localhost:9091'
-    vhost: 'home.jbeard.org'
+    server: 'home.jbeard.org'
     auth_basic: 'Transmission'
     auth_basic_user_file: '/usr/local/etc/transmission/transmission.access'
     ssl: true
@@ -247,7 +247,7 @@ nginx::nginx_locations:
 
   'creative-dynmap':
     location: '/dynmap/creative/'
-    vhost: 'home.jbeard.org'
+    server: 'home.jbeard.org'
     proxy: 'http://127.0.0.1:8124/'
     proxy_redirect: 'default'
     ssl: true
@@ -255,7 +255,7 @@ nginx::nginx_locations:
 
   'survival-dynmap':
     location: '/dynmap/survival/'
-    vhost: 'home.jbeard.org'
+    server: 'home.jbeard.org'
     proxy: 'http://127.0.0.1:8123/'
     proxy_redirect: 'default'
     ssl: true
