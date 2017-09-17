@@ -41,8 +41,11 @@ profile::www::sites:
       source: 'https://github.com/joshbeard/www-hewbert.com.git'
 
 #
-# == Nginx vhosts
+# == Nginx
 #
+nginx::gzip_buffers: '16 8k'
+nginx::gzip_types: 'text/plain application/javascript application/x-javascript text/xml text/css'
+nginx::gzip_vary: 'on'
 nginx::config::server_tokens: 'off'
 nginx::nginx_vhosts:
   'pub.signalboxes.net_http':
@@ -165,10 +168,8 @@ nginx::nginx_vhosts:
     error_log: '/var/log/nginx/signalboxes.net_ssl_error.log'
     vhost_cfg_prepend:
       'index': 'index.html'
-      'gzip_vary': 'on'
       'error_page': '404 = /404.html'
       'error_page': '403 = /403.html'
-    gzip_types: 'text/plain application/javascript application/x-javascript text/xml text/css'
 
   'signaltotrust.net_http':
     server_name: ['signaltotrust.net', 'www.signaltotrust.net']
@@ -192,12 +193,16 @@ nginx::nginx_vhosts:
 
 nginx::nginx_locations:
   'image_cache':
-    location: '~* \.(js|css|png|jpg|jpeg|gif|ico)$'
-    vhost: 'signalboxes.net'
+    location: '~* ^.+\.(?:css|cur|js|jpe?g|gif|htc|ico|png|html|xml|otf|ttf|eot|woff|svg)$'
+    vhost: 'joshbeard.me'
     ssl: true
     ssl_only: true
     location_custom_cfg:
-      'expires': '60d'
+      'expires': '30d'
+      'open_file_cache max': '3000 inactive=120s'
+      'open_file_cache_valid': '45s'
+      'open_file_cache_min_uses': '2'
+      'open_file_cache_errors': 'off'
 
   'pub.signalboxes.net-well-known':
     location: '/.well-known'
