@@ -180,7 +180,7 @@ nginx::nginx_servers:
       'return': '301 http://$server_name$request_uri'
 
   'home.jbeard.org':
-    listen_port: '443'
+    listen_port: 443
     ssl: true
     ssl_cert: '/usr/local/etc/letsencrypt/live/home.jbeard.org/fullchain.pem'
     ssl_key: '/usr/local/etc/letsencrypt/live/home.jbeard.org/privkey.pem'
@@ -195,7 +195,7 @@ nginx::nginx_servers:
       'rewrite': '^ https://$server_name$request_uri? permanent'
 
   'plex.jbeard.org':
-    listen_port: '443'
+    listen_port: 443
     proxy: 'http://localhost:32400'
     auth_basic: 'Plex'
     auth_basic_user_file: '/usr/local/etc/transmission/transmission.access'
@@ -212,7 +212,7 @@ nginx::nginx_servers:
       'rewrite': '^ https://$server_name$request_uri? permanent'
 
   't.jbeard.org':
-    listen_port: '443'
+    listen_port: 443
     proxy: 'http://localhost:9091'
     auth_basic: 'Transmission'
     auth_basic_user_file: '/usr/local/etc/transmission/transmission.access'
