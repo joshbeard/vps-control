@@ -189,7 +189,7 @@ nginx::nginx_servers:
 
 nginx::nginx_locations:
   'image_cache':
-    location: '~* ^.+\.(?:css|cur|js|jpe?g|gif|htc|ico|png|html|xml|otf|ttf|eot|woff|svg)$'
+    location: '~* ^.+\.(?:css|cur|js|jpe?g|gif|htc|ico|png|html|xml|otf|ttf|eot|woff|woff2|svg)$'
     server: 'joshbeard.me'
     ssl: true
     ssl_only: true

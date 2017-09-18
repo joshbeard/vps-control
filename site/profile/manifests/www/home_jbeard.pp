@@ -16,7 +16,7 @@ class profile::www::home_jbeard {
     owner        => $::nginx::params::daemon_user,
     group        => $::nginx::params::root_group,
     require      => Class['::nginx::package'],
-    before       => Nginx::Resource::Vhost['home.jbeard.org'],
+    before       => Nginx::Resource::Server['home.jbeard.org'],
   }
 
 }
