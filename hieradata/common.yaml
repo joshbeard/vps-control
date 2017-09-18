@@ -23,6 +23,7 @@ nginx::gzip_types:
   - text/css
   - application/json
   - application/x-javascript
+  - application/javascript
   - text/xml
   - application/xml
   - application/xml+rss
