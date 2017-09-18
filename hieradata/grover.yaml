@@ -105,7 +105,8 @@ nginx::nginx_servers:
     www_root: "/var/www/joshbeard.me"
     access_log: "/var/log/nginx/joshbeard.me_ssl_access.log"
     error_log: "/var/log/nginx/joshbeard.me_ssl_error.log"
-    charset: 'UTF-8'
+    server_cfg_append:
+      charset: 'UTF-8'
 
   'jbeard.org_http':
     server_name: ['jbeard.org', 'www.jbeard.org']
