@@ -188,13 +188,25 @@ nginx::nginx_servers:
       'index': 'index.php'
 
 nginx::nginx_locations:
-  'image_cache':
-    location: '~* ^.+\.(?:css|cur|js|jpe?g|gif|htc|ico|png|html|xml|otf|ttf|eot|woff|woff2|svg)$'
+  'asset_cache':
+    location: '~* ^.+\.(?:css|cur|js|jpe?g|gif|htc|ico|png|html|xml|svg)$'
     server: 'joshbeard.me'
     ssl: true
     ssl_only: true
     location_custom_cfg:
       'expires': '30d'
+      'open_file_cache': 'max=3000 inactive=120s'
+      'open_file_cache_valid': '45s'
+      'open_file_cache_min_uses': '2'
+      'open_file_cache_errors': 'off'
+
+  'font_cache':
+    location: '~* ^.+\.(?:otf|ttf|eot|woff|woff2)$'
+    server: 'joshbeard.me'
+    ssl: true
+    ssl_only: true
+    location_custom_cfg:
+      'expires': '90d'
       'open_file_cache': 'max=3000 inactive=120s'
       'open_file_cache_valid': '45s'
       'open_file_cache_min_uses': '2'
