@@ -13,6 +13,8 @@ classes:
   - 'profile::letsencrypt'
   - 'profile::www'
 
+pf::template: 'profile/pf/pearl.erb'
+
 #
 # == Sites - docroots, repos
 #

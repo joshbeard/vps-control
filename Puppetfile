@@ -14,9 +14,13 @@ mod 'saz/ssh',                  '3.0.1'
 mod 'puppet/r10k',              '6.1.0'
 mod 'puppet/make',              '1.1.0'
 mod 'saz/timezone',             '3.5.0'
-mod 'zleslie/pkgng',            '1.2.0'
 mod 'camptocamp/openssl',       '1.10.0'
 mod 'puppet/archive',           '2.0.0'
+
+#mod 'zleslie/pkgng',            '1.2.0'
+mod 'pkgng',
+  :git => 'https://github.com/xaque208/puppet-pkgng.git',
+  :ref => '3e79242eec50b9a3f7523907b11ba44d01c679fb'
 
 mod 'pf',
   :git => 'https://github.com/xaque208/puppet-pf.git',

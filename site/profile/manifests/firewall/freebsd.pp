@@ -1,8 +1,6 @@
 class profile::firewall::freebsd {
 
-  class { 'pf':
-    template => "${module_name}/pf.erb",
-  }
+  contain pf
 
   service { 'pflog':
     ensure  => 'running',

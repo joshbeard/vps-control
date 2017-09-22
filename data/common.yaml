@@ -1,5 +1,12 @@
 ---
 noop_mode: false
+
+#
+# == pf
+#
+pf::manage_service: true
+pf::service_enable: true
+
 #
 # == Letsencrypt
 #
