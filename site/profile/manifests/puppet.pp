@@ -9,10 +9,6 @@ class profile::puppet inherits profile::params {
     ip     => $::ipaddress,
   }
 
-  file { [ '/etc/puppetlabs', '/etc/puppetlabs/r10k' ]:
-    ensure => 'directory',
-  }
-
   ## Configure r10k
   class { 'r10k':
     version       => 'latest',
