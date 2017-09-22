@@ -224,17 +224,17 @@ nginx::nginx_locations:
   'home-well-known':
     location: '/.well-known'
     server: 'home.jbeard.org_http'
-    www_root: '/var/www/home.jbeard.org'
+    www_root: '/var/www/le_webroot/home.jbeard.org'
 
   'plex-well-known':
     location: '/.well-known'
     server: 'plex.jbeard.org_http'
-    www_root: '/var/www/plex.jbeard.org'
+    www_root: '/var/www/le_webroot/plex.jbeard.org'
 
   't-well-known':
     location: '/.well-known'
     server: 't.jbeard.org_http'
-    www_root: '/var/www/t.jbeard.org'
+    www_root: '/var/www/le_webroot/t.jbeard.org'
 
   '/transmission':
     proxy: 'http://localhost:9091'
@@ -274,10 +274,10 @@ profile::letsencrypt::certonly_defaults:
 profile::letsencrypt::domains:
   'plex.jbeard.org':
     webroot_paths:
-      - '/var/www/plex.jbeard.org'
+      - '/var/www/le_webroot/plex.jbeard.org'
   'home.jbeard.org':
     webroot_paths:
-      - '/var/www/home.jbeard.org'
+      - '/var/www/le_webroot/home.jbeard.org'
   't.jbeard.org':
     webroot_paths:
-      - '/var/www/t.jbeard.org'
+      - '/var/www/le_webroot/t.jbeard.org'
