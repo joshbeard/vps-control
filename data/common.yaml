@@ -14,6 +14,7 @@ letsencrypt::manage_dependencies: false
 #
 nginx::confd_purge: true
 nginx::server_purge: true
+nginx::server_tokens: 'off'
 
 nginx::gzip_buffers: '16 8k'
 nginx::gzip_comp_level: 4
