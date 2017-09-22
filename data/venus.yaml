@@ -14,8 +14,6 @@ classes:
   - 'profile::smb'
   - 'profile::nginx_server'
   - 'profile::letsencrypt'
-  - 'profile::www::home_jbeard'
-  - 'profile::www::plex_jbeard'
   - 'profile::transmission'
 
 # Check in to https://yivesmirror.com/downloads/paperspigot
