@@ -27,20 +27,6 @@ class profile::puppet inherits profile::params {
     configfile  => $::profile::params::r10k_config_file,
   }
 
-  ## Configure Hiera
-  class { 'hiera':
-    hierarchy => [
-      '%{hostname}',
-      '%{clientcert}',
-      '%{environment}',
-      'common',
-    ],
-    datadir    => "${::settings::environmentpath}/%{environment}/hieradata",
-    owner      => 'root',
-    group      => '0',
-    hiera_yaml => $::profile::params::hiera_yaml,
-  }
-
   cron { 'puppet':
     ensure      => 'present',
     command     => "${::profile::params::r10k_path} deploy environment -pv >> /var/log/puppet/r10k.log 2>&1 ; ${::profile::params::puppet_path} apply ${::settings::environmentpath}/${::environment}/manifests/site.pp --environment ${::environment} --logdest /var/log/puppet/puppet.log",

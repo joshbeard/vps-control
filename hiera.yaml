@@ -1,0 +1,19 @@
+---
+#
+# Hiera 5 configuration file
+#
+# https://docs.puppet.com/puppet/5.1/hiera_config_yaml_5.html
+#
+version: 5
+
+defaults:
+  data_hash: yaml_data
+  datadir: data
+
+hierarchy:
+  - name: "Node-specific data"
+    paths:
+      - "%{facts.hostname}.yaml"
+  - name: "Common data"
+    paths:
+      - 'common.yaml'
