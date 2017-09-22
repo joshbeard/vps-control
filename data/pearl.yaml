@@ -254,8 +254,7 @@ nginx::nginx_locations:
 #
 profile::letsencrypt::certonly_defaults:
   plugin: 'webroot'
-  manage_cron: true
-  cron_success_command: '/sbin/service nginx restart'
+  manage_cron: false
 
 profile::letsencrypt::domains:
   'signalboxes.net':
