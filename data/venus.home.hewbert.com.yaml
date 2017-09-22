@@ -13,6 +13,7 @@ classes:
   - 'minecraft'
   - 'profile::smb'
   - 'profile::nginx_server'
+  - 'profile::letsencrypt'
   - 'profile::www::home_jbeard'
   - 'profile::www::plex_jbeard'
   - 'profile::transmission'
@@ -270,8 +271,7 @@ letsencrypt::package_name: 'py27-certbot'
 
 profile::letsencrypt::certonly_defaults:
   plugin: 'webroot'
-  manage_cron: true
-  cron_success_command: '/usr/sbin/service nginx restart'
+  manage_cron: false
 
 profile::letsencrypt::domains:
   'plex.jbeard.org':
