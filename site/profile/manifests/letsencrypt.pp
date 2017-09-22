@@ -40,6 +40,7 @@ class profile::letsencrypt (
     ensure      => 'present',
     command     => "certbot renew --post-hook '${post_hook}' -m ${email_address}",
     user        => $cron_user,
+    minute      => '5',
     hour        => $cron_hour,
     environment => 'PATH=/bin:/usr/bin:/usr/sbin:/usr/local/bin',
   }
