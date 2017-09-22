@@ -145,7 +145,7 @@ nginx::nginx_servers:
       'index': 'index.html'
 
   'signalboxes.net_http':
-    server_name: ['signalboxes.net', 'www.hewbert.com']
+    server_name: ['signalboxes.net']
     www_root: "/var/www/signalboxes.net"
     location_cfg_append:
       'return': '301 https://$server_name$request_uri'
