@@ -1,10 +1,11 @@
-#!/bin/bash
+#!/bin/sh
 
-os=$(uname -s)
+os=`uname -s`
 
 if [ $os == 'FreeBSD' ]; then
   /usr/sbin/pkg update
-  /usr/sbin/pkg install -y puppet
+  /usr/sbin/pkg install -y puppet4
+  /usr/sbin/pkg install -y rubygem-r10k
 else
   rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-6.noarch.rpm
   yum install -y puppet-agent
@@ -14,22 +15,20 @@ else
   ln -s /opt/puppetlabs/bin/hiera /usr/local/bin/hiera
   ln -s /opt/puppetlabs/puppet/bin/gem /usr/local/bin/gem
   ln -s /opt/puppetlabs/puppet/bin/r10k /usr/local/bin/r10k
+
+  echo "==> Installing r10k"
+  gem install r10k --no-ri --no-rdoc
 fi
 
-MYSELF=$(facter ipaddress)
-
-echo "==> Installing r10k"
-gem install r10k --no-ri --no-rdoc
+MYSELF=`facter ipaddress`
 
 echo "==> Installing modules from Puppetfile with r10k"
 r10k puppetfile install Puppetfile -v
 
-echo "==> Running Puppet with profile::puppet"
-puppet apply -e 'include profile::puppet' --modulepath=./modules:./site
-
-echo "==> Running Puppet with role::vps"
-puppet apply -e 'include role::vps' --modulepath=./modules:./site
-
+echo "==> Running Puppet apply"
+puppet apply manifests/site.pp \
+  --modulepath=./modules:./site \
+  --hiera_config=hiera.yaml
 
 echo "========================================================================"
 echo "#          r10k needs to populate the Puppet environments              #"

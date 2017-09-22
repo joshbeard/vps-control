@@ -12,20 +12,22 @@ other means.
 
 This isn't usable by other people without some modification, obviously.
 
-Once the VPS droplet is created (see my [https://github.com/joshbeard/vps-packer](Packer template)),
-clone this repository to the VPS somewhere and run the `bootstrap` script.
+1. Ensure git is installed
+2. Ensure Puppet is installed
+3. Clone this repository to the node
+4. Change into the cloned directory, and run the `bootstrap.sh` script.
 
 For example:
 
 ```shell
 cd
-git clone https://github.com/joshbeard/vps-control.git control.git
+git clone https://github.com/joshbeard/vps-control.git control
 cd control
-bash bootstrap.sh
+./bootstrap.sh
 ```
 
 This will install r10k, populate a temporary modules directory, and run a
-`puppet apply` with the `role::vps` class.
+`puppet apply` on `manifests/site.pp`.
 
 Once that's ran, r10k will need to be ran to populate the Puppet environments:
 `r10k deploy environment -pv`

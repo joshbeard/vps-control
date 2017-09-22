@@ -2,6 +2,8 @@ define profile::www::site (
   String           $site    = $title,
   Stdlib::Unixpath $docroot = "/var/www/${site}",
   Hash             $repo    = {},
+  String           $group   = 'root',
+  String           $user    = '0',
 ) {
 
   $_repos_resource = { $title => $repo }

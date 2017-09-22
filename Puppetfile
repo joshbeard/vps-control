@@ -1,11 +1,9 @@
-mod 'stahnma/epel',             '1.0.2'
 mod 'puppet/nginx',             '0.7.1'
 mod 'puppetlabs/stdlib',        '4.14.0'
 mod 'saz/sudo',                 '3.1.0'
 mod 'nanliu/staging',           '1.0.3'
 mod 'puppetlabs/firewall',      '1.7.0'
 mod 'saz/ssh',                  '2.8.1'
-mod 'hunner/hiera',             '1.3.1'
 mod 'puppetlabs/ntp',           '4.1.0'
 mod 'jpadams/puppet_vim_env',   '1.0.0'
 mod 'puppetlabs/vcsrepo',       '1.3.1'
@@ -18,7 +16,11 @@ mod 'puppetlabs/inifile',       '1.4.1'
 mod 'saz/timezone',             '3.3.0'
 mod 'zleslie/pkgng',            '0.3.0'
 mod 'camptocamp/openssl',       '1.5.0'
-mod 'computology/packagecloud', '0.3.1'
+
+# Not currently used, as my nodes are on FreeBSD.
+#mod 'stahnma/epel',             '1.0.2'
+#mod 'computology/packagecloud', '0.3.1'
+
 mod 'puppet/archive',           '1.2.0'
 
 ## Pinned for FreeBSD support
@@ -26,9 +28,6 @@ mod 'puppet/archive',           '1.2.0'
 mod 'ruby',
   :git => 'https://github.com/puppetlabs/puppetlabs-ruby.git',
   :ref => 'bdfb62c4b17dd6048b918c991f32df6ef283c580'
-
-mod 'mcmyadmin',
-  :git => 'https://github.com/joshbeard/puppet-mcmyadmin.git'
 
 mod 'minecraft',
   :git => 'https://github.com/joshbeard/puppet-minecraft.git',
