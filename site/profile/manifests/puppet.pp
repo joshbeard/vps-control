@@ -1,18 +1,20 @@
 ##
 ## Profile for configuring the Puppet agent and master on the vps
 ##
-class profile::puppet inherits profile::params {
+class profile::puppet {
+
+  include profile::params
 
   ## Static entry in /etc/hosts
-  host { $::fqdn:
+  host { $facts['fqdn']:
     ensure => 'present',
-    ip     => $::ipaddress,
+    ip     => $facts['ipaddress'],
   }
 
   ## Configure r10k
   class { 'r10k':
-    version       => 'latest',
-    sources       => {
+    version     => 'latest',
+    sources     => {
       'control'   => {
         'remote'  => 'https://github.com/joshbeard/vps-control.git',
         'basedir' => $::settings::environmentpath,
@@ -21,6 +23,7 @@ class profile::puppet inherits profile::params {
     },
     mcollective => false,
     configfile  => $::profile::params::r10k_config_file,
+    root_group  => $::profile::params::root_group,
   }
 
   cron { 'puppet':
