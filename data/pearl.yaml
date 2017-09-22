@@ -4,7 +4,7 @@
 ##
 classes:
   - 'profile::base'
-  - 'profile::base::linux'
+  - 'profile::base::freebsd'
   - 'profile::firewall'
   - 'profile::nginx_server'
   - 'profile::ssh'
