@@ -12,21 +12,23 @@
 # Make filebucket 'main' the default backup location for all File resources:
 case $facts['kernel'] {
   'Linux': {
+    $pkg_provider = undef
+    $root_group = 'root'
     File {
       backup                  => 'main',
       selinux_ignore_defaults => true,
       source_permissions      => 'ignore',
-      group                   => 'root',
+      group                   => $root_group,
     }
     Exec {
       path => '/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin',
     }
-    $pkg_provider = undef
   }
   'FreeBSD': {
     $pkg_provider = 'pkgng'
+    $root_group = 'wheel'
     File {
-      group => 'wheel',
+      group => $root_group,
     }
     Exec {
       path => '/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin',
