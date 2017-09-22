@@ -12,6 +12,7 @@ class profile::letsencrypt (
   Optional[String] $owner             = undef,
   Optional[String] $group             = undef,
   String           $cron_user         = 'root',
+  Array            $cron_hour         = [11, 23],
 ) {
 
   include ::letsencrypt
@@ -39,7 +40,7 @@ class profile::letsencrypt (
     ensure      => 'present',
     command     => "certbot renew --post-hook '${post_hook}' -m ${email_address}",
     user        => $cron_user,
-    hour        => '11,23',
+    hour        => $cron_hour,
     environment => 'PATH=/bin:/usr/bin:/usr/sbin:/usr/local/bin',
   }
 
