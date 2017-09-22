@@ -16,6 +16,7 @@ case $facts['kernel'] {
       backup                  => 'main',
       selinux_ignore_defaults => true,
       source_permissions      => 'ignore',
+      group                   => 'root',
     }
     Exec {
       path => '/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin',
@@ -24,6 +25,9 @@ case $facts['kernel'] {
   }
   'FreeBSD': {
     $pkg_provider = 'pkgng'
+    File {
+      group => 'wheel',
+    }
     Exec {
       path => '/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin',
     }

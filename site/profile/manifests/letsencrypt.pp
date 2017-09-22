@@ -9,8 +9,9 @@ class profile::letsencrypt (
   Hash             $domains           = {},
   Hash             $certonly_defaults = {},
   Stdlib::Unixpath $web_root          = '/var/www/le_webroot',
-  String           $owner             = 'root',
-  String           $group             = 0,
+  Optional[String] $owner             = undef,
+  Optional[String] $group             = undef,
+  String           $cron_user         = 'root',
 ) {
 
   include ::letsencrypt
@@ -26,6 +27,8 @@ class profile::letsencrypt (
     $params['webroot_paths'].each |$dir| {
       file { $dir:
         ensure => 'directory',
+        owner  => $owner,
+        group  => $group,
       }
     }
   }
@@ -35,7 +38,7 @@ class profile::letsencrypt (
   cron { 'letsencrypt-renew':
     ensure      => 'present',
     command     => "certbot renew --post-hook '${post_hook}' -m ${email_address}",
-    user        => 'root',
+    user        => $cron_user,
     hour        => '11,23',
     environment => 'PATH=/bin:/usr/bin:/usr/sbin:/usr/local/bin',
   }
