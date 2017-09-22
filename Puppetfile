@@ -29,6 +29,10 @@ mod 'ruby',
   :git => 'https://github.com/puppetlabs/puppetlabs-ruby.git',
   :ref => 'bdfb62c4b17dd6048b918c991f32df6ef283c580'
 
+mod 'pf',
+  :git => 'https://github.com/xaque208/puppet-pf.git',
+  :ref => 'c0ae11d60ce04343de01146018e98bccfb38f011'
+
 mod 'minecraft',
   :git => 'https://github.com/joshbeard/puppet-minecraft.git',
   :ref => 'instances'

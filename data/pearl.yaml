@@ -5,7 +5,7 @@
 classes:
   - 'profile::base'
   - 'profile::base::freebsd'
-#  - 'profile::firewall'
+  - 'profile::firewall'
   - 'profile::nginx_server'
   - 'profile::ssh'
   - 'profile::sudoers'
