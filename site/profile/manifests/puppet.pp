@@ -37,11 +37,13 @@ class profile::puppet {
   if $::osfamily == 'FreeBSD' {
     file { '/var/log/puppet':
       ensure => 'directory',
+      owner  => 'puppet',
+      group  => 'puppet',
     }
 
     file { '/etc/newsyslog.conf.d/puppet.conf':
       ensure  => 'file',
-      content => '/var/log/puppet/puppet.log puppet:puppet   644     30      *       $D0   JGCN',
+      content => '/var/log/puppet/puppet.log  puppet:puppet  644     30      *       $D0   JGCN',
       mode    => '0640',
     }
 
