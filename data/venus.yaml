@@ -78,7 +78,7 @@ minecraft::instance_defaults:
 minecraft::instances:
   'survival':
     jar: 'paperclip.jar'
-    source: 'https://ci.destroystokyo.com/job/PaperSpigot/lastStableBuild/artifact/paperclip-1196.jar'
+    source: 'https://ci.destroystokyo.com/job/PaperSpigot/lastStableBuild/artifact/paperclip-1220.jar'
     server_properties:
       'spawn-protection': '16'
       'generator-settings': ''
@@ -119,7 +119,7 @@ minecraft::instances:
       'motd': 'Beards Survival Server'
   'creative':
     jar: 'paperclip.jar'
-    source: 'https://ci.destroystokyo.com/job/PaperSpigot/lastStableBuild/artifact/paperclip-1196.jar'
+    source: 'https://ci.destroystokyo.com/job/PaperSpigot/lastStableBuild/artifact/paperclip-1220.jar'
     server_properties:
       'spawn-protection': '16'
       'max-tick-time': '60000'
