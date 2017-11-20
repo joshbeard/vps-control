@@ -221,17 +221,17 @@ nginx::nginx_locations:
   'home-well-known':
     location: '/.well-known'
     server: 'home.jbeard.org_http'
-    www_root: '/var/www/le_webroot/home.jbeard.org'
+    www_root: '/var/www/home.jbeard.org'
 
   'plex-well-known':
     location: '/.well-known'
     server: 'plex.jbeard.org_http'
-    www_root: '/var/www/le_webroot/plex.jbeard.org'
+    www_root: '/var/www/plex.jbeard.org'
 
   't-well-known':
     location: '/.well-known'
     server: 't.jbeard.org_http'
-    www_root: '/var/www/le_webroot/t.jbeard.org'
+    www_root: '/var/www/t.jbeard.org'
 
   '/transmission':
     proxy: 'http://localhost:9091'
