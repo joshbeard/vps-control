@@ -200,11 +200,6 @@ nginx::nginx_servers:
     ssl_key: '/usr/local/etc/letsencrypt/live/plex.jbeard.org/privkey.pem'
     ssl_ciphers: 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH'
 
-  'plex.jbeard.org-well-known':
-    location: '/.well-known'
-    server: 'plex.jbeard.org_http'
-    www_root: '/var/www/le_webroot/plex.jbeard.org'
-
 nginx::nginx_locations:
   'home-well-known':
     location: '/.well-known'
