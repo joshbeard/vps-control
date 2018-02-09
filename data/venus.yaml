@@ -183,11 +183,6 @@ nginx::nginx_servers:
     ssl_ciphers: 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH'
     www_root: '/var/www/home.jbeard.org'
 
-  'home.jbeard.org-well-known':
-    location: '/.well-known'
-    server: 'home.jbeard.org_http'
-    www_root: '/var/www/le_webroot/home.jbeard.org'
-
   'plex.jbeard.org_http':
     www_root: '/var/www/plex.jbeard.org'
     server_name:
@@ -214,12 +209,12 @@ nginx::nginx_locations:
   'home-well-known':
     location: '/.well-known'
     server: 'home.jbeard.org_http'
-    www_root: '/var/www/home.jbeard.org'
+    www_root: '/var/www/le_webroot/home.jbeard.org'
 
   'plex-well-known':
     location: '/.well-known'
     server: 'plex.jbeard.org_http'
-    www_root: '/var/www/plex.jbeard.org'
+    www_root: '/var/www/le_webroot/plex.jbeard.org'
 
   '/transmission':
     proxy: 'http://localhost:9091'
