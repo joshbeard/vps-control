@@ -262,21 +262,39 @@ profile::letsencrypt::domains:
   'signalboxes.net':
     'webroot_paths':
       - '/var/www/le_webroot/signalboxes.net'
+    'domains':
+      - 'signalboxes.net'
+      - 'www.signalboxes.net'
   'jbeard.org':
     'webroot_paths':
       - '/var/www/le_webroot/jbeard.org'
+    'domains':
+      - 'jbeard.org'
+      - 'www.jbeard.org'
   'pub.signalboxes.net':
     'webroot_paths':
       - '/var/www/le_webroot/pub.signalboxes.net'
   'juliabeard.me':
     'webroot_paths':
       - '/var/www/le_webroot/juliabeard.me'
+    'domains':
+      - 'juliabeard.me'
+      - 'www.juliabeard.me'
   'joshbeard.me':
     'webroot_paths':
       - '/var/www/le_webroot/joshbeard.me'
+    'domains':
+      - 'joshbeard.me'
+      - 'www.joshbeard.me'
   'signaltotrust.net':
     'webroot_paths':
       - '/var/www/le_webroot/signaltotrust.net'
+    'domains':
+      - 'signaltotrust.net'
+      - 'www.signaltotrust.net'
   'hewbert.com':
     'webroot_paths':
       - '/var/www/le_webroot/hewbert.com'
+    'domains':
+      - 'hewbert.com'
+      - 'www.hewbert.com'
