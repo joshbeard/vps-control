@@ -38,15 +38,15 @@ minecraft::instance_defaults:
       # https://www.spigotmc.org/resources/essentialsx.9089/
       # https://ci.drtshock.net/job/EssentialsX/
       source: 'https://ci.drtshock.net/job/EssentialsX/lastStableBuild/artifact/Essentials/target/EssentialsX-2.0.1.jar'
-      checksum: '721804a3ed308477e03c8b395aeebbcc'
+      checksum: 'cee67295b2742f46171a3bc7b64464da'
       plugin_name: 'EssentialsX'
     'EssentialsXAntiBuild':
       source: 'https://ci.drtshock.net/job/EssentialsX/lastStableBuild/artifact/EssentialsAntiBuild/target/EssentialsXAntiBuild-2.0.1.jar'
-      checksum: '46cbacc7c1551a9c6274e7860d009669'
+      checksum: '1e83d58781790b41d94eff5c461806ac'
       plugin_name: 'EssentialsXAntiBuild'
     'EssentialsXChat':
       source: 'https://ci.drtshock.net/job/EssentialsX/lastStableBuild/artifact/EssentialsChat/target/EssentialsXChat-2.0.1.jar'
-      checksum: 'b541ef54081d7724b6cbfa5aa6c2cdda'
+      checksum: 'd0512dc204f9cc8f4bc366b9cf29c7f3'
       plugin_name: 'EssentialsXChat'
     'EssentialsXGeoIP':
       source: 'https://ci.drtshock.net/job/EssentialsX/lastStableBuild/artifact/EssentialsGeoIP/target/EssentialsXGeoIP-2.0.1.jar'
@@ -54,12 +54,12 @@ minecraft::instance_defaults:
       plugin_name: 'EssentialsXGeoIP'
     'EssentialsXProtect':
       source: 'https://ci.drtshock.net/job/EssentialsX/lastStableBuild/artifact/EssentialsProtect/target/EssentialsXProtect-2.0.1.jar'
-      checksum: '35f46e223e60cfd049687e0b259008a5'
+      checksum: '04c9a3b6e6cc17db7addfdd3ef4f170c'
       plugin_name: 'EssentialsXProtect'
     'EssentialsXSpawn':
       source: 'https://ci.drtshock.net/job/EssentialsX/lastStableBuild/artifact/EssentialsSpawn/target/EssentialsXSpawn-2.0.1.jar'
-      checksum: '1486f583b5763e9eebf6ff197e62a2f6'
-      plugin_name: 'EssentialsXSpan'
+      checksum: '6bacbda432f2ea4f209d7b31dc1a6c70'
+      plugin_name: 'EssentialsXSpawn'
     'Dynmap':
       # https://dev.bukkit.org/projects/dynmap
       source: 'https://addons-origin.cursecdn.com/files/2431/572/dynmap-2.5.jar'
@@ -78,7 +78,7 @@ minecraft::instance_defaults:
 minecraft::instances:
   'survival':
     jar: 'paperclip.jar'
-    source: 'https://ci.destroystokyo.com/job/PaperSpigot/lastStableBuild/artifact/paperclip-1220.jar'
+    source: 'https://ci.destroystokyo.com/job/Paper/lastStableBuild/artifact/paperclip-1349.jar'
     server_properties:
       'spawn-protection': '16'
       'generator-settings': ''
@@ -119,7 +119,7 @@ minecraft::instances:
       'motd': 'Beards Survival Server'
   'creative':
     jar: 'paperclip.jar'
-    source: 'https://ci.destroystokyo.com/job/PaperSpigot/lastStableBuild/artifact/paperclip-1220.jar'
+    source: 'https://ci.destroystokyo.com/job/Paper/lastStableBuild/artifact/paperclip-1349.jar'
     server_properties:
       'spawn-protection': '16'
       'max-tick-time': '60000'
