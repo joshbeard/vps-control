@@ -37,27 +37,27 @@ minecraft::instance_defaults:
     'EssentialsX':
       # https://www.spigotmc.org/resources/essentialsx.9089/
       # https://ci.drtshock.net/job/EssentialsX/
-      source: 'https://ci.drtshock.net/job/EssentialsX/lastStableBuild/artifact/Essentials/target/EssentialsX-2.0.1.jar'
+      source: 'https://ci.akpmakes.tech/job/EssentialsX/lastSuccessfulBuild/artifact/Essentials/target/EssentialsX-2.0.1.jar'
       checksum: 'cee67295b2742f46171a3bc7b64464da'
       plugin_name: 'EssentialsX'
     'EssentialsXAntiBuild':
-      source: 'https://ci.drtshock.net/job/EssentialsX/lastStableBuild/artifact/EssentialsAntiBuild/target/EssentialsXAntiBuild-2.0.1.jar'
+      source: 'https://ci.akpmakes.tech/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsAntiBuild/target/EssentialsXAntiBuild-2.0.1.jar'
       checksum: '1e83d58781790b41d94eff5c461806ac'
       plugin_name: 'EssentialsXAntiBuild'
     'EssentialsXChat':
-      source: 'https://ci.drtshock.net/job/EssentialsX/lastStableBuild/artifact/EssentialsChat/target/EssentialsXChat-2.0.1.jar'
+      source: 'https://ci.akpmakes.tech/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsChat/target/EssentialsXChat-2.0.1.jar'
       checksum: 'd0512dc204f9cc8f4bc366b9cf29c7f3'
       plugin_name: 'EssentialsXChat'
     'EssentialsXGeoIP':
-      source: 'https://ci.drtshock.net/job/EssentialsX/lastStableBuild/artifact/EssentialsGeoIP/target/EssentialsXGeoIP-2.0.1.jar'
+      source: 'https://ci.akpmakes.tech/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsGeoIP/target/EssentialsXGeoIP-2.0.1.jar'
       checksum: '08edbeb3ddfa0231ca1f2d9fcff72131'
       plugin_name: 'EssentialsXGeoIP'
     'EssentialsXProtect':
-      source: 'https://ci.drtshock.net/job/EssentialsX/lastStableBuild/artifact/EssentialsProtect/target/EssentialsXProtect-2.0.1.jar'
+      source: 'https://ci.akpmakes.tech/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsProtect/target/EssentialsXProtect-2.0.1.jar'
       checksum: '04c9a3b6e6cc17db7addfdd3ef4f170c'
       plugin_name: 'EssentialsXProtect'
     'EssentialsXSpawn':
-      source: 'https://ci.drtshock.net/job/EssentialsX/lastStableBuild/artifact/EssentialsSpawn/target/EssentialsXSpawn-2.0.1.jar'
+      source: 'https://ci.akpmakes.tech/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsSpawn/target/EssentialsXSpawn-2.0.1.jar'
       checksum: '6bacbda432f2ea4f209d7b31dc1a6c70'
       plugin_name: 'EssentialsXSpawn'
     'Dynmap':
