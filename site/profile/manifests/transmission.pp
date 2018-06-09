@@ -11,10 +11,10 @@ class profile::transmission {
       'encryption'             => 2,
       'incomplete-dir'         => '/store/downloads',
       'incomplete-dir-enabled' => true,
-      'ratio-limit'            => 0,
+      'ratio-limit'            => '1.0',
       'ratio-limit-enabled'    => true,
       'rpc-whitelist-enabled'  => false,
-      'speed-limit-up'         => 0,
+      'speed-limit-up'         => 100,
       'speed-limit-up-enabled' => true,
     }
   }
