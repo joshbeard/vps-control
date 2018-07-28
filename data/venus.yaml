@@ -23,7 +23,7 @@ minecraft::instance_defaults:
   java_args: '-XX:+UseConcMarkSweepGC -XX:+CMSIncrementalPacing -XX:ParallelGCThreads=4 -XX:+AggressiveOpts'
   plugins_defaults:
     checksum_type: 'md5'
-    #  plugins:
+      plugins:
     #    'WorldEdit':
     #      # https://dev.bukkit.org/projects/worldedit/files
     #      source: 'https://addons.cursecdn.com/files/2460/562/worldedit-bukkit-6.1.7.3.jar'
@@ -34,37 +34,37 @@ minecraft::instance_defaults:
     #      source: 'https://addons-origin.cursecdn.com/files/894/359/Vault.jar'
     #      checksum: 'ff7a7b7233146b002727dfa238c8420e'
     #      plugin_name: 'Vault'
-    #    'EssentialsX':
-    #      # https://www.spigotmc.org/resources/essentialsx.9089/
-    #      # https://ci.drtshock.net/job/EssentialsX/
-    #      source: 'https://ci.akpmakes.tech/job/EssentialsX/lastSuccessfulBuild/artifact/Essentials/target/EssentialsX-2.0.1.jar'
-    #      checksum: 'cee67295b2742f46171a3bc7b64464da'
-    #      plugin_name: 'EssentialsX'
-    #    'EssentialsXAntiBuild':
-    #      source: 'https://ci.akpmakes.tech/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsAntiBuild/target/EssentialsXAntiBuild-2.0.1.jar'
-    #      checksum: '1e83d58781790b41d94eff5c461806ac'
-    #      plugin_name: 'EssentialsXAntiBuild'
-    #    'EssentialsXChat':
-    #      source: 'https://ci.akpmakes.tech/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsChat/target/EssentialsXChat-2.0.1.jar'
-    #      checksum: 'd0512dc204f9cc8f4bc366b9cf29c7f3'
-    #      plugin_name: 'EssentialsXChat'
-    #    'EssentialsXGeoIP':
-    #      source: 'https://ci.akpmakes.tech/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsGeoIP/target/EssentialsXGeoIP-2.0.1.jar'
-    #      checksum: '08edbeb3ddfa0231ca1f2d9fcff72131'
-    #      plugin_name: 'EssentialsXGeoIP'
-    #    'EssentialsXProtect':
-    #      source: 'https://ci.akpmakes.tech/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsProtect/target/EssentialsXProtect-2.0.1.jar'
-    #      checksum: '04c9a3b6e6cc17db7addfdd3ef4f170c'
-    #      plugin_name: 'EssentialsXProtect'
-    #    'EssentialsXSpawn':
-    #      source: 'https://ci.akpmakes.tech/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsSpawn/target/EssentialsXSpawn-2.0.1.jar'
-    #      checksum: '6bacbda432f2ea4f209d7b31dc1a6c70'
-    #      plugin_name: 'EssentialsXSpawn'
-    #    'Dynmap':
-    #      # https://dev.bukkit.org/projects/dynmap
-    #      source: 'https://addons-origin.cursecdn.com/files/2431/572/dynmap-2.5.jar'
-    #      checksum: '328fa81e6c5ccb22ce2d44f2c1c7f114'
-    #      plugin_name: 'Dynmap'
+        'EssentialsX':
+          # https://www.spigotmc.org/resources/essentialsx.9089/
+          # https://ci.drtshock.net/job/EssentialsX/
+          source: 'https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/Essentials/target/EssentialsX-2.15.0.17.jar'
+          checksum: '9dd8d1f2963001b6efb0c1da9b4a4604'
+          plugin_name: 'EssentialsX'
+        'EssentialsXAntiBuild':
+          source: 'https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsAntiBuild/target/EssentialsXAntiBuild-2.15.0.17.jar'
+          checksum: '63b8a7d23d080eaab63bc9fd8fb22137'
+          plugin_name: 'EssentialsXAntiBuild'
+        'EssentialsXChat':
+          source: 'https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsChat/target/EssentialsXChat-2.15.0.17.jar'
+          checksum: '05847fa8d50cdcdb12745785deefd7de'
+          plugin_name: 'EssentialsXChat'
+        'EssentialsXGeoIP':
+          source: 'https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsGeoIP/target/EssentialsXGeoIP-2.15.0.17.jar'
+          checksum: '87d5147a246c68e3c4a60fbed9b7c853'
+          plugin_name: 'EssentialsXGeoIP'
+        'EssentialsXProtect':
+          source: 'https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsProtect/target/EssentialsXProtect-2.15.0.17.jar'
+          checksum: '52387d4059d66eb8eba729a57797d02f'
+          plugin_name: 'EssentialsXProtect'
+        'EssentialsXSpawn':
+          source: 'https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsSpawn/target/EssentialsXSpawn-2.15.0.17.jar'
+          checksum: 'a5e1b2a20e82b74a4069db005ce944db'
+          plugin_name: 'EssentialsXSpawn'
+        'Dynmap':
+          # https://dev.bukkit.org/projects/dynmap
+          source: 'https://media.forgecdn.net/files/2580/906/dynmap-2.6-beta-1.jar'
+          checksum: '7f9c1091dd03375f07281e5ad937f185'
+          plugin_name: 'Dynmap'
     #    'DynmapEssentials':
     #      # https://dev.bukkit.org/projects/dynmap-essentials
     #      source: 'https://addons-origin.cursecdn.com/files/912/862/Dynmap-Essentials-0.91.jar'
