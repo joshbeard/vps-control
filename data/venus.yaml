@@ -23,62 +23,62 @@ minecraft::instance_defaults:
   java_args: '-XX:+UseConcMarkSweepGC -XX:+CMSIncrementalPacing -XX:ParallelGCThreads=4 -XX:+AggressiveOpts'
   plugins_defaults:
     checksum_type: 'md5'
-  plugins:
-    'WorldEdit':
-      # https://dev.bukkit.org/projects/worldedit/files
-      source: 'https://addons.cursecdn.com/files/2460/562/worldedit-bukkit-6.1.7.3.jar'
-      checksum: 'a12733e7e042a4d9b095dc6f95057698'
-      plugin_name: 'WorldEdit'
-    'Vault':
-      # https://dev.bukkit.org/projects/vault
-      source: 'https://addons-origin.cursecdn.com/files/894/359/Vault.jar'
-      checksum: 'ff7a7b7233146b002727dfa238c8420e'
-      plugin_name: 'Vault'
-    'EssentialsX':
-      # https://www.spigotmc.org/resources/essentialsx.9089/
-      # https://ci.drtshock.net/job/EssentialsX/
-      source: 'https://ci.akpmakes.tech/job/EssentialsX/lastSuccessfulBuild/artifact/Essentials/target/EssentialsX-2.0.1.jar'
-      checksum: 'cee67295b2742f46171a3bc7b64464da'
-      plugin_name: 'EssentialsX'
-    'EssentialsXAntiBuild':
-      source: 'https://ci.akpmakes.tech/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsAntiBuild/target/EssentialsXAntiBuild-2.0.1.jar'
-      checksum: '1e83d58781790b41d94eff5c461806ac'
-      plugin_name: 'EssentialsXAntiBuild'
-    'EssentialsXChat':
-      source: 'https://ci.akpmakes.tech/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsChat/target/EssentialsXChat-2.0.1.jar'
-      checksum: 'd0512dc204f9cc8f4bc366b9cf29c7f3'
-      plugin_name: 'EssentialsXChat'
-    'EssentialsXGeoIP':
-      source: 'https://ci.akpmakes.tech/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsGeoIP/target/EssentialsXGeoIP-2.0.1.jar'
-      checksum: '08edbeb3ddfa0231ca1f2d9fcff72131'
-      plugin_name: 'EssentialsXGeoIP'
-    'EssentialsXProtect':
-      source: 'https://ci.akpmakes.tech/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsProtect/target/EssentialsXProtect-2.0.1.jar'
-      checksum: '04c9a3b6e6cc17db7addfdd3ef4f170c'
-      plugin_name: 'EssentialsXProtect'
-    'EssentialsXSpawn':
-      source: 'https://ci.akpmakes.tech/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsSpawn/target/EssentialsXSpawn-2.0.1.jar'
-      checksum: '6bacbda432f2ea4f209d7b31dc1a6c70'
-      plugin_name: 'EssentialsXSpawn'
-    'Dynmap':
-      # https://dev.bukkit.org/projects/dynmap
-      source: 'https://addons-origin.cursecdn.com/files/2431/572/dynmap-2.5.jar'
-      checksum: '328fa81e6c5ccb22ce2d44f2c1c7f114'
-      plugin_name: 'Dynmap'
-    'DynmapEssentials':
-      # https://dev.bukkit.org/projects/dynmap-essentials
-      source: 'https://addons-origin.cursecdn.com/files/912/862/Dynmap-Essentials-0.91.jar'
-      checksum: '63f245e417b8c00b6792ba8b1098d062'
-      plugin_name: 'DynmapEssentials'
-    'DynmapStructures':
-      # https://dev.bukkit.org/projects/dynmap-structures
-      source: 'https://addons-origin.cursecdn.com/files/2407/445/dynmap-structures-1.4.0-all.jar'
-      checksum: 'e2203ebb894ff4fa37e990a5914642ca'
-      plugin_name: 'DynmapStructures'
+    #  plugins:
+    #    'WorldEdit':
+    #      # https://dev.bukkit.org/projects/worldedit/files
+    #      source: 'https://addons.cursecdn.com/files/2460/562/worldedit-bukkit-6.1.7.3.jar'
+    #      checksum: 'a12733e7e042a4d9b095dc6f95057698'
+    #      plugin_name: 'WorldEdit'
+    #    'Vault':
+    #      # https://dev.bukkit.org/projects/vault
+    #      source: 'https://addons-origin.cursecdn.com/files/894/359/Vault.jar'
+    #      checksum: 'ff7a7b7233146b002727dfa238c8420e'
+    #      plugin_name: 'Vault'
+    #    'EssentialsX':
+    #      # https://www.spigotmc.org/resources/essentialsx.9089/
+    #      # https://ci.drtshock.net/job/EssentialsX/
+    #      source: 'https://ci.akpmakes.tech/job/EssentialsX/lastSuccessfulBuild/artifact/Essentials/target/EssentialsX-2.0.1.jar'
+    #      checksum: 'cee67295b2742f46171a3bc7b64464da'
+    #      plugin_name: 'EssentialsX'
+    #    'EssentialsXAntiBuild':
+    #      source: 'https://ci.akpmakes.tech/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsAntiBuild/target/EssentialsXAntiBuild-2.0.1.jar'
+    #      checksum: '1e83d58781790b41d94eff5c461806ac'
+    #      plugin_name: 'EssentialsXAntiBuild'
+    #    'EssentialsXChat':
+    #      source: 'https://ci.akpmakes.tech/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsChat/target/EssentialsXChat-2.0.1.jar'
+    #      checksum: 'd0512dc204f9cc8f4bc366b9cf29c7f3'
+    #      plugin_name: 'EssentialsXChat'
+    #    'EssentialsXGeoIP':
+    #      source: 'https://ci.akpmakes.tech/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsGeoIP/target/EssentialsXGeoIP-2.0.1.jar'
+    #      checksum: '08edbeb3ddfa0231ca1f2d9fcff72131'
+    #      plugin_name: 'EssentialsXGeoIP'
+    #    'EssentialsXProtect':
+    #      source: 'https://ci.akpmakes.tech/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsProtect/target/EssentialsXProtect-2.0.1.jar'
+    #      checksum: '04c9a3b6e6cc17db7addfdd3ef4f170c'
+    #      plugin_name: 'EssentialsXProtect'
+    #    'EssentialsXSpawn':
+    #      source: 'https://ci.akpmakes.tech/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsSpawn/target/EssentialsXSpawn-2.0.1.jar'
+    #      checksum: '6bacbda432f2ea4f209d7b31dc1a6c70'
+    #      plugin_name: 'EssentialsXSpawn'
+    #    'Dynmap':
+    #      # https://dev.bukkit.org/projects/dynmap
+    #      source: 'https://addons-origin.cursecdn.com/files/2431/572/dynmap-2.5.jar'
+    #      checksum: '328fa81e6c5ccb22ce2d44f2c1c7f114'
+    #      plugin_name: 'Dynmap'
+    #    'DynmapEssentials':
+    #      # https://dev.bukkit.org/projects/dynmap-essentials
+    #      source: 'https://addons-origin.cursecdn.com/files/912/862/Dynmap-Essentials-0.91.jar'
+    #      checksum: '63f245e417b8c00b6792ba8b1098d062'
+    #      plugin_name: 'DynmapEssentials'
+    #    'DynmapStructures':
+    #      # https://dev.bukkit.org/projects/dynmap-structures
+    #      source: 'https://addons-origin.cursecdn.com/files/2407/445/dynmap-structures-1.4.0-all.jar'
+    #      checksum: 'e2203ebb894ff4fa37e990a5914642ca'
+    #      plugin_name: 'DynmapStructures'
 minecraft::instances:
   'survival':
-    jar: 'paperclip.jar'
-    source: 'https://destroystokyo.com/ci/job/Paper-1.13/lastSuccessfulBuild/artifact/paperclip-50.jar'
+    jar: 'server.jar'
+    source: 'https://launcher.mojang.com/mc/game/1.13/server/d0caafb8438ebd206f99930cfaecfa6c9a13dca0/server.jar'
     server_properties:
       'spawn-protection': '16'
       'generator-settings': ''
@@ -118,8 +118,10 @@ minecraft::instances:
       'enable-rcon': 'false'
       'motd': 'Beards Survival Server'
   'creative':
-    jar: 'paperclip.jar'
-    source: 'https://destroystokyo.com/ci/job/Paper-1.13/lastSuccessfulBuild/artifact/paperclip-50.jar'
+    #    jar: 'paperclip.jar'
+    #    source: 'https://destroystokyo.com/ci/job/Paper-1.13/lastSuccessfulBuild/artifact/paperclip-50.jar'
+    jar: 'server.jar''
+    source: 'https://launcher.mojang.com/mc/game/1.13/server/d0caafb8438ebd206f99930cfaecfa6c9a13dca0/server.jar'
     server_properties:
       'spawn-protection': '16'
       'max-tick-time': '60000'
