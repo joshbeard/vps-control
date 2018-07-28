@@ -24,16 +24,6 @@ minecraft::instance_defaults:
   plugins_defaults:
     checksum_type: 'md5'
       plugins:
-    #    'WorldEdit':
-    #      # https://dev.bukkit.org/projects/worldedit/files
-    #      source: 'https://addons.cursecdn.com/files/2460/562/worldedit-bukkit-6.1.7.3.jar'
-    #      checksum: 'a12733e7e042a4d9b095dc6f95057698'
-    #      plugin_name: 'WorldEdit'
-    #    'Vault':
-    #      # https://dev.bukkit.org/projects/vault
-    #      source: 'https://addons-origin.cursecdn.com/files/894/359/Vault.jar'
-    #      checksum: 'ff7a7b7233146b002727dfa238c8420e'
-    #      plugin_name: 'Vault'
         'EssentialsX':
           # https://www.spigotmc.org/resources/essentialsx.9089/
           # https://ci.drtshock.net/job/EssentialsX/
@@ -65,16 +55,26 @@ minecraft::instance_defaults:
           source: 'https://media.forgecdn.net/files/2580/906/dynmap-2.6-beta-1.jar'
           checksum: '7f9c1091dd03375f07281e5ad937f185'
           plugin_name: 'Dynmap'
-    #    'DynmapEssentials':
-    #      # https://dev.bukkit.org/projects/dynmap-essentials
-    #      source: 'https://addons-origin.cursecdn.com/files/912/862/Dynmap-Essentials-0.91.jar'
-    #      checksum: '63f245e417b8c00b6792ba8b1098d062'
-    #      plugin_name: 'DynmapEssentials'
-    #    'DynmapStructures':
-    #      # https://dev.bukkit.org/projects/dynmap-structures
-    #      source: 'https://addons-origin.cursecdn.com/files/2407/445/dynmap-structures-1.4.0-all.jar'
-    #      checksum: 'e2203ebb894ff4fa37e990a5914642ca'
-    #      plugin_name: 'DynmapStructures'
+        #'DynmapEssentials':
+        #  # https://dev.bukkit.org/projects/dynmap-essentials
+        #  source: 'https://addons-origin.cursecdn.com/files/912/862/Dynmap-Essentials-0.91.jar'
+        #  checksum: '63f245e417b8c00b6792ba8b1098d062'
+        #  plugin_name: 'DynmapEssentials'
+        #'DynmapStructures':
+        #  # https://dev.bukkit.org/projects/dynmap-structures
+        #  source: 'https://addons-origin.cursecdn.com/files/2407/445/dynmap-structures-1.4.0-all.jar'
+        #  checksum: 'e2203ebb894ff4fa37e990a5914642ca'
+        #  plugin_name: 'DynmapStructures'
+        #'WorldEdit':
+        #  # https://dev.bukkit.org/projects/worldedit/files
+        #  source: 'https://addons.cursecdn.com/files/2460/562/worldedit-bukkit-6.1.7.3.jar'
+        #  checksum: 'a12733e7e042a4d9b095dc6f95057698'
+        #  plugin_name: 'WorldEdit'
+        #'Vault':
+        #  # https://dev.bukkit.org/projects/vault
+        #  source: 'https://addons-origin.cursecdn.com/files/894/359/Vault.jar'
+        #  checksum: 'ff7a7b7233146b002727dfa238c8420e'
+        #  plugin_name: 'Vault'
 minecraft::instances:
   'survival':
     jar: 'server.jar'
