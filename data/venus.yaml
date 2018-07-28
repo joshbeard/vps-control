@@ -120,7 +120,7 @@ minecraft::instances:
   'creative':
     #    jar: 'paperclip.jar'
     #    source: 'https://destroystokyo.com/ci/job/Paper-1.13/lastSuccessfulBuild/artifact/paperclip-50.jar'
-    jar: 'server.jar''
+    jar: 'server.jar'
     source: 'https://launcher.mojang.com/mc/game/1.13/server/d0caafb8438ebd206f99930cfaecfa6c9a13dca0/server.jar'
     server_properties:
       'spawn-protection': '16'
