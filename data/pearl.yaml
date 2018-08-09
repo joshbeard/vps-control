@@ -226,6 +226,14 @@ nginx::nginx_locations:
     server: 'juliabeard.me_http'
     www_root: '/var/www/le_webroot/juliabeard.me'
 
+  'joshbeard.me-flickr':
+    location: '/flickr'
+    server: 'joshbeard.me'
+    ssl: true
+    ssl_only: true
+    location_custom_cfg:
+      'return': '302 https://www.flickr.com/photos/148417907@N03/'
+
   'joshbeard.me-well-known':
     location: '/.well-known'
     server: 'joshbeard.me_http'
