@@ -1,21 +1,20 @@
 class profile::transmission {
 
-  file { '/var/www/t.jbeard.org':
-    ensure => 'directory',
-  }
-
   class { '::transmission':
     settings => {
-      'download-dir'           => '/store/media/Videos/movies',
-      'download-queue-size'    => 10,
-      'encryption'             => 2,
-      'incomplete-dir'         => '/store/downloads',
-      'incomplete-dir-enabled' => true,
-      'ratio-limit'            => '1.0',
-      'ratio-limit-enabled'    => true,
-      'rpc-whitelist-enabled'  => false,
-      'speed-limit-up'         => 100,
-      'speed-limit-up-enabled' => true,
+      'download-dir'               => '/store/media/Videos/movies',
+      'download-queue-size'        => 10,
+      'encryption'                 => 2,
+      'incomplete-dir'             => '/store/downloads',
+      'incomplete-dir-enabled'     => true,
+      'prefetch-enabled'           => true,
+      'ratio-limit'                => '1',
+      'ratio-limit-enabled'        => true,
+      'rpc-host-whitelist'         => 'home.jbeard.org',
+      'rpc-host-whitelist-enabled' => true,
+      'rpc-whitelist-enabled'      => true,
+      'speed-limit-up'             => 100,
+      'speed-limit-up-enabled'     => true,
     }
   }
 

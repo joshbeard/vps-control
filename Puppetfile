@@ -1,26 +1,22 @@
-mod 'puppetlabs/stdlib',        '4.20.0'
-mod 'puppetlabs/concat',        '4.0.1'
-mod 'puppetlabs/inifile',       '2.0.0'
+mod 'puppetlabs/stdlib',        '5.0.0'
+mod 'puppetlabs/concat',        '5.0.0'
+mod 'puppetlabs/inifile',       '2.3.0'
 mod 'puppetlabs/firewall',      '1.9.0'
-mod 'puppetlabs/ntp',           '6.2.0'
-mod 'puppetlabs/vcsrepo',       '2.0.0'
+mod 'puppetlabs/ntp',           '7.2.0'
+mod 'puppetlabs/vcsrepo',       '2.3.0'
 mod 'puppetlabs/git',           '0.5.0'
 mod 'puppetlabs/gcc',           '0.3.0'
 mod 'puppetlabs/ruby',          '1.0.0'
-mod 'saz/sudo',                 '4.2.0'
-mod 'puppet/staging',           '2.2.0'
-mod 'puppet/nginx',             '0.7.1'
-mod 'saz/ssh',                  '3.0.1'
-mod 'puppet/r10k',              '6.1.0'
-mod 'puppet/make',              '1.1.0'
-mod 'saz/timezone',             '3.5.0'
+mod 'saz/sudo',                 '5.0.0'
+mod 'puppet/staging',           '3.2.0'
+mod 'puppet/nginx',             '0.13.0'
+mod 'saz/ssh',                  '4.0.0'
+mod 'puppet/r10k',              '6.6.1'
+mod 'puppet/make',              '2.1.0'
+mod 'saz/timezone',             '5.0.2'
 mod 'camptocamp/openssl',       '1.10.0'
-mod 'puppet/archive',           '2.0.0'
-
-#mod 'zleslie/pkgng',            '1.2.0'
-mod 'pkgng',
-  :git => 'https://github.com/xaque208/puppet-pkgng.git',
-  :ref => '3e79242eec50b9a3f7523907b11ba44d01c679fb'
+mod 'puppet/archive',           '3.2.0'
+mod 'zleslie/pkgng',            '2.1.1'
 
 mod 'pf',
   :git => 'https://github.com/xaque208/puppet-pf.git',
@@ -41,8 +37,3 @@ mod 'transmission',
 mod 'letsencrypt',
   :git => 'https://github.com/joshbeard/puppet-letsencrypt.git',
   :ref => 'freebsd_paths'
-
-# Not currently used, as my nodes are on FreeBSD.
-#mod 'stahnma/epel',             '1.0.2'
-#mod 'computology/packagecloud', '0.3.1'
-

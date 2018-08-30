@@ -2,7 +2,6 @@
 ##
 ## Hiera config for my old server
 ##
-ruby::rubygems_package: 'ruby22-gems'
 classes:
   - 'profile::base'
   - 'profile::zfs'
@@ -15,6 +14,9 @@ classes:
   - 'profile::letsencrypt'
   - 'profile::transmission'
 
+#
+# == Minecraft
+#
 # Check in to https://yivesmirror.com/downloads/paperspigot
 minecraft::user: 'minecraft'
 minecraft::group: 'minecraft'
@@ -168,82 +170,81 @@ profile::minecraft::servers:
   'creative':
     dynmap_port: 8124
 
+#
+# == Nginx
+#
 nginx::config::server_tokens: 'off'
 nginx::nginx_servers:
-  'home.jbeard.org_http':
-    www_root: '/var/www/home.jbeard.org'
-    server_name:
-      - 'home.jbeard.org'
-    location_cfg_append:
-      'return': '301 http://$server_name$request_uri'
-
   'home.jbeard.org':
-    listen_port: 443
     ssl: true
     ssl_cert: '/usr/local/etc/letsencrypt/live/home.jbeard.org/fullchain.pem'
     ssl_key: '/usr/local/etc/letsencrypt/live/home.jbeard.org/privkey.pem'
     ssl_ciphers: 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH'
-    www_root: '/var/www/home.jbeard.org'
-
-  'plex.jbeard.org_http':
-    www_root: '/var/www/plex.jbeard.org'
-    server_name:
-      - 'plex.jbeard.org'
-    location_cfg_append:
-      'rewrite': '^ https://$server_name$request_uri? permanent'
+    use_default_location: false
+    locations_defaults:
+      ssl: true
+      ssl_only: true
+    locations:
+      'home.jbeard.org-ssl_redirection':
+        location: '/'
+        ssl: false
+        ssl_only: false
+        location_custom_cfg:
+          'return': '301 https://$server_name$request_uri'
+      'home.jbeard.org':
+        location: '/'
+        www_root: '/var/www/home.jbeard.org'
+      'home-well-known':
+        location: '/.well-known'
+        www_root: '/var/www/le_webroot/home.jbeard.org'
+        ssl: false
+        ssl_only: false
+      '/transmission':
+        proxy: 'http://localhost:9091'
+        server: 'home.jbeard.org'
+        auth_basic: 'Transmission'
+        auth_basic_user_file: '/usr/local/etc/transmission/transmission.access'
+      'creative-dynmap':
+        location: '/dynmap/creative/'
+        server: 'home.jbeard.org'
+        proxy: 'http://127.0.0.1:8124/'
+        proxy_redirect: 'default'
+      'survival-dynmap':
+        location: '/dynmap/survival/'
+        server: 'home.jbeard.org'
+        proxy: 'http://127.0.0.1:8123/'
+        proxy_redirect: 'default'
 
   'plex.jbeard.org':
-    listen_port: 443
-    proxy: 'http://localhost:32400'
-    auth_basic: 'Plex'
-    auth_basic_user_file: '/usr/local/etc/transmission/transmission.access'
     ssl: true
     ssl_cert: '/usr/local/etc/letsencrypt/live/plex.jbeard.org/fullchain.pem'
     ssl_key: '/usr/local/etc/letsencrypt/live/plex.jbeard.org/privkey.pem'
     ssl_ciphers: 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH'
+    use_default_location: false
+    locations_defaults:
+      ssl: true
+      ssl_only: true
+    locations:
+      'plex.jbeard.org-ssl_redirection':
+        location: '/'
+        ssl: false
+        ssl_only: false
+        location_custom_cfg:
+          'return': '301 https://$server_name$request_uri'
+      'plex.jbeard.org':
+        location: '/'
+        proxy: 'http://localhost:32400'
+        auth_basic: 'Plex'
+        auth_basic_user_file: '/usr/local/etc/transmission/transmission.access'
+      'plex-well-known':
+        location: '/.well-known'
+        www_root: '/var/www/le_webroot/plex.jbeard.org'
+        ssl: false
+        ssl_only: false
 
-nginx::nginx_locations:
-  'home-well-known':
-    location: '/.well-known'
-    server: 'home.jbeard.org_http'
-    www_root: '/var/www/le_webroot/home.jbeard.org'
-
-  'plex-well-known':
-    location: '/.well-known'
-    server: 'plex.jbeard.org_http'
-    www_root: '/var/www/le_webroot/plex.jbeard.org'
-
-  '/transmission':
-    proxy: 'http://localhost:9091'
-    server: 'home.jbeard.org'
-    auth_basic: 'Transmission'
-    auth_basic_user_file: '/usr/local/etc/transmission/transmission.access'
-    ssl: true
-    ssl_only: true
-
-  'creative-dynmap':
-    location: '/dynmap/creative/'
-    server: 'home.jbeard.org'
-    proxy: 'http://127.0.0.1:8124/'
-    proxy_redirect: 'default'
-    ssl: true
-    ssl_only: true
-
-  'survival-dynmap':
-    location: '/dynmap/survival/'
-    server: 'home.jbeard.org'
-    proxy: 'http://127.0.0.1:8123/'
-    proxy_redirect: 'default'
-    ssl: true
-    ssl_only: true
-
-# -------------------------------------------------------------------
-# Letsencrypt
-# -------------------------------------------------------------------
-letsencrypt::package_command: 'certbot'
-letsencrypt::install_method: 'package'
-letsencrypt::package_name: 'py27-certbot'
-
+#
+# == Letsencrypt
+#
 profile::letsencrypt::certonly_defaults:
   plugin: 'webroot'
   manage_cron: false
@@ -252,6 +253,10 @@ profile::letsencrypt::domains:
   'plex.jbeard.org':
     webroot_paths:
       - '/var/www/le_webroot/plex.jbeard.org'
+    'domains':
+      - 'plex.jbeard.org'
   'home.jbeard.org':
     webroot_paths:
       - '/var/www/le_webroot/home.jbeard.org'
+    'domains':
+      - 'home.jbeard.org'
