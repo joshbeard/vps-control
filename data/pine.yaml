@@ -1,0 +1,303 @@
+---
+##
+## Hiera config for my VPS
+##
+classes:
+  - 'profile::base'
+  - 'profile::firewall'
+  - 'profile::nginx_server'
+  - 'profile::ssh'
+  - 'profile::sudoers'
+  - 'profile::puppet'
+  - 'profile::letsencrypt'
+  - 'profile::www'
+
+#
+# == Sites - docroots, repos
+#
+profile::www::sites:
+  'signalboxes.net':
+    repo:
+      source: 'https://github.com/joshbeard/signalboxes.net.git'
+  'pub.signalboxes.net':
+    repo:
+      source: 'https://github.com/joshbeard/Nginx-Fancyindex-Theme.git'
+      path: '/var/www/pub.signalboxes.net/fancyindex'
+  'jbeard.org':
+    repo:
+      source: 'https://github.com/joshbeard/www-jbeard.org.git'
+  'juliabeard':
+    repo:
+      source: 'https://github.com/joshbeard/www-juliabeard.git'
+  'signaltotrust.net':
+    repo:
+      source: 'https://github.com/joshbeard/www-signaltotrust.net.git'
+  'joshbeard.me':
+    repo:
+      source: 'https://github.com/joshbeard/www-joshbeard.me.git'
+  'hewbert.com':
+    repo:
+      source: 'https://github.com/joshbeard/www-hewbert.com.git'
+
+#
+# == Nginx
+#
+nginx::nginx_servers:
+  'hewbert.com':
+    server_name: ['hewbert.com', 'www.hewbert.com']
+    ssl: true
+    ssl_cert: '/usr/local/etc/letsencrypt/live/hewbert.com/fullchain.pem'
+    ssl_key: '/usr/local/etc/letsencrypt/live/hewbert.com/privkey.pem'
+    www_root: "/var/www/hewbert.com"
+    access_log: '/var/log/nginx/hewbert.com_ssl_access.log'
+    error_log: '/var/log/nginx/hewbert.com_ssl_error.log'
+    use_default_location: false
+    locations_defaults:
+      ssl: true
+      ssl_only: true
+    locations:
+      'hewbert.com-ssl_redirection':
+        location: '/'
+        ssl: false
+        ssl_only: false
+        location_custom_cfg:
+          'return': '301 https://$server_name$request_uri'
+      # Used for letsencrypt
+      'hewbert.com-well-known':
+        location: '/.well-known'
+        www_root: '/var/www/le_webroot/hewbert.com'
+        ssl: false
+
+  'pub.signalboxes.net':
+    server_name: ['pub.signalboxes.net']
+    ssl: true
+    ssl_cert: '/usr/local/etc/letsencrypt/live/pub.signalboxes.net/fullchain.pem'
+    ssl_key: '/usr/local/etc/letsencrypt/live/pub.signalboxes.net/privkey.pem'
+    ssl_ciphers: 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH'
+    www_root: "/var/www/pub.signalboxes.net"
+    access_log: '/var/log/nginx/pub.signalboxes.net_ssl_access.log'
+    error_log: '/var/log/nginx/pub.signalboxes.net_ssl_error.log'
+    use_default_location: false
+    locations_defaults:
+      ssl: true
+      ssl_only: true
+    locations:
+      'pubs.signalboxes.net-ssl_redirection':
+        location: '/'
+        ssl: false
+        ssl_only: false
+        location_custom_cfg:
+          'return': '301 https://$server_name$request_uri'
+      # Used for letsencrypt
+      'pub.signalboxes.net-well-known':
+        location: '/.well-known'
+        ssl: false
+        www_root: '/var/www/le_webroot/pub.signalboxes.net'
+
+  'jbeard.org':
+    server_name: ['jbeard.org', 'www.jbeard.org']
+    ssl: true
+    ssl_cert: '/usr/local/etc/letsencrypt/live/jbeard.org/fullchain.pem'
+    ssl_key: '/usr/local/etc/letsencrypt/live/jbeard.org/privkey.pem'
+    www_root: "/var/www/jbeard.org"
+    access_log: "/var/log/nginx/jbeard.org_ssl_access.log"
+    error_log: "/var/log/nginx/jbeard.org_ssl_error.log"
+    use_default_location: false
+    locations_defaults:
+      ssl: true
+      ssl_only: true
+    locations:
+      'jbeard.org-ssl_redirection':
+        location: '/'
+        ssl: false
+        ssl_only: false
+        location_custom_cfg:
+          'return': '301 https://$server_name$request_uri'
+      # Used for letsencrypt
+      'jbeard.org-well-known':
+        location: '/.well-known'
+        www_root: "/var/www/le_webroot/jbeard.org"
+        ssl: false
+
+  'joshbeard.me':
+    server_name: ['joshbeard.me', 'www.joshbeard.me']
+    ssl: true
+    ssl_cert: '/usr/local/etc/letsencrypt/live/joshbeard.me/fullchain.pem'
+    ssl_key: '/usr/local/etc/letsencrypt/live/joshbeard.me/privkey.pem'
+    ssl_ciphers: 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH'
+    www_root: "/var/www/joshbeard.me"
+    access_log: "/var/log/nginx/joshbeard.me_ssl_access.log"
+    error_log: "/var/log/nginx/joshbeard.me_ssl_error.log"
+    use_default_location: false
+    server_cfg_append:
+      charset: 'UTF-8'
+    locations_defaults:
+      ssl: true
+      ssl_only: true
+    locations:
+      'joshbeard.me-ssl_redirection':
+        location: '/'
+        ssl: false
+        ssl_only: false
+        location_custom_cfg:
+          'return': '301 https://$server_name$request_uri'
+      # Used for letsencrypt
+      'joshbeard.me-well-known':
+        location: '/.well-known'
+        www_root: '/var/www/le_webroot/joshbeard.me'
+        ssl: false
+        ssl_only: false
+      '/.git':
+        location_custom_cfg:
+          'return': '403'
+      '/flickr':
+        location_custom_cfg:
+          'return': '302 https://www.flickr.com/photos/148417907@N03/'
+      'asset_cache':
+        location: '~* ^.+\.(?:css|cur|js|jpe?g|gif|htc|ico|png|html|xml|svg)$'
+        location_custom_cfg:
+          'expires': '30d'
+          'open_file_cache': 'max=3000 inactive=120s'
+          'open_file_cache_valid': '45s'
+          'open_file_cache_min_uses': '2'
+          'open_file_cache_errors': 'off'
+      'font_cache':
+        location: '~* ^.+\.(?:otf|ttf|eot|woff|woff2)$'
+        location_custom_cfg:
+          'expires': '90d'
+          'open_file_cache': 'max=3000 inactive=120s'
+          'open_file_cache_valid': '45s'
+          'open_file_cache_min_uses': '2'
+          'open_file_cache_errors': 'off'
+
+  'juliabeard.me':
+    server_name: ['juliabeard.me', 'www.juliabeard.me', 'www.juliabeard.net', 'juliabeard.net']
+    ssl: true
+    ssl_cert: '/usr/local/etc/letsencrypt/live/juliabeard.me/fullchain.pem'
+    ssl_key: '/usr/local/etc/letsencrypt/live/juliabeard.me/privkey.pem'
+    ssl_ciphers: 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH'
+    www_root: "/var/www/juliabeard"
+    access_log: "/var/log/nginx/juliabeard.me_ssl_access.log"
+    error_log: "/var/log/nginx/juliabeard.me_ssl_error.log"
+    use_default_location: false
+    locations_defaults:
+      ssl: true
+      ssl_only: true
+    locations:
+      'juliabeard.me-ssl_redirection':
+        location: '/'
+        ssl: false
+        ssl_only: false
+        location_custom_cfg:
+          'return': '301 https://$server_name$request_uri'
+      # Used for letsencrypt
+      'juliabeard.me-well-known':
+        location: '/.well-known'
+        www_root: '/var/www/le_webroot/juliabeard.me'
+        ssl: false
+
+  'signalboxes.net':
+    add_header:
+      'X-Powered-By': 'Open Source'
+    listen_options: "default_server"
+    server_name: ['signalboxes.net', 'www.signalboxes.net', 'www1.signalboxes.net', 'www2.signalboxes.net', 'www3.signalboxes.net', 'ipv6.signalboxes.net']
+    www_root: '/var/www/signalboxes.net'
+    ssl: true
+    ssl_cert: '/usr/local/etc/letsencrypt/live/signalboxes.net/fullchain.pem'
+    ssl_key: '/usr/local/etc/letsencrypt/live/signalboxes.net/privkey.pem'
+    index_files: ['index.html']
+    access_log: '/var/log/nginx/signalboxes.net_ssl_access.log'
+    error_log: '/var/log/nginx/signalboxes.net_ssl_error.log'
+    use_default_location: false
+    server_cfg_prepend:
+      'index': 'index.html'
+      'error_page': '404 = /404.html'
+      'error_page': '403 = /403.html'
+    locations_defaults:
+      ssl: true
+      ssl_only: true
+    locations:
+      'signalboxes.net-ssl_redirection':
+        location: '/'
+        ssl: false
+        ssl_only: false
+        location_custom_cfg:
+          'return': '301 https://$server_name$request_uri'
+      # Used for letsencrypt
+      'signalboxes.net-well-known':
+        location: '/.well-known'
+        www_root: '/var/www/le_webroot/signalboxes.net'
+        ssl: false
+
+  'signaltotrust.net':
+    server_name: ['www.signaltotrust.net', 'signaltotrust.net']
+    ssl: true
+    ssl_cert: '/usr/local/etc/letsencrypt/live/signaltotrust.net/fullchain.pem'
+    ssl_key: '/usr/local/etc/letsencrypt/live/signaltotrust.net/privkey.pem'
+    www_root: "/var/www/signaltotrust.net"
+    access_log: '/var/log/nginx/signaltotrust_ssl_access.log'
+    error_log: '/var/log/nginx/signaltotrust_ssl_error.log'
+    use_default_location: false
+    locations_defaults:
+      ssl: true
+      ssl_only: true
+    locations:
+      'signaltotrust.net-ssl_redirection':
+        location: '/'
+        ssl: false
+        ssl_only: false
+        location_custom_cfg:
+          'return': '301 https://$server_name$request_uri'
+      # Used for letsencrypt
+      'signaltotrust.net-well-known':
+        location: '/.well-known'
+        www_root: '/var/www/le_webroot/signaltotrust.net'
+        ssl: false
+
+#
+# == Letsencrypt
+#
+profile::letsencrypt::certonly_defaults:
+  plugin: 'webroot'
+  manage_cron: false
+
+profile::letsencrypt::domains:
+  'signalboxes.net':
+    'webroot_paths':
+      - '/var/www/le_webroot/signalboxes.net'
+    'domains':
+      - 'signalboxes.net'
+      - 'www.signalboxes.net'
+  'jbeard.org':
+    'webroot_paths':
+      - '/var/www/le_webroot/jbeard.org'
+    'domains':
+      - 'jbeard.org'
+      - 'www.jbeard.org'
+  'pub.signalboxes.net':
+    'webroot_paths':
+      - '/var/www/le_webroot/pub.signalboxes.net'
+  'juliabeard.me':
+    'webroot_paths':
+      - '/var/www/le_webroot/juliabeard.me'
+    'domains':
+      - 'juliabeard.me'
+      - 'www.juliabeard.me'
+  'joshbeard.me':
+    'webroot_paths':
+      - '/var/www/le_webroot/joshbeard.me'
+    'domains':
+      - 'joshbeard.me'
+      - 'www.joshbeard.me'
+  'signaltotrust.net':
+    'webroot_paths':
+      - '/var/www/le_webroot/signaltotrust.net'
+    'domains':
+      - 'signaltotrust.net'
+      - 'www.signaltotrust.net'
+  'hewbert.com':
+    'webroot_paths':
+      - '/var/www/le_webroot/hewbert.com'
+    'domains':
+      - 'hewbert.com'
+      - 'www.hewbert.com'
