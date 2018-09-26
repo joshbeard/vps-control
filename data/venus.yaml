@@ -29,33 +29,33 @@ minecraft::instance_defaults:
     'EssentialsX':
       # https://www.spigotmc.org/resources/essentialsx.9089/
       # https://ci.drtshock.net/job/EssentialsX/
-      source: 'https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/Essentials/target/EssentialsX-2.15.0.17.jar'
-      checksum: '9dd8d1f2963001b6efb0c1da9b4a4604'
+      source: 'https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/Essentials/target/EssentialsX-2.15.0.45.jar'
+      checksum: '79a9838eefc4f9c33a2bdaf7887b69e0'
       plugin_name: 'EssentialsX'
     'EssentialsXAntiBuild':
-      source: 'https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsAntiBuild/target/EssentialsXAntiBuild-2.15.0.17.jar'
-      checksum: '63b8a7d23d080eaab63bc9fd8fb22137'
+      source: 'https://ci.ender.zone/job/EssentialsX/net.ess3$EssentialsXAntiBuild/lastSuccessfulBuild/artifact/net.ess3/EssentialsXAntiBuild/2.15.0/EssentialsXAntiBuild-2.15.0.jar'
+      checksum: '992e1153314311c14eade582ed7190f8'
       plugin_name: 'EssentialsXAntiBuild'
     'EssentialsXChat':
-      source: 'https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsChat/target/EssentialsXChat-2.15.0.17.jar'
-      checksum: '05847fa8d50cdcdb12745785deefd7de'
+      source: 'https://ci.ender.zone/job/EssentialsX/net.ess3$EssentialsXChat/lastSuccessfulBuild/artifact/net.ess3/EssentialsXChat/2.15.0/EssentialsXChat-2.15.0.jar'
+      checksum: 'd79f7d287b879d4f2782b09c6f864524'
       plugin_name: 'EssentialsXChat'
     'EssentialsXGeoIP':
-      source: 'https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsGeoIP/target/EssentialsXGeoIP-2.15.0.17.jar'
-      checksum: '87d5147a246c68e3c4a60fbed9b7c853'
+      source: 'https://ci.ender.zone/job/EssentialsX/net.ess3$EssentialsXGeoIP/lastSuccessfulBuild/artifact/net.ess3/EssentialsXGeoIP/2.15.0/EssentialsXGeoIP-2.15.0.jar'
+      checksum: '1d6121dd0f7597e9d94121df0c1fa7d3'
       plugin_name: 'EssentialsXGeoIP'
     'EssentialsXProtect':
-      source: 'https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsProtect/target/EssentialsXProtect-2.15.0.17.jar'
-      checksum: '52387d4059d66eb8eba729a57797d02f'
+      source: 'https://ci.ender.zone/job/EssentialsX/net.ess3$EssentialsXProtect/lastSuccessfulBuild/artifact/net.ess3/EssentialsXProtect/2.15.0/EssentialsXProtect-2.15.0.jar'
+      checksum: 'f5e37785731e892d499fb3afdc599198'
       plugin_name: 'EssentialsXProtect'
     'EssentialsXSpawn':
-      source: 'https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsSpawn/target/EssentialsXSpawn-2.15.0.17.jar'
-      checksum: 'a5e1b2a20e82b74a4069db005ce944db'
+      source: 'https://ci.ender.zone/job/EssentialsX/net.ess3$EssentialsXSpawn/lastSuccessfulBuild/artifact/net.ess3/EssentialsXSpawn/2.15.0/EssentialsXSpawn-2.15.0.jar'
+      checksum: '196b1ce69bf0ca26a5ffb1ee3d4149fb'
       plugin_name: 'EssentialsXSpawn'
     'Dynmap':
       # https://dev.bukkit.org/projects/dynmap
-      source: 'https://media.forgecdn.net/files/2580/906/dynmap-2.6-beta-1.jar'
-      checksum: '7f9c1091dd03375f07281e5ad937f185'
+      source: 'https://media.forgecdn.net/files/2615/319/Dynmap-3.0-beta-1-spigot.jar'
+      checksum: '87812ec6eccd85d70d88e8b4d3d0ace1'
       plugin_name: 'Dynmap'
     #'DynmapEssentials':
     #  # https://dev.bukkit.org/projects/dynmap-essentials
@@ -79,8 +79,10 @@ minecraft::instance_defaults:
     #  plugin_name: 'Vault'
 minecraft::instances:
   'survival':
-    jar: 'server.jar'
-    source: 'https://launcher.mojang.com/mc/game/1.13/server/d0caafb8438ebd206f99930cfaecfa6c9a13dca0/server.jar'
+    #jar: 'server.jar'
+    #source: 'https://launcher.mojang.com/mc/game/1.13/server/d0caafb8438ebd206f99930cfaecfa6c9a13dca0/server.jar'
+    jar: 'paperclip.jar'
+    source: 'https://papermc.io/ci/job/Paper-1.13/lastSuccessfulBuild/artifact/paperclip.jar'
     server_properties:
       'spawn-protection': '16'
       'generator-settings': ''
@@ -120,10 +122,10 @@ minecraft::instances:
       'enable-rcon': 'false'
       'motd': 'Beards Survival Server'
   'creative':
-    #    jar: 'paperclip.jar'
-    #    source: 'https://destroystokyo.com/ci/job/Paper-1.13/lastSuccessfulBuild/artifact/paperclip-50.jar'
-    jar: 'server.jar'
-    source: 'https://launcher.mojang.com/mc/game/1.13/server/d0caafb8438ebd206f99930cfaecfa6c9a13dca0/server.jar'
+    jar: 'paperclip.jar'
+    source: 'https://papermc.io/ci/job/Paper-1.13/lastSuccessfulBuild/artifact/paperclip.jar'
+    #jar: 'server.jar'
+    #source: 'https://launcher.mojang.com/mc/game/1.13/server/d0caafb8438ebd206f99930cfaecfa6c9a13dca0/server.jar'
     server_properties:
       'spawn-protection': '16'
       'max-tick-time': '60000'
