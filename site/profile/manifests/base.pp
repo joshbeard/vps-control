@@ -1,5 +1,6 @@
 class profile::base {
   include profile::params
+  include ssh
 
   case $::osfamily {
     'FreeBSD': {
@@ -56,7 +57,6 @@ class profile::base {
     home       => '/home/josh',
     managehome => true,
     shell      => $::profile::params::shell,
-    uid        => '1000',
     require    => Package['zsh'],
   }
 

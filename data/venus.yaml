@@ -5,7 +5,6 @@
 classes:
   - 'profile::base'
   - 'profile::zfs'
-  - 'profile::ssh'
   - 'profile::sudoers'
   - 'profile::puppet'
   - 'profile::plex'

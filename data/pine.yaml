@@ -6,11 +6,13 @@ classes:
   - 'profile::base'
   - 'profile::firewall'
   - 'profile::nginx_server'
-  - 'profile::ssh'
   - 'profile::sudoers'
   - 'profile::puppet'
   - 'profile::letsencrypt'
   - 'profile::www'
+
+# TODO: enforce
+selinux::mode: 'permissive'
 
 #
 # == Sites - docroots, repos
@@ -46,8 +48,8 @@ nginx::nginx_servers:
   'hewbert.com':
     server_name: ['hewbert.com', 'www.hewbert.com']
     ssl: true
-    ssl_cert: '/usr/local/etc/letsencrypt/live/hewbert.com/fullchain.pem'
-    ssl_key: '/usr/local/etc/letsencrypt/live/hewbert.com/privkey.pem'
+    ssl_cert: '/etc/letsencrypt/live/hewbert.com/fullchain.pem'
+    ssl_key: '/etc/letsencrypt/live/hewbert.com/privkey.pem'
     www_root: "/var/www/hewbert.com"
     access_log: '/var/log/nginx/hewbert.com_ssl_access.log'
     error_log: '/var/log/nginx/hewbert.com_ssl_error.log'
@@ -67,12 +69,13 @@ nginx::nginx_servers:
         location: '/.well-known'
         www_root: '/var/www/le_webroot/hewbert.com'
         ssl: false
+        ssl_only: false
 
   'pub.signalboxes.net':
     server_name: ['pub.signalboxes.net']
     ssl: true
-    ssl_cert: '/usr/local/etc/letsencrypt/live/pub.signalboxes.net/fullchain.pem'
-    ssl_key: '/usr/local/etc/letsencrypt/live/pub.signalboxes.net/privkey.pem'
+    ssl_cert: '/etc/letsencrypt/live/pub.signalboxes.net/fullchain.pem'
+    ssl_key: '/etc/letsencrypt/live/pub.signalboxes.net/privkey.pem'
     ssl_ciphers: 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH'
     www_root: "/var/www/pub.signalboxes.net"
     access_log: '/var/log/nginx/pub.signalboxes.net_ssl_access.log'
@@ -92,13 +95,14 @@ nginx::nginx_servers:
       'pub.signalboxes.net-well-known':
         location: '/.well-known'
         ssl: false
+        ssl_only: false
         www_root: '/var/www/le_webroot/pub.signalboxes.net'
 
   'jbeard.org':
     server_name: ['jbeard.org', 'www.jbeard.org']
     ssl: true
-    ssl_cert: '/usr/local/etc/letsencrypt/live/jbeard.org/fullchain.pem'
-    ssl_key: '/usr/local/etc/letsencrypt/live/jbeard.org/privkey.pem'
+    ssl_cert: '/etc/letsencrypt/live/jbeard.org/fullchain.pem'
+    ssl_key: '/etc/letsencrypt/live/jbeard.org/privkey.pem'
     www_root: "/var/www/jbeard.org"
     access_log: "/var/log/nginx/jbeard.org_ssl_access.log"
     error_log: "/var/log/nginx/jbeard.org_ssl_error.log"
@@ -118,12 +122,13 @@ nginx::nginx_servers:
         location: '/.well-known'
         www_root: "/var/www/le_webroot/jbeard.org"
         ssl: false
+        ssl_only: false
 
   'joshbeard.me':
     server_name: ['joshbeard.me', 'www.joshbeard.me']
     ssl: true
-    ssl_cert: '/usr/local/etc/letsencrypt/live/joshbeard.me/fullchain.pem'
-    ssl_key: '/usr/local/etc/letsencrypt/live/joshbeard.me/privkey.pem'
+    ssl_cert: '/etc/letsencrypt/live/joshbeard.me/fullchain.pem'
+    ssl_key: '/etc/letsencrypt/live/joshbeard.me/privkey.pem'
     ssl_ciphers: 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH'
     www_root: "/var/www/joshbeard.me"
     access_log: "/var/log/nginx/joshbeard.me_ssl_access.log"
@@ -173,8 +178,8 @@ nginx::nginx_servers:
   'juliabeard.me':
     server_name: ['juliabeard.me', 'www.juliabeard.me', 'www.juliabeard.net', 'juliabeard.net']
     ssl: true
-    ssl_cert: '/usr/local/etc/letsencrypt/live/juliabeard.me/fullchain.pem'
-    ssl_key: '/usr/local/etc/letsencrypt/live/juliabeard.me/privkey.pem'
+    ssl_cert: '/etc/letsencrypt/live/juliabeard.me/fullchain.pem'
+    ssl_key: '/etc/letsencrypt/live/juliabeard.me/privkey.pem'
     ssl_ciphers: 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH'
     www_root: "/var/www/juliabeard"
     access_log: "/var/log/nginx/juliabeard.me_ssl_access.log"
@@ -195,6 +200,7 @@ nginx::nginx_servers:
         location: '/.well-known'
         www_root: '/var/www/le_webroot/juliabeard.me'
         ssl: false
+        ssl_only: false
 
   'signalboxes.net':
     add_header:
@@ -203,8 +209,8 @@ nginx::nginx_servers:
     server_name: ['signalboxes.net', 'www.signalboxes.net', 'www1.signalboxes.net', 'www2.signalboxes.net', 'www3.signalboxes.net', 'ipv6.signalboxes.net']
     www_root: '/var/www/signalboxes.net'
     ssl: true
-    ssl_cert: '/usr/local/etc/letsencrypt/live/signalboxes.net/fullchain.pem'
-    ssl_key: '/usr/local/etc/letsencrypt/live/signalboxes.net/privkey.pem'
+    ssl_cert: '/etc/letsencrypt/live/signalboxes.net/fullchain.pem'
+    ssl_key: '/etc/letsencrypt/live/signalboxes.net/privkey.pem'
     index_files: ['index.html']
     access_log: '/var/log/nginx/signalboxes.net_ssl_access.log'
     error_log: '/var/log/nginx/signalboxes.net_ssl_error.log'
@@ -228,12 +234,13 @@ nginx::nginx_servers:
         location: '/.well-known'
         www_root: '/var/www/le_webroot/signalboxes.net'
         ssl: false
+        ssl_only: false
 
   'signaltotrust.net':
     server_name: ['www.signaltotrust.net', 'signaltotrust.net']
     ssl: true
-    ssl_cert: '/usr/local/etc/letsencrypt/live/signaltotrust.net/fullchain.pem'
-    ssl_key: '/usr/local/etc/letsencrypt/live/signaltotrust.net/privkey.pem'
+    ssl_cert: '/etc/letsencrypt/live/signaltotrust.net/fullchain.pem'
+    ssl_key: '/etc/letsencrypt/live/signaltotrust.net/privkey.pem'
     www_root: "/var/www/signaltotrust.net"
     access_log: '/var/log/nginx/signaltotrust_ssl_access.log'
     error_log: '/var/log/nginx/signaltotrust_ssl_error.log'
@@ -253,6 +260,7 @@ nginx::nginx_servers:
         location: '/.well-known'
         www_root: '/var/www/le_webroot/signaltotrust.net'
         ssl: false
+        ssl_only: false
 
 #
 # == Letsencrypt
