@@ -59,21 +59,6 @@ class profile::base::freebsd {
     minute  => '0',
   }
 
-  file { 'dynmotd':
-    ensure => 'file',
-    path   => '/usr/local/bin/dynmotd.sh',
-    mode   => '0755',
-    owner  => 'root',
-    group  => 0,
-    source => 'puppet:///modules/profile/dynmotd.sh',
-  }
-
-  cron { 'dynmotd':
-    ensure  => 'present',
-    command => '/usr/local/bin/dynmotd.sh > /etc/motd',
-    minute  => '*/5',
-  }
-
   file_line { 'crontab_path':
     ensure => 'present',
     path   => '/etc/crontab',
