@@ -41,3 +41,12 @@ nginx::gzip_types:
   - application/xml+rss
   - text/javascript
 nginx::gzip_vary: 'on'
+
+#
+# == SSH
+#
+ssh::server_options:
+  'PermitRootLogin': 'no'
+  'Port': '22431'
+  'PrintMotd': 'yes'
+  'PasswordAuthentication': 'no'

@@ -1,0 +1,24 @@
+{
+  "variables": {
+    "DIGITALOCEAN_API_TOKEN": "{{env `DIGITALOCEAN_API_TOKEN`}}"
+  },
+  "provisioners": [
+    {
+      "scripts": [
+        "scripts/bootstrap.sh"
+      ],
+      "type": "shell"
+    }
+  ],
+  "builders": [
+    {
+      "type": "digitalocean",
+      "api_token": "{{user `DIGITALOCEAN_API_TOKEN`}}",
+      "droplet_name": "centos-7-image",
+      "image": "centos-7-x64",
+      "region": "nyc1",
+      "size": "1gb",
+      "ssh_username": "root"
+    }
+  ]
+}

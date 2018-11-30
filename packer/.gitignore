@@ -1,0 +1,9 @@
+packer_cache/
+output/
+*.box
+*~
+.*.s??
+.DS_Store
+.tmp/
+*.lock
+apikey.json

@@ -15,9 +15,7 @@ case $facts['kernel'] {
     $pkg_provider = undef
     $root_group = 'root'
     File {
-      backup                  => 'main',
       selinux_ignore_defaults => true,
-      source_permissions      => 'ignore',
       group                   => $root_group,
     }
     Exec {
