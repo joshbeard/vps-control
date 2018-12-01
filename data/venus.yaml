@@ -28,34 +28,35 @@ minecraft::instance_defaults:
     'EssentialsX':
       # https://www.spigotmc.org/resources/essentialsx.9089/
       # https://ci.drtshock.net/job/EssentialsX/
-      source: 'https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/Essentials/target/EssentialsX-2.15.0.45.jar'
-      checksum: '79a9838eefc4f9c33a2bdaf7887b69e0'
+      source: 'https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/Essentials/target/EssentialsX-2.15.0.55.jar'
+      checksum: '5d1ff1373f85ec8b6b68e6714037664f'
       plugin_name: 'EssentialsX'
     'EssentialsXAntiBuild':
-      source: 'https://ci.ender.zone/job/EssentialsX/net.ess3$EssentialsXAntiBuild/lastSuccessfulBuild/artifact/net.ess3/EssentialsXAntiBuild/2.15.0/EssentialsXAntiBuild-2.15.0.jar'
-      checksum: '992e1153314311c14eade582ed7190f8'
+      source: 'https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsAntiBuild/target/EssentialsXAntiBuild-2.15.0.55.jar'
+      checksum: '4c550f66e89113fb6626a72fa4f95dbc'
       plugin_name: 'EssentialsXAntiBuild'
     'EssentialsXChat':
-      source: 'https://ci.ender.zone/job/EssentialsX/net.ess3$EssentialsXChat/lastSuccessfulBuild/artifact/net.ess3/EssentialsXChat/2.15.0/EssentialsXChat-2.15.0.jar'
-      checksum: 'd79f7d287b879d4f2782b09c6f864524'
+      source: 'https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsChat/target/EssentialsXChat-2.15.0.55.jar'
+      checksum: '4c1e762f05be494a8889320c3cf278d5'
       plugin_name: 'EssentialsXChat'
-    'EssentialsXGeoIP':
-      source: 'https://ci.ender.zone/job/EssentialsX/net.ess3$EssentialsXGeoIP/lastSuccessfulBuild/artifact/net.ess3/EssentialsXGeoIP/2.15.0/EssentialsXGeoIP-2.15.0.jar'
-      checksum: '1d6121dd0f7597e9d94121df0c1fa7d3'
-      plugin_name: 'EssentialsXGeoIP'
     'EssentialsXProtect':
-      source: 'https://ci.ender.zone/job/EssentialsX/net.ess3$EssentialsXProtect/lastSuccessfulBuild/artifact/net.ess3/EssentialsXProtect/2.15.0/EssentialsXProtect-2.15.0.jar'
-      checksum: 'f5e37785731e892d499fb3afdc599198'
+      source: 'https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsProtect/target/EssentialsXProtect-2.15.0.55.jar'
+      checksum: '5701873fc5b558a6ce1cff6b9b514d99'
       plugin_name: 'EssentialsXProtect'
     'EssentialsXSpawn':
-      source: 'https://ci.ender.zone/job/EssentialsX/net.ess3$EssentialsXSpawn/lastSuccessfulBuild/artifact/net.ess3/EssentialsXSpawn/2.15.0/EssentialsXSpawn-2.15.0.jar'
-      checksum: '196b1ce69bf0ca26a5ffb1ee3d4149fb'
+      source: 'https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsSpawn/target/EssentialsXSpawn-2.15.0.55.jar'
+      checksum: 'caa00a753f9b8a48195f1dffabcd82b0'
       plugin_name: 'EssentialsXSpawn'
     'Dynmap':
       # https://dev.bukkit.org/projects/dynmap
-      source: 'https://media.forgecdn.net/files/2615/319/Dynmap-3.0-beta-1-spigot.jar'
-      checksum: '87812ec6eccd85d70d88e8b4d3d0ace1'
+      source: 'https://media.forgecdn.net/files/2630/654/Dynmap-3.0-beta-2-spigot.jar'
+      checksum: '50ee6d00e3b5edec46cbaf1a0efa88a8'
       plugin_name: 'Dynmap'
+    'WorldEdit':
+      # https://dev.bukkit.org/projects/worldedit/files
+      source: 'https://media.forgecdn.net/files/2642/124/worldedit-bukkit-7.0.0-beta-02.jar'
+      checksum: '04ef41be91288f6902a3c0e8708b8157'
+      plugin_name: 'WorldEdit'
     #'DynmapEssentials':
     #  # https://dev.bukkit.org/projects/dynmap-essentials
     #  source: 'https://addons-origin.cursecdn.com/files/912/862/Dynmap-Essentials-0.91.jar'
@@ -66,11 +67,6 @@ minecraft::instance_defaults:
     #  source: 'https://addons-origin.cursecdn.com/files/2407/445/dynmap-structures-1.4.0-all.jar'
     #  checksum: 'e2203ebb894ff4fa37e990a5914642ca'
     #  plugin_name: 'DynmapStructures'
-    #'WorldEdit':
-    #  # https://dev.bukkit.org/projects/worldedit/files
-    #  source: 'https://addons.cursecdn.com/files/2460/562/worldedit-bukkit-6.1.7.3.jar'
-    #  checksum: 'a12733e7e042a4d9b095dc6f95057698'
-    #  plugin_name: 'WorldEdit'
     #'Vault':
     #  # https://dev.bukkit.org/projects/vault
     #  source: 'https://addons-origin.cursecdn.com/files/894/359/Vault.jar'
