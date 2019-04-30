@@ -28,12 +28,12 @@ minecraft::instance_defaults:
     'EssentialsX':
       # https://www.spigotmc.org/resources/essentialsx.9089/
       # https://ci.drtshock.net/job/EssentialsX/
-      source: 'https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/Essentials/target/EssentialsX-2.15.0.55.jar'
-      checksum: '5d1ff1373f85ec8b6b68e6714037664f'
+      source: 'https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/Essentials/target/EssentialsX-2.16.1.153.jar'
+      checksum: '92b16ecd004221d4753147d893311c83'
       plugin_name: 'EssentialsX'
     'EssentialsXAntiBuild':
-      source: 'https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsAntiBuild/target/EssentialsXAntiBuild-2.15.0.55.jar'
-      checksum: '4c550f66e89113fb6626a72fa4f95dbc'
+      source: 'https://ci.ender.zone/job/EssentialsX/net.ess3$EssentialsXAntiBuild/lastSuccessfulBuild/artifact/net.ess3/EssentialsXAntiBuild/2.16.1/EssentialsXAntiBuild-2.16.1.jar'
+      checksum: '84032878b6eb9bc569f6ff34361d7b24'
       plugin_name: 'EssentialsXAntiBuild'
     'EssentialsXChat':
       source: 'https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsChat/target/EssentialsXChat-2.15.0.55.jar'
