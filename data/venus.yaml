@@ -117,8 +117,10 @@ minecraft::instances:
       'enable-rcon': 'false'
       'motd': 'Beards Survival Server'
   'creative':
-    jar: 'paperclip.jar'
-    source: 'https://papermc.io/ci/job/Paper-1.13/lastSuccessfulBuild/artifact/paperclip.jar'
+    jar: 'server.jar'
+    source: 'https://launcher.mojang.com/v1/objects/f1a0073671057f01aa843443fef34330281333ce/server.jar'
+    #jar: 'paperclip.jar'
+    #source: 'https://papermc.io/ci/job/Paper-1.13/lastSuccessfulBuild/artifact/paperclip.jar'
     #jar: 'server.jar'
     #source: 'https://launcher.mojang.com/mc/game/1.13/server/d0caafb8438ebd206f99930cfaecfa6c9a13dca0/server.jar'
     server_properties:
