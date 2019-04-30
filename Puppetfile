@@ -24,6 +24,7 @@ mod 'puppetlabs/stdlib',        '5.2.0'
 mod 'saz/sudo',                 '6.0.0'
 mod 'saz/timezone',             '5.1.1'
 mod 'puppetlabs/vcsrepo',       '2.4.0'
+mod 'puppetlabs-zfs_core',      '1.0.2'
 
 mod 'letsencrypt',
   :git => 'https://github.com/joshbeard/puppet-letsencrypt.git',
