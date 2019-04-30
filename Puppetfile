@@ -3,6 +3,7 @@
 #
 mod 'puppet/archive',           '3.2.1'
 mod 'puppetlabs/concat',        '5.3.0'
+mod 'puppetlabs-cron_core',     '1.0.1'
 mod 'stahnma-epel',             '1.3.1'
 mod 'puppetlabs/firewall',      '1.15.3'
 mod 'puppetlabs/gcc',           '0.3.0'
