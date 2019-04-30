@@ -1,8 +1,8 @@
-# My VPS Puppet Control Repository
+# My Puppet Control Repository
 
 ## Overview
 
-This is the "control repository" for my personal VPS on DigitalOcean.
+This is the "control repository" for my personal VPS on DigitalOcean and home server.
 
 I use Puppet Open Source there to manage a single instance.  This should stand
 up the system almost completely - minus the variable data that's backed up via
