@@ -36,16 +36,16 @@ minecraft::instance_defaults:
       checksum: '84032878b6eb9bc569f6ff34361d7b24'
       plugin_name: 'EssentialsXAntiBuild'
     'EssentialsXChat':
-      source: 'https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsChat/target/EssentialsXChat-2.15.0.55.jar'
-      checksum: '4c1e762f05be494a8889320c3cf278d5'
+      source: 'https://ci.ender.zone/job/EssentialsX/net.ess3$EssentialsXChat/lastSuccessfulBuild/artifact/net.ess3/EssentialsXChat/2.16.1/EssentialsXChat-2.16.1.jar'
+      checksum: 'a1981722955a42d979bc24b86f8b30f6'
       plugin_name: 'EssentialsXChat'
     'EssentialsXProtect':
-      source: 'https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsProtect/target/EssentialsXProtect-2.15.0.55.jar'
-      checksum: '5701873fc5b558a6ce1cff6b9b514d99'
+      source: 'https://ci.ender.zone/job/EssentialsX/net.ess3$EssentialsXProtect/lastSuccessfulBuild/artifact/net.ess3/EssentialsXProtect/2.16.1/EssentialsXProtect-2.16.1.jar'
+      checksum: '9727fe1f226e7131bd4f184f42cb2ef3'
       plugin_name: 'EssentialsXProtect'
     'EssentialsXSpawn':
-      source: 'https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsSpawn/target/EssentialsXSpawn-2.15.0.55.jar'
-      checksum: 'caa00a753f9b8a48195f1dffabcd82b0'
+      source: 'https://ci.ender.zone/job/EssentialsX/net.ess3$EssentialsXSpawn/lastSuccessfulBuild/artifact/net.ess3/EssentialsXSpawn/2.16.1/EssentialsXSpawn-2.16.1.jar'
+      checksum: '1e965ba7fe22de83ab8edc970522b718'
       plugin_name: 'EssentialsXSpawn'
     'Dynmap':
       # https://dev.bukkit.org/projects/dynmap
