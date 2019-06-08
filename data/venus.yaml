@@ -244,6 +244,7 @@ nginx::nginx_servers:
 #
 # == Letsencrypt
 #
+letsencrypt::package_name: 'py36-certbot'
 profile::letsencrypt::certonly_defaults:
   plugin: 'webroot'
   manage_cron: false
