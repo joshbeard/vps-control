@@ -10,7 +10,7 @@ class profile::transmission {
       'prefetch-enabled'           => true,
       'ratio-limit'                => '1',
       'ratio-limit-enabled'        => true,
-      'rpc-host-whitelist'         => 'home.jbeard.org',
+      'rpc-host-whitelist'         => 'home.jbeard.org,t.jbeard.org',
       'rpc-host-whitelist-enabled' => true,
       'rpc-whitelist-enabled'      => true,
       'speed-limit-up'             => 100,
