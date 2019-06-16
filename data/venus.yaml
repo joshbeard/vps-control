@@ -13,6 +13,9 @@ classes:
   - 'profile::letsencrypt'
   - 'profile::transmission'
 
+transmission::init_opts:
+  transmission_web_home: '/usr/local/serve/kettu'
+
 #
 # == Minecraft
 #
