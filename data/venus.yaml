@@ -263,7 +263,7 @@ nginx::nginx_servers:
       't.jbeard.org':
         location: '/'
         proxy: 'http://localhost:9091/transmission/'
-        server: 'home.jbeard.org'
+        server: 't.jbeard.org'
         auth_basic: 'Transmission'
         auth_basic_user_file: '/usr/local/etc/transmission/transmission.access'
       't-well-known':
