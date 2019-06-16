@@ -175,6 +175,13 @@ profile::minecraft::servers:
 #
 # == Nginx
 #
+profile::nginx_server::upstreams:
+  transmission:
+    ensure: present
+    members:
+      'localhost:9091':
+        server: 'localhost'
+        port: 9091
 nginx::config::server_tokens: 'off'
 nginx::nginx_servers:
   'home.jbeard.org':
@@ -262,15 +269,26 @@ nginx::nginx_servers:
           'return': '301 https://$server_name$request_uri'
       't.jbeard.org':
         location: '/'
-        proxy: 'http://localhost:9091/transmission/'
+        proxy: 'http://transmission/web/'
         server: 't.jbeard.org'
         auth_basic: 'Transmission'
         auth_basic_user_file: '/usr/local/etc/transmission/transmission.access'
+        add_header:
+          'Front-End-Https': 'on'
+        proxy_set_header:
+          - 'X-Real-IP $remote_addr'
+          - 'X-Forwarded-For $proxy_add_x_forwarded_for'
+          - 'Host $http_host'
+          - 'X-Nginx-Proxy true'
+          - 'Connection ""'
+        proxy_pass_header:
+          - 'X-Transmission-Session-Id'
       't-well-known':
         location: '/.well-known'
         www_root: '/var/www/le_webroot/t.jbeard.org'
         ssl: false
         ssl_only: false
+      
 
 #
 # == Letsencrypt
