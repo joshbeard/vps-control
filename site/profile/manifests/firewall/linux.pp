@@ -22,4 +22,11 @@ class profile::firewall::linux {
     require => Class['::profile::firewall::pre'],
   }
 
+  firewall { '005 accept minecraft':
+    proto   => 'tcp',
+    action  => 'accept',
+    port    => '25566',
+    require => Class['::profile::firewall::pre'],
+  }
+
 }
