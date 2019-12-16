@@ -13,6 +13,9 @@ classes:
   - 'profile::letsencrypt'
   - 'profile::transmission'
 
+transmission::init_opts:
+  transmission_web_home: '/usr/local/serve/kettu'
+
 #
 # == Minecraft
 #
@@ -172,6 +175,13 @@ profile::minecraft::servers:
 #
 # == Nginx
 #
+profile::nginx_server::upstreams:
+  transmission:
+    ensure: present
+    members:
+      'localhost:9091':
+        server: 'localhost'
+        port: 9091
 nginx::config::server_tokens: 'off'
 nginx::nginx_servers:
   'home.jbeard.org':
@@ -241,9 +251,49 @@ nginx::nginx_servers:
         ssl: false
         ssl_only: false
 
+  't.jbeard.org':
+    ssl: true
+    ssl_cert: '/usr/local/etc/letsencrypt/live/t.jbeard.org/fullchain.pem'
+    ssl_key: '/usr/local/etc/letsencrypt/live/t.jbeard.org/privkey.pem'
+    ssl_ciphers: 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH'
+    use_default_location: false
+    locations_defaults:
+      ssl: true
+      ssl_only: true
+    locations:
+      't.jbeard.org-ssl_redirection':
+        location: '/'
+        ssl: false
+        ssl_only: false
+        location_custom_cfg:
+          'return': '301 https://$server_name$request_uri'
+      't.jbeard.org':
+        location: '/'
+        proxy: 'http://transmission'
+        server: 't.jbeard.org'
+        auth_basic: 'Transmission'
+        auth_basic_user_file: '/usr/local/etc/transmission/transmission.access'
+        add_header:
+          'Front-End-Https': 'on'
+        proxy_set_header:
+          - 'X-Real-IP $remote_addr'
+          - 'X-Forwarded-For $proxy_add_x_forwarded_for'
+          - 'Host $http_host'
+          - 'X-Nginx-Proxy true'
+          - 'Connection ""'
+        proxy_pass_header:
+          - 'X-Transmission-Session-Id'
+      't-well-known':
+        location: '/.well-known'
+        www_root: '/var/www/le_webroot/t.jbeard.org'
+        ssl: false
+        ssl_only: false
+      
+
 #
 # == Letsencrypt
 #
+letsencrypt::package_name: 'py36-certbot'
 profile::letsencrypt::certonly_defaults:
   plugin: 'webroot'
   manage_cron: false
@@ -259,3 +309,8 @@ profile::letsencrypt::domains:
       - '/var/www/le_webroot/home.jbeard.org'
     'domains':
       - 'home.jbeard.org'
+  't.jbeard.org':
+    webroot_paths:
+      - '/var/www/le_webroot/t.jbeard.org'
+    'domains':
+      - 't.jbeard.org'

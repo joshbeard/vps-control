@@ -1,6 +1,10 @@
 ## The nginx profile
-class profile::nginx_server {
+class profile::nginx_server (
+  Hash $upstreams = {},
+) {
   include ::nginx
+
+  create_resources('nginx::resource::upstream', $upstreams)
 
   file { 'nginx_ssl':
     ensure => 'directory',
