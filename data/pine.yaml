@@ -98,6 +98,32 @@ nginx::nginx_servers:
         ssl_only: false
         www_root: '/var/www/le_webroot/pub.signalboxes.net'
 
+  'jbeard.dev':
+    server_name: ['jbeard.dev', 'www.jbeard.dev']
+    ssl: true
+    ssl_cert: '/etc/letsencrypt/live/jbeard.dev/fullchain.pem'
+    ssl_key: '/etc/letsencrypt/live/jbeard.dev/privkey.pem'
+    www_root: "/var/www/www-jbeard.dev"
+    access_log: "/var/log/nginx/jbeard.dev_ssl_access.log"
+    error_log: "/var/log/nginx/jbeard.dev_ssl_error.log"
+    use_default_location: false
+    locations_defaults:
+      ssl: true
+      ssl_only: true
+    locations:
+      'jbeard.dev-ssl_redirection':
+        location: '/'
+        ssl: false
+        ssl_only: false
+        location_custom_cfg:
+          'return': '301 https://$server_name$request_uri'
+      # Used for letsencrypt
+      'jbeard.dev-well-known':
+        location: '/.well-known'
+        www_root: "/var/www/le_webroot/jbeard.dev"
+        ssl: false
+        ssl_only: false
+
   'jbeard.org':
     server_name: ['jbeard.org', 'www.jbeard.org']
     ssl: true
@@ -276,6 +302,12 @@ profile::letsencrypt::domains:
     'domains':
       - 'signalboxes.net'
       - 'www.signalboxes.net'
+  'jbeard.dev':
+    'webroot_paths':
+      - '/var/www/le_webroot/jbeard.dev'
+    'domains':
+      - 'jbeard.dev'
+      - 'www.jbeard.dev'
   'jbeard.org':
     'webroot_paths':
       - '/var/www/le_webroot/jbeard.org'
