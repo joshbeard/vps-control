@@ -98,6 +98,32 @@ nginx::nginx_servers:
         ssl_only: false
         www_root: '/var/www/le_webroot/pub.signalboxes.net'
 
+  'jbeard.co':
+    server_name: ['jbeard.co', 'www.jbeard.co']
+    ssl: true
+    ssl_cert: '/etc/letsencrypt/live/jbeard.co/fullchain.pem'
+    ssl_key: '/etc/letsencrypt/live/jbeard.co/privkey.pem'
+    www_root: "/var/www/www-jbeard.co"
+    access_log: "/var/log/nginx/jbeard.co_ssl_access.log"
+    error_log: "/var/log/nginx/jbeard.co_ssl_error.log"
+    use_default_location: false
+    locations_defaults:
+      ssl: true
+      ssl_only: true
+    locations:
+      'jbeard.co-ssl_redirection':
+        location: '/'
+        ssl: false
+        ssl_only: false
+        location_custom_cfg:
+          'return': '301 https://$server_name$request_uri'
+      # Used for letsencrypt
+      'jbeard.co-well-known':
+        location: '/.well-known'
+        www_root: "/var/www/le_webroot/jbeard.co"
+        ssl: false
+        ssl_only: false
+
   'jbeard.dev':
     server_name: ['jbeard.dev', 'www.jbeard.dev']
     ssl: true
@@ -147,6 +173,32 @@ nginx::nginx_servers:
       'jbeard.org-well-known':
         location: '/.well-known'
         www_root: "/var/www/le_webroot/jbeard.org"
+        ssl: false
+        ssl_only: false
+
+  'jbeardllc.com':
+    server_name: ['jbeardllc.com', 'www.jbeardllc.com']
+    ssl: true
+    ssl_cert: '/etc/letsencrypt/live/jbeardllc.com/fullchain.pem'
+    ssl_key: '/etc/letsencrypt/live/jbeardllc.com/privkey.pem'
+    www_root: "/var/www/www-jbeardllc.com"
+    access_log: "/var/log/nginx/jbeardllc.com_ssl_access.log"
+    error_log: "/var/log/nginx/jbeardllc.com_ssl_error.log"
+    use_default_location: false
+    locations_defaults:
+      ssl: true
+      ssl_only: true
+    locations:
+      'jbeardllc.com-ssl_redirection':
+        location: '/'
+        ssl: false
+        ssl_only: false
+        location_custom_cfg:
+          'return': '301 https://$server_name$request_uri'
+      # Used for letsencrypt
+      'jbeardllc.com-well-known':
+        location: '/.well-known'
+        www_root: "/var/www/le_webroot/jbeardllc.com"
         ssl: false
         ssl_only: false
 
@@ -302,6 +354,12 @@ profile::letsencrypt::domains:
     'domains':
       - 'signalboxes.net'
       - 'www.signalboxes.net'
+  'jbeard.co':
+    'webroot_paths':
+      - '/var/www/le_webroot/jbeard.co'
+    'domains':
+      - 'jbeard.co'
+      - 'www.jbeard.co'
   'jbeard.dev':
     'webroot_paths':
       - '/var/www/le_webroot/jbeard.dev'
@@ -314,6 +372,12 @@ profile::letsencrypt::domains:
     'domains':
       - 'jbeard.org'
       - 'www.jbeard.org'
+  'jbeardllc.com':
+    'webroot_paths':
+      - '/var/www/le_webroot/jbeardllc.com'
+    'domains':
+      - 'jbeardllc.com'
+      - 'www.jbeardllc.com'
   'pub.signalboxes.net':
     'webroot_paths':
       - '/var/www/le_webroot/pub.signalboxes.net'
