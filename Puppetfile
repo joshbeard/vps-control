@@ -48,10 +48,6 @@ mod 'pf',
   :git => 'https://github.com/xaque208/puppet-pf.git',
   :ref => 'c0ae11d60ce04343de01146018e98bccfb38f011'
 
-mod 'samba',
-  :git => 'https://github.com/joshbeard/puppet-samba.git',
-  :ref => 'freebsd'
-
 mod 'transmission',
   :git => 'https://github.com/joshbeard/puppet-transmission.git',
   :ref => 'master'
