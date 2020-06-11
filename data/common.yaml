@@ -27,6 +27,11 @@ nginx::confd_purge: true
 nginx::server_purge: true
 nginx::server_tokens: 'off'
 
+nginx::ssl_ciphers: 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH'
+nginx::ssl_protocols: 'TLSv1.2 TLSv1.3'
+nginx::ssl_prefer_server_ciphers: 'on'
+nginx::ssl_session_cache: 'shared:SSL:10m'
+
 nginx::gzip_buffers: '16 8k'
 nginx::gzip_comp_level: 4
 nginx::config::server_tokens: 'off'
