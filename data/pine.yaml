@@ -40,6 +40,9 @@ profile::www::sites:
   'hewbert.com':
     repo:
       source: 'https://github.com/joshbeard/www-hewbert.com.git'
+  'resume':
+    repo:
+      source: 'https://github.com/joshbeard/resume.git'
 
 #
 # == Nginx
@@ -236,6 +239,8 @@ nginx::nginx_servers:
       '/flickr':
         location_custom_cfg:
           'return': '302 https://www.flickr.com/photos/148417907@N03/'
+      '/resume':
+        location_alias: '/var/www/resume'
       'asset_cache':
         location: '~* ^.+\.(?:css|cur|js|jpe?g|gif|htc|ico|png|html|xml|svg)$'
         location_custom_cfg:
