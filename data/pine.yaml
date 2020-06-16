@@ -234,7 +234,7 @@ nginx::nginx_servers:
         ssl: false
         ssl_only: false
       '/\.git':
-        priority: 400
+        priority: 420
         location_custom_cfg:
           'return': '404 deny'
       '/flickr':
